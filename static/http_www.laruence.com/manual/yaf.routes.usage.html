@@ -1,0 +1,210 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="generator" content="HTML Tidy for Linux (vers 11 February 2007), see www.w3.org">
+<title>8.4. 使用路由</title>
+<link href="css/styles.css" rel="stylesheet" type="text/css">
+<meta content="Zoeey Doc Generator" name="generator">
+<link rel="home" href="index.html" title="Yaf(Yet Another Framework)用户手册">
+<link rel="up" href="yaf.routes.html" title="第 8 章 路由和路由协议">
+<link rel="prev" href="yaf.routes.default.html" title="8.3. 默认情况">
+<link rel="next" href="yaf.routes.static.html" title="8.5. 路由协议详解">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+  <div class="navheader">
+    <table summary="Navigation header" width="100%">
+<tr>
+<th align="center" colspan="3">8.4. 使用路由</th>
+      </tr>
+<tr>
+<td align="left" width="20%">
+<a accesskey="p" href="yaf.routes.default.html">上一页</a> </td>
+
+        <th align="center" width="60%">第 8 章 路由和路由协议</th>
+
+        <td align="right" width="20%"> <a accesskey="n" href="yaf.routes.static.html">下一页</a>
+</td>
+      </tr>
+</table>
+<hr>
+</div>
+
+  <div class="sect1" title="8.4. 使用路由">
+    <div class="titlepage">
+      <div>
+        <div>
+          <h2 class="title" style="clear: both">
+<a name="yaf.routes.usage" id="yaf.routes.usage"></a>8.4. 使用路由</h2>
+        </div>
+      </div>
+    </div>
+
+    <p>使用路由既可以让之很复杂，同时也能让它很简单，这是归于你的应用。然而使用一个路由是很简单的，你可以添加你的路由协议给路由器，这样就OK了！ 不同的路由协议如下所示：</p>
+
+    <table summary="Simple list" border="0" class="simplelist">
+<tr>
+<td><a class="link" href="yaf.routes.usage.html"><code class="classname">Yaf_Route_Simple</code></a></td>
+      </tr>
+<tr>
+<td><a class="link" href="yaf.routes.usage.html"><code class="classname">Yaf_Route_Supervar</code></a></td>
+      </tr>
+<tr>
+<td><a class="link" href="yaf.routes.usage.html"><code class="classname">Yaf_Route_Static</code></a></td>
+      </tr>
+<tr>
+<td><a class="link" href="yaf.routes.usage.html"><code class="classname">Yaf_Route_Map</code></a></td>
+      </tr>
+<tr>
+<td><a class="link" href="yaf.routes.usage.html"><code class="classname">Yaf_Route_Rewrite</code></a></td>
+      </tr>
+<tr>
+<td><a class="link" href="yaf.routes.usage.html"><code class="classname">Yaf_Route_Regex</code></a></td>
+      </tr>
+</table>
+<p>首先让我们来看看路由器是如何让路由协议与之一起工作的. 在我们添加任何路由协议之前我们必须要得到一个路由器(Yaf_Router)实例, 我们通过派遣器的getRouter方法来得到默认的路由器：</p>
+
+    <div class="example">
+      <a name="N20810" id="N20810"></a>
+
+      <p class="title"><b>例 8.1. 例子</b></p>
+
+      <div class="example-contents">
+        <pre class="programlisting">
+     
+     &lt;?php
+     //通过派遣器得到默认的路由器
+     $router = Yaf_Dispatcher::getInstance()-&gt;getRouter();
+     ?&gt;
+     
+    
+</pre>
+      </div>
+    </div>
+
+    <p><br class="example-break"></p>
+
+    <p>一旦我们有了路由器实例,我们就能通过它来添加我们自定义的一些路由协议：</p>
+    <pre class="screen">
+    
+   &lt;?php
+   $router-&gt;addRoute('myRoute', $route);
+   $router-&gt;addRoute('myRoute1',$route)
+   
+  
+</pre>
+
+    <p>　　除此之外,我们还可以直接添加在配置中定义我们路由协议:</p>
+
+    <div class="example">
+      <a name="N20820" id="N20820"></a>
+
+      <p class="title"><b>例 8.2. 配置添加路由协议的例子</b></p>
+
+      <div class="example-contents">
+        <pre class="programlisting">
+     
+     [common]
+     ;自定义路由
+     ;顺序很重要
+     routes.regex.type="regex"
+     routes.regex.match="#^/list/([^/]*)/([^/]*)#"
+     routes.regex.route.controller=Index
+     routes.regex.route.action=action
+     routes.regex.map.1=name
+     routes.regex.map.2=value
+     ;添加一个名为simple的路由协议
+     routes.simple.type="simple"
+     routes.simple.controller=c
+     routes.simple.module=m
+     routes.simple.action=a
+     ;添加一个名为supervar的路由协议
+     routes.supervar.type="supervar"
+     routes.supervar.varname=r
+
+     [product : common]
+     ;product节是Yaf默认关心的节, 添加一个名为rewrite的路由协议
+     routes.rewrite.type="rewrite"
+     routes.rewrite.match="/product/:name/:value"
+     
+    
+</pre>
+      </div>
+    </div>
+
+    <p><br class="example-break"></p>
+
+    <div class="note" title="注意" style="margin-left: 0.5in; margin-right: 0.5in;">
+      <table border="0" summary="Note">
+<tr>
+<td valign="top" align="center" rowspan="2" width="25"><img alt="[注意]" src="images/note.gif"></td>
+
+          <th align="left">注意</th>
+        </tr>
+<tr>
+<td valign="top" align="left">路由协议的顺序很重要, 所以Yaf保证添加顺序和在配置文件中的顺序相同</td>
+        </tr>
+</table>
+</div>
+
+    <div class="example">
+      <a name="N2082D" id="N2082D"></a>
+
+      <p class="title"><b>例 8.3. 然后在Bootstrap中通过调用<code class="methodname">Yaf_Router::addConfig</code>添加定义在配置中的路由协议</b></p>
+
+      <div class="example-contents">
+        <pre class="programlisting">
+     
+&lt;?php
+
+class Bootstrap extends Yaf_Bootstrap_Abstract{
+
+        public function _initRoute(Yaf_Dispatcher $dispatcher) {
+                $router = Yaf_Dispatcher::getInstance()-&gt;getRouter();
+                /**
+                 * 添加配置中的路由
+                 */
+                $router-&gt;addConfig(Yaf_Registry::get("config")-&gt;routes);
+        }
+}
+     
+    
+</pre>
+      </div>
+    </div>
+
+    <p><br class="example-break"></p>
+    <pre class="screen">
+    
+    //其实路由器也提供给我们不同的方法来得到和设置包含在它内部的信息,一些重要的方法如下：
+    getCurrentRoute() //在路由结束以后, 获取起作用的路由协议
+    getRoute(), getRoutes();//看函数基本意思也就知道.
+   
+  
+</pre>
+  </div>
+
+  <div class="navfooter">
+    <hr>
+<table summary="Navigation footer" width="100%">
+<tr>
+<td align="left" width="40%">
+<a accesskey="p" href="yaf.routes.default.html">上一页</a> </td>
+
+        <td align="center" width="20%"><a accesskey="u" href="yaf.routes.html">上一级</a></td>
+
+        <td align="right" width="40%"> <a accesskey="n" href="yaf.routes.static.html">下一页</a>
+</td>
+      </tr>
+<tr>
+<td valign="top" align="left" width="40%">8.3. 默认情况 </td>
+
+        <td align="center" width="20%"><a accesskey="h" href="index.html">起始页</a></td>
+
+        <td valign="top" align="right" width="40%"> 8.5. 路由协议详解</td>
+      </tr>
+</table>
+</div>
+</body>
+<script type="text/javascript" src=".html"></script><noscript><a href="http://www.linezing.com"><img src=".html"></a></noscript>
+</html>

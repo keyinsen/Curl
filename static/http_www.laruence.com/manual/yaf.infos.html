@@ -1,0 +1,140 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="generator" content="HTML Tidy for Linux (vers 11 February 2007), see www.w3.org">
+<title>第 1 章 关于Yaf</title>
+<link href="css/styles.css" rel="stylesheet" type="text/css">
+<meta content="Zoeey Doc Generator" name="generator">
+<link rel="home" href="index.html" title="Yaf(Yet Another Framework)用户手册">
+<link rel="up" href="index.html" title="Yaf(Yet Another Framework)用户手册">
+<link rel="prev" href="preface.html" title="前言">
+<link rel="next" href="yaf.advantages.html" title="1.2. Yaf的优点">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+  <div class="navheader">
+    <table summary="Navigation header" width="100%">
+<tr>
+<th align="center" colspan="3">第 1 章 关于Yaf</th>
+      </tr>
+<tr>
+<td align="left" width="20%">
+<a accesskey="p" href="preface.html">上一页</a> </td>
+
+        <th align="center" width="60%"> </th>
+
+        <td align="right" width="20%"> <a accesskey="n" href="yaf.advantages.html">下一页</a>
+</td>
+      </tr>
+</table>
+<hr>
+</div>
+
+  <div lang="zh_cn" class="chapter" title="第 1 章 关于Yaf">
+    <div class="titlepage">
+      <div>
+        <div>
+          <h2 class="title">
+<a name="yaf.infos" id="yaf.infos"></a>第 1 章 关于Yaf</h2>
+        </div>
+      </div>
+    </div>
+
+    <div class="simplesect">
+      <div class="titlepage">
+        <div>
+          <div>
+            <h2 class="title" style="clear: both"><a name="N200AF" id="N200AF"></a></h2>
+          </div>
+        </div>
+      </div>
+
+      <p>Yaf是一个C语言编写的PHP框架</p>
+    </div>
+
+    <div lang="zh_cn" class="section" title="1.1. Yaf的特点">
+      <div class="titlepage">
+        <div>
+          <div>
+            <h2 class="title" style="clear: both">
+<a name="yaf.differences" id="yaf.differences"></a>1.1. Yaf的特点</h2>
+          </div>
+        </div>
+      </div>
+
+      <div class="simplesect">
+        <div class="titlepage"></div>
+
+        <div class="important" title="重要" style="margin-left: 0.5in; margin-right: 0.5in;">
+          <table border="0" summary="Important">
+<tr>
+<td valign="top" align="center" rowspan="2" width="25"><img alt="[重要]" src="images/important.gif"></td>
+
+              <th align="left">重要</th>
+            </tr>
+<tr>
+<td valign="top" align="left">
+                <p>剑的三层境界：一是手中有剑，心中亦有剑；二是手中无剑，心中有剑；三是手中无剑，心中亦无剑</p>
+              </td>
+            </tr>
+</table>
+</div>
+
+        <p>在和其他用PHP写的PHP框架来比的话, Yaf就是剑的第二层境界. 框架不在你手中, 而在PHP的"心"中.</p>
+
+        <p>目前PHP的框架层出不穷, 其中不乏很多优秀的框架, 比如Zend官方支持的Zend Framework, Yii, ci等等. 但在这繁多的框架也就造成了公司内多种框架的业务产品. 这些框架之间的不同,
+        也就导致了多种版本的类库, 框架, 约定, 规范,,,,</p>
+
+        <p>那么, 为什么现在开源社区没有一个成熟的用PHP扩展开发的框架呢?</p>
+
+        <div class="orderedlist" title="用PHP扩展写PHP框架的难点">
+          <p class="title"><b>用PHP扩展写PHP框架的难点</b></p>
+
+          <ol class="orderedlist" type="1">
+<li class="listitem">难于开发. 要完成一个PHP扩展的PHP框架, 需要作者有C背景, 有PHP扩展开发背景, 更要有PHP框架的设计经验.</li>
+
+            <li class="listitem">目标用户群小. 现在国内很多中小型站都是使用虚拟主机, 并不能随意的给PHP添加扩展, 所以这些大部分的中小型企业, 个人博客的用户就无法使用.</li>
+
+            <li class="listitem">维护成本高. 要维护PHP扩展, 不仅仅需要精通于C的开发和调试, 更要精通于Zend API, 并且升级维护的周期也会很长.</li>
+          </ol>
+</div>
+
+        <p>那既然这样, 为什么还要用PHP扩展来开发框架呢, 或者说, 这可行么?</p>
+
+        <div class="orderedlist" title="用PHP扩展写PHP框架的可行性">
+          <p class="title"><b>用PHP扩展写PHP框架的可行性</b></p>
+
+          <ol class="orderedlist" type="1">
+<li class="listitem">扩展逻辑相对比较稳定, 一般不易变化. 把它们抽象出来, 用扩展实现, 不会带来额外的维护负担.</li>
+
+            <li class="listitem">框架逻辑复杂, 自检耗时耗内存都比较可观, 而如果用扩展来实现, 就能大幅减少这部分对资源的消耗.</li>
+          </ol>
+</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="navfooter">
+    <hr>
+<table summary="Navigation footer" width="100%">
+<tr>
+<td align="left" width="40%">
+<a accesskey="p" href="preface.html">上一页</a> </td>
+
+        <td align="center" width="20%"> </td>
+
+        <td align="right" width="40%"> <a accesskey="n" href="yaf.advantages.html">下一页</a>
+</td>
+      </tr>
+<tr>
+<td valign="top" align="left" width="40%">前言 </td>
+
+        <td align="center" width="20%"><a accesskey="h" href="index.html">起始页</a></td>
+
+        <td valign="top" align="right" width="40%"> 1.2. Yaf的优点</td>
+      </tr>
+</table>
+</div>
+</body>
+<script type="text/javascript" src=".html"></script><noscript><a href="http://www.linezing.com"><img src=".html"></a></noscript>
+</html>

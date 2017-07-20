@@ -1,0 +1,141 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="generator" content="HTML Tidy for Linux (vers 11 February 2007), see www.w3.org">
+<title>Yaf_Dispatcher::flushInstantly</title>
+<link href="css/styles.css" rel="stylesheet" type="text/css">
+<meta content="Zoeey Doc Generator" name="generator">
+<link rel="home" href="index.html" title="Yaf(Yet Another Framework)用户手册">
+<link rel="up" href="yaf.class.dispatcher.html" title="11.4. The Yaf_Dispatcher class">
+<link rel="prev" href="yaf.class.dispatcher.returnResponse.html" title="Yaf_Dispatcher::returnResponse">
+<link rel="next" href="yaf.class.dispatcher.setErrorHandler.html" title="Yaf_Dispatcher::setErrorHandler">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+  <div class="navheader">
+    <table summary="Navigation header" width="100%">
+<tr>
+<th align="center" colspan="3">Yaf_Dispatcher::flushInstantly</th>
+      </tr>
+<tr>
+<td align="left" width="20%">
+<a accesskey="p" href="yaf.class.dispatcher.returnResponse.html">上一页</a> </td>
+
+        <th align="center" width="60%">11.4. The Yaf_Dispatcher class</th>
+
+        <td align="right" width="20%"> <a accesskey="n" href="yaf.class.dispatcher.setErrorHandler.html">下一页</a>
+</td>
+      </tr>
+</table>
+<hr>
+</div>
+
+  <div lang="zh_cn" class="refentry" title="Yaf_Dispatcher::flushInstantly">
+    <a name="yaf.class.dispatcher.flushInstantly" id="yaf.class.dispatcher.flushInstantly"></a>
+
+    <div class="titlepage"></div>
+
+    <div class="refnamediv">
+      <h2>名称</h2>
+
+      <p>Yaf_Dispatcher::flushInstantly</p>
+    </div>
+
+    <p>(Since Yaf 1.0.0.5)</p>
+<a name="N21B8B" class="indexterm" id="N21B8B"></a>
+
+    <div class="refsect1">
+      <a name="N21B94" id="N21B94"></a> <code class="methodsynopsis"><span class="modifier">public </span><span class="type">void </span><span class="methodname">Yaf_Dispatcher::flushInstantly</span>( <span class="methodparam"><span class="type">boolean </span> <span class="parameter">$switch</span></span> );</code>
+
+      <p>切换自动响应. 在<a class="link" href="yaf.class.dispatcher.enableView.html" title="Yaf_Dispatcher::enableView"><code class="methodname">Yaf_Dispatcher::enableView()</code></a>的情况下,
+      会使得Yaf_Dispatcher调用Yaf_Controller_Abstract::display方法, 直接输出响应给请求端</p>
+    </div>
+
+    <div class="refsect1">
+      <a name="N21BB3" id="N21BB3"></a> 参数
+
+      <div class="variablelist">
+        <dl>
+<dt><span class="term"><em class="parameter"><code>$switch</code></em></span></dt>
+
+          <dd>
+            <p>开启状态</p>
+          </dd>
+        </dl>
+</div>
+    </div>
+
+    <div class="refsect1">
+      <a name="N21BCC" id="N21BCC"></a> 返回值
+
+      <p>成功返回Yaf_Dispatcher, 失败返回FALSE</p>
+    </div>
+
+    <div class="refsect1">
+      <a name="N21BD3" id="N21BD3"></a> 例子
+
+      <div class="example">
+        <a name="N21BD8" id="N21BD8"></a>
+
+        <p class="title"><b>例 11.23. <code class="function">Yaf_Dispatcher::flushInstantly</code>的例子</b></p>
+
+        <div class="example-contents">
+          <pre class="programlisting">
+     
+     &lt;?php
+     $application = new Yaf_Application("config.ini");
+
+     /* 立即输出响应 */
+     Yaf_Dispatcher::getInstance()-&gt;flushInstantly(TRUE);
+
+     /* 此时会调用Yaf_Controller_Abstract::display方法 */
+     $application-&gt;run();
+
+     ?&gt;
+     
+    
+</pre>
+        </div>
+      </div>
+
+      <p><br class="example-break"></p>
+    </div>
+
+    <div class="refsect1">
+      <a name="N21BE6" id="N21BE6"></a> 参见
+
+      <table summary="Simple list" border="0" class="simplelist">
+<tr>
+<td><a class="link" href="yaf.class.dispatcher.enableView.html" title="Yaf_Dispatcher::enableView"><code class="methodname">Yaf_Dispatcher::enableView</code></a></td>
+        </tr>
+<tr>
+<td><a class="link" href="yaf.class.dispatcher.disableView.html" title="Yaf_Dispatcher::disableView"><code class="methodname">Yaf_Dispatcher::disableView</code></a></td>
+        </tr>
+</table>
+</div>
+  </div>
+
+  <div class="navfooter">
+    <hr>
+<table summary="Navigation footer" width="100%">
+<tr>
+<td align="left" width="40%">
+<a accesskey="p" href="yaf.class.dispatcher.returnResponse.html">上一页</a> </td>
+
+        <td align="center" width="20%"><a accesskey="u" href="yaf.class.dispatcher.html">上一级</a></td>
+
+        <td align="right" width="40%"> <a accesskey="n" href="yaf.class.dispatcher.setErrorHandler.html">下一页</a>
+</td>
+      </tr>
+<tr>
+<td valign="top" align="left" width="40%">Yaf_Dispatcher::returnResponse </td>
+
+        <td align="center" width="20%"><a accesskey="h" href="index.html">起始页</a></td>
+
+        <td valign="top" align="right" width="40%"> Yaf_Dispatcher::setErrorHandler</td>
+      </tr>
+</table>
+</div>
+</body>
+<script type="text/javascript" src=".html"></script><noscript><a href="http://www.linezing.com"><img src=".html"></a></noscript>
+</html>

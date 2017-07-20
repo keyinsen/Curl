@@ -1,0 +1,166 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="generator" content="HTML Tidy for Linux (vers 11 February 2007), see www.w3.org">
+<title>Yaf_Loader::autoload</title>
+<link href="css/styles.css" rel="stylesheet" type="text/css">
+<meta content="Zoeey Doc Generator" name="generator">
+<link rel="home" href="index.html" title="Yaf(Yet Another Framework)用户手册">
+<link rel="up" href="yaf.class.loader.html" title="11.3. The Yaf_Loader class">
+<link rel="prev" href="yaf.class.loader.import.html" title="Yaf_Loader::import">
+<link rel="next" href="yaf.class.loader.registerLocalNamespace.html" title="Yaf_Loader::registerLocalNamespace">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+  <div class="navheader">
+    <table summary="Navigation header" width="100%">
+<tr>
+<th align="center" colspan="3">Yaf_Loader::autoload</th>
+      </tr>
+<tr>
+<td align="left" width="20%">
+<a accesskey="p" href="yaf.class.loader.import.html">上一页</a> </td>
+
+        <th align="center" width="60%">11.3. The Yaf_Loader class</th>
+
+        <td align="right" width="20%"> <a accesskey="n" href="yaf.class.loader.registerLocalNamespace.html">下一页</a>
+</td>
+      </tr>
+</table>
+<hr>
+</div>
+
+  <div lang="zh_cn" class="refentry" title="Yaf_Loader::autoload">
+    <a name="yaf.class.loader.autoload" id="yaf.class.loader.autoload"></a>
+
+    <div class="titlepage"></div>
+
+    <div class="refnamediv">
+      <h2>名称</h2>
+
+      <p>Yaf_Loader::autoload</p>
+    </div>
+
+    <p>(Since Yaf 1.0.0.5)</p>
+<a name="N212BE" class="indexterm" id="N212BE"></a>
+
+    <div class="refsect1">
+      <a name="N212C7" id="N212C7"></a> <code class="methodsynopsis"><span class="modifier">public </span><span class="modifier">static </span><span class="type">boolean </span><span class="methodname">Yaf_Loader::autoload</span>( <span class="methodparam"><span class="type">string </span> <span class="parameter">$class_name</span></span> );</code>
+
+      <p>载入一个类, 这个方法被Yaf用作自动加载类的方法, 当然也可以手动调用.</p>
+    </div>
+
+    <div class="refsect1">
+      <a name="N212E6" id="N212E6"></a> 参数
+
+      <div class="variablelist">
+        <dl>
+<dt><span class="term"><em class="parameter"><code>$class_name</code></em></span></dt>
+
+          <dd>
+            <p>要载入的类名, 类名必须包含路径信息, 也就是下划线分隔的路径信息和类名. 载入的过程中, 首先会判断这个类名是否是本地类, 如果是本地类, 则使用本地类类库目录, 否则使用全局类目录.
+            然后判断<a class="link" href="yaf.class.loader.autoload.html">yaf.lowcase_path</a>是否开启, 如果开启, 则会把类名中的路径部分全部小写. 然后加载, 执行.</p>
+            <pre class="screen">
+        
+        /** yaf.lowcase_path=0 */
+        Foo_Bar_Dummy表示这个类存在于类库目录下的Foo/Bar/Dummy.php
+
+        /** yaf.lowcase_path=1 */
+        Foo_Bar_Dummy表示这个类存在于类库目录下的foo/bar/Dummy.php
+        
+       
+</pre>
+
+            <div class="note" title="注意" style="margin-left: 0.5in; margin-right: 0.5in;">
+              <table border="0" summary="Note">
+<tr>
+<td valign="top" align="center" rowspan="2" width="25"><img alt="[注意]" src="images/note.gif"></td>
+
+                  <th align="left">注意</th>
+                </tr>
+<tr>
+<td valign="top" align="left">在php.ini中的yaf.lowcase_path开启的情况下, 路径信息中的目录部分都会被转换成小写.</td>
+                </tr>
+</table>
+</div>
+          </dd>
+        </dl>
+</div>
+    </div>
+
+    <div class="refsect1">
+      <a name="N21309" id="N21309"></a> 返回值
+
+      <p>成功返回TRUE</p>
+
+      <div class="note" title="注意" style="margin-left: 0.5in; margin-right: 0.5in;">
+        <table border="0" summary="Note">
+<tr>
+<td valign="top" align="center" rowspan="2" width="25"><img alt="[注意]" src="images/note.gif"></td>
+
+            <th align="left">注意</th>
+          </tr>
+<tr>
+<td valign="top" align="left">在php.ini中的yaf.use_spl_autoload关闭的情况下, 即使类没有找到, Yaf_Loader::autoload也会返回TRUE,
+            剥夺其后面的自动加载函数的执行权利.</td>
+          </tr>
+</table>
+</div>
+    </div>
+
+    <div class="refsect1">
+      <a name="N21313" id="N21313"></a> 例子
+
+      <div class="example">
+        <a name="N21318" id="N21318"></a>
+
+        <p class="title"><b>例 11.13. <code class="function">Yaf_Loader::autoload</code> 的例子</b></p>
+
+        <div class="example-contents">
+          <pre class="programlisting">
+     
+     &lt;?php
+     Yaf_Loader::autoload("Baidu_ST_Dummy_Bar");
+     ?&gt;
+     
+    
+</pre>
+        </div>
+      </div>
+
+      <p><br class="example-break"></p>
+    </div>
+
+    <div class="refsect1">
+      <a name="N21326" id="N21326"></a> 参见
+
+      <table summary="Simple list" border="0" class="simplelist"><tr>
+<td><a class="link" href="yaf.class.loader.import.html" title="Yaf_Loader::import"><code class="methodname">Yaf_Loader::import</code></a></td>
+        </tr></table>
+</div>
+  </div>
+
+  <div class="navfooter">
+    <hr>
+<table summary="Navigation footer" width="100%">
+<tr>
+<td align="left" width="40%">
+<a accesskey="p" href="yaf.class.loader.import.html">上一页</a> </td>
+
+        <td align="center" width="20%"><a accesskey="u" href="yaf.class.loader.html">上一级</a></td>
+
+        <td align="right" width="40%"> <a accesskey="n" href="yaf.class.loader.registerLocalNamespace.html">下一页</a>
+</td>
+      </tr>
+<tr>
+<td valign="top" align="left" width="40%">Yaf_Loader::import </td>
+
+        <td align="center" width="20%"><a accesskey="h" href="index.html">起始页</a></td>
+
+        <td valign="top" align="right" width="40%"> Yaf_Loader::registerLocalNamespace</td>
+      </tr>
+</table>
+</div>
+</body>
+<script type="text/javascript" src=".html"></script><noscript><a href="http://www.linezing.com"><img src=".html"></a></noscript>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="generator" content="HTML Tidy for Linux (vers 11 February 2007), see www.w3.org">
+<title>8.2. 设计</title>
+<link href="css/styles.css" rel="stylesheet" type="text/css">
+<meta content="Zoeey Doc Generator" name="generator">
+<link rel="home" href="index.html" title="Yaf(Yet Another Framework)用户手册">
+<link rel="up" href="yaf.routes.html" title="第 8 章 路由和路由协议">
+<link rel="prev" href="yaf.routes.html" title="第 8 章 路由和路由协议">
+<link rel="next" href="yaf.routes.default.html" title="8.3. 默认情况">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+  <div class="navheader">
+    <table summary="Navigation header" width="100%">
+<tr>
+<th align="center" colspan="3">8.2. 设计</th>
+      </tr>
+<tr>
+<td align="left" width="20%">
+<a accesskey="p" href="yaf.routes.html">上一页</a> </td>
+
+        <th align="center" width="60%">第 8 章 路由和路由协议</th>
+
+        <td align="right" width="20%"> <a accesskey="n" href="yaf.routes.default.html">下一页</a>
+</td>
+      </tr>
+</table>
+<hr>
+</div>
+
+  <div class="sect1" title="8.2. 设计">
+    <div class="titlepage">
+      <div>
+        <div>
+          <h2 class="title" style="clear: both">
+<a name="yaf.routes.design" id="yaf.routes.design"></a>8.2. 设计</h2>
+        </div>
+      </div>
+    </div>
+
+    <p>
+    作为一个应用中的路由组件是很重要的,理所当然的路由组件是抽象的,这样允许作为开发者的我们很容易的设计出我们自定义的路由协议.然而,默认的路由组件其实已经服务得我们很好了.记住,如果我们需要一个非标准的路由协议时候,我们就可以自定义一个自己的路由协议,而不用采用默认的路由协议.
+    事实上,路由组件有两个部分：路由器(Yaf_Router)和路由协议(Yaf_Route_Abstract).</p>
+
+    <p>路由协议事实上主要负责匹配我们预先定义好的路由协议,意思就是我们只有一个路由器,但我们可以有许多路由协议. 路由器主要负责管理和运行路由链,它根据路由协议栈倒序依次调用各个路由协议, 一直到某一个路由协议返回成功以后,
+    就匹配成功.</p>
+
+    <div class="caution" title="小心" style="margin-left: 0.5in; margin-right: 0.5in;">
+      <table border="0" summary="Caution">
+<tr>
+<td valign="top" align="center" rowspan="2" width="25"><img alt="[小心]" src="images/caution.gif"></td>
+
+          <th align="left">小心</th>
+        </tr>
+<tr>
+<td valign="top" align="left">路由注册的顺序很重要, 最后注册的路由协议, 最先尝试路由, 这就有个陷阱. 请注意.</td>
+        </tr>
+</table>
+</div>
+
+    <p>路由的过程发生派遣过程的最开始,并且路由解析仅仅发生一次.路由过程在何控制器动作(Controller,
+    Action)被派遣之前被执行,一旦路由成功,路由器将会把解析出得到的信息传递给请求对象(Yaf_Request_Abstract object),
+    这些信息包括moduel、controller、action、用户params等. 然后派遣器(Yaf_Dispatcher)就会按照这些信息派遣正确的控制器动作.
+    路由器也有插件钩子,就是routerStartup和routerShutdown,他们在路由解析前后分别被调用.</p>
+  </div>
+
+  <div class="navfooter">
+    <hr>
+<table summary="Navigation footer" width="100%">
+<tr>
+<td align="left" width="40%">
+<a accesskey="p" href="yaf.routes.html">上一页</a> </td>
+
+        <td align="center" width="20%"><a accesskey="u" href="yaf.routes.html">上一级</a></td>
+
+        <td align="right" width="40%"> <a accesskey="n" href="yaf.routes.default.html">下一页</a>
+</td>
+      </tr>
+<tr>
+<td valign="top" align="left" width="40%">第 8 章 路由和路由协议 </td>
+
+        <td align="center" width="20%"><a accesskey="h" href="index.html">起始页</a></td>
+
+        <td valign="top" align="right" width="40%"> 8.3. 默认情况</td>
+      </tr>
+</table>
+</div>
+</body>
+<script type="text/javascript" src=".html"></script><noscript><a href="http://www.linezing.com"><img src=".html"></a></noscript>
+</html>

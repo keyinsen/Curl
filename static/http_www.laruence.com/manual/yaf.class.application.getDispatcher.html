@@ -1,0 +1,138 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="generator" content="HTML Tidy for Linux (vers 11 February 2007), see www.w3.org">
+<title>Yaf_Application::getDispatcher</title>
+<link href="css/styles.css" rel="stylesheet" type="text/css">
+<meta content="Zoeey Doc Generator" name="generator">
+<link rel="home" href="index.html" title="Yaf(Yet Another Framework)用户手册">
+<link rel="up" href="yaf.classes.html#yaf.class.application" title="11.1. The Yaf_Application class">
+<link rel="prev" href="yaf.class.application.execute.html" title="Yaf_Application::execute">
+<link rel="next" href="yaf.class.application.getConfig.html" title="Yaf_Application::getConfig">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+  <div class="navheader">
+    <table summary="Navigation header" width="100%">
+<tr>
+<th align="center" colspan="3">Yaf_Application::getDispatcher</th>
+      </tr>
+<tr>
+<td align="left" width="20%">
+<a accesskey="p" href="yaf.class.application.execute.html">上一页</a> </td>
+
+        <th align="center" width="60%">11.1. The Yaf_Application class</th>
+
+        <td align="right" width="20%"> <a accesskey="n" href="yaf.class.application.getConfig.html">下一页</a>
+</td>
+      </tr>
+</table>
+<hr>
+</div>
+
+  <div lang="zh_cn" class="refentry" title="Yaf_Application::getDispatcher">
+    <a name="yaf.class.application.getDispatcher" id="yaf.class.application.getDispatcher"></a>
+
+    <div class="titlepage"></div>
+
+    <div class="refnamediv">
+      <h2>名称</h2>
+
+      <p>Yaf_Application::getDispatcher</p>
+    </div>
+
+    <p>(Since Yaf 1.0.0.6)</p>
+<a name="N20EA9" class="indexterm" id="N20EA9"></a>
+
+    <div class="refsect1">
+      <a name="N20EB2" id="N20EB2"></a> <code class="methodsynopsis"><span class="type">Yaf_Config_Abstract </span><span class="methodname">Yaf_Application::getDispatcher</span>(<span class="methodparam"><span class="type">void </span></span>);</code>
+
+      <p>获取当前的分发器</p>
+    </div>
+
+    <div class="refsect1">
+      <a name="N20EC5" id="N20EC5"></a> 参数
+
+      <div class="variablelist">
+        <dl>
+<dt><span class="term"><span class="type">void</span></span></dt>
+
+          <dd>
+            <p>本方法不需要参数</p>
+          </dd>
+        </dl>
+</div>
+    </div>
+
+    <div class="refsect1">
+      <a name="N20EDE" id="N20EDE"></a> 返回值
+
+      <p>Yaf_Dispatcher实例</p>
+    </div>
+
+    <div class="refsect1">
+      <a name="N20EE5" id="N20EE5"></a> 例子
+
+      <div class="example">
+        <a name="N20EEA" id="N20EEA"></a>
+
+        <p class="title"><b>例 11.7. <code class="function">Yaf_Application::getDispatcher</code> 的例子</b></p>
+
+        <div class="example-contents">
+          <pre class="programlisting">
+     
+     &lt;?php
+     define ("APPLICATION_PATH", dirname(__FILE__));
+
+     $app = new Yaf_Application("conf/application_simple.ini");
+
+     //bootstrap
+     $app-&gt;getDispatcher()-&gt;setAppDirectory(APPLICATION_PATH .
+     "/action/")-&gt;getApplication()-&gt;bootstrap()-&gt;run();
+
+     //当然也可以使用
+     $dispatcher = Yaf_Dispatcher::getInstance()-&gt;setAppDirectory(APPLICATION_PATH .
+          "/action/")-&gt;getApplication()-&gt;bootstrap()-&gt;run();
+     ?&gt;
+     
+    
+</pre>
+        </div>
+      </div>
+
+      <p><br class="example-break"></p>
+    </div>
+
+    <div class="refsect1">
+      <a name="N20EF8" id="N20EF8"></a> 参见
+
+      <table summary="Simple list" border="0" class="simplelist"><tr>
+<td><a class="link" href="yaf.class.dispatcher.getInstance.html" title="Yaf_Dispatcher::getInstance"><code class="methodname">Yaf_Dispatcher::getInstance</code></a></td>
+        </tr></table>
+</div>
+  </div>
+
+  <div class="navfooter">
+    <hr>
+<table summary="Navigation footer" width="100%">
+<tr>
+<td align="left" width="40%">
+<a accesskey="p" href="yaf.class.application.execute.html">上一页</a> </td>
+
+        <td align="center" width="20%"><a accesskey="u" href="yaf.classes.html#yaf.class.application">上一级</a></td>
+
+        <td align="right" width="40%"> <a accesskey="n" href="yaf.class.application.getConfig.html">下一页</a>
+</td>
+      </tr>
+<tr>
+<td valign="top" align="left" width="40%">Yaf_Application::execute </td>
+
+        <td align="center" width="20%"><a accesskey="h" href="index.html">起始页</a></td>
+
+        <td valign="top" align="right" width="40%"> Yaf_Application::getConfig</td>
+      </tr>
+</table>
+</div>
+</body>
+<script type="text/javascript" src=".html"></script><noscript><a href="http://www.linezing.com"><img src=".html"></a></noscript>
+</html>

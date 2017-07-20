@@ -1,0 +1,117 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="generator" content="HTML Tidy for Linux (vers 11 February 2007), see www.w3.org">
+<title>9.3. 分发请求</title>
+<link href="css/styles.css" rel="stylesheet" type="text/css">
+<meta content="Zoeey Doc Generator" name="generator">
+<link rel="home" href="index.html" title="Yaf(Yet Another Framework)用户手册">
+<link rel="up" href="yaf.incli.html" title="第 9 章 在命令行使用Yaf">
+<link rel="prev" href="yaf.incli.times.html" title="9.2. 使用样例">
+<link rel="next" href="yaf.catcherror.html" title="第 10 章 异常和错误">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+  <div class="navheader">
+    <table summary="Navigation header" width="100%">
+<tr>
+<th align="center" colspan="3">9.3. 分发请求</th>
+      </tr>
+<tr>
+<td align="left" width="20%">
+<a accesskey="p" href="yaf.incli.times.html">上一页</a> </td>
+
+        <th align="center" width="60%">第 9 章 在命令行使用Yaf</th>
+
+        <td align="right" width="20%"> <a accesskey="n" href="yaf.catcherror.html">下一页</a>
+</td>
+      </tr>
+</table>
+<hr>
+</div>
+
+  <div class="section" title="9.3. 分发请求">
+    <div class="titlepage">
+      <div>
+        <div>
+          <h2 class="title" style="clear: both">
+<a name="yaf.incli.layout" id="yaf.incli.layout"></a>9.3. 分发请求</h2>
+        </div>
+      </div>
+    </div>
+
+    <p>现在请求已经改造完成了, 那么接下来就简单了, 我们只需要把我们传统的入口文件:</p>
+
+    <div class="example">
+      <a name="N2095E" id="N2095E"></a>
+
+      <p class="title"><b>例 9.5. 入口文件</b></p>
+
+      <div class="example-contents">
+        <pre class="programlisting">
+                    
+     &lt;?php
+     $app = new Yaf_Application("conf.ini");
+     $app-&gt;bootstrap()-&gt;run();
+     
+    
+</pre>
+      </div>
+    </div>
+
+    <p><br class="example-break">
+    改为:</p>
+
+    <div class="example">
+      <a name="N20968" id="N20968"></a>
+
+      <p class="title"><b>例 9.6. 入口文件</b></p>
+
+      <div class="example-contents">
+        <pre class="programlisting">
+                    
+     &lt;?php
+     $app = new Yaf_Application("conf.ini");
+     $app-&gt;getDispatcher()-&gt;dispatch(new Yaf_Request_Simple());
+     
+    
+</pre>
+      </div>
+    </div>
+
+    <p><br class="example-break">
+    这样, 我们就可以通过在命令行中运行Yaf了</p>
+
+    <div class="refsect1">
+      <a name="N20973" id="N20973"></a> 参见
+
+      <table summary="Simple list" border="0" class="simplelist"><tr>
+<td><a class="link" href="yaf.class.request.html#yaf.class.request.simple" title="The Yaf_Request_Simple class"><code class="classname">Yaf_Request_Simple</code></a></td>
+        </tr></table>
+</div>
+  </div>
+
+  <div class="navfooter">
+    <hr>
+<table summary="Navigation footer" width="100%">
+<tr>
+<td align="left" width="40%">
+<a accesskey="p" href="yaf.incli.times.html">上一页</a> </td>
+
+        <td align="center" width="20%"><a accesskey="u" href="yaf.incli.html">上一级</a></td>
+
+        <td align="right" width="40%"> <a accesskey="n" href="yaf.catcherror.html">下一页</a>
+</td>
+      </tr>
+<tr>
+<td valign="top" align="left" width="40%">9.2. 使用样例 </td>
+
+        <td align="center" width="20%"><a accesskey="h" href="index.html">起始页</a></td>
+
+        <td valign="top" align="right" width="40%"> 第 10 章 异常和错误</td>
+      </tr>
+</table>
+</div>
+</body>
+<script type="text/javascript" src=".html"></script><noscript><a href="http://www.linezing.com"><img src=".html"></a></noscript>
+</html>

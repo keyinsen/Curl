@@ -1,0 +1,142 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="generator" content="HTML Tidy for Linux (vers 11 February 2007), see www.w3.org">
+<title>Yaf_Application::bootstrap</title>
+<link href="css/styles.css" rel="stylesheet" type="text/css">
+<meta content="Zoeey Doc Generator" name="generator">
+<link rel="home" href="index.html" title="Yaf(Yet Another Framework)用户手册">
+<link rel="up" href="yaf.classes.html#yaf.class.application" title="11.1. The Yaf_Application class">
+<link rel="prev" href="yaf.class.application.construct.html" title="Yaf_Application::__construct">
+<link rel="next" href="yaf.class.application.app.html" title="Yaf_Application::app">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+  <div class="navheader">
+    <table summary="Navigation header" width="100%">
+<tr>
+<th align="center" colspan="3">Yaf_Application::bootstrap</th>
+      </tr>
+<tr>
+<td align="left" width="20%">
+<a accesskey="p" href="yaf.class.application.construct.html">上一页</a> </td>
+
+        <th align="center" width="60%">11.1. The Yaf_Application class</th>
+
+        <td align="right" width="20%"> <a accesskey="n" href="yaf.class.application.app.html">下一页</a>
+</td>
+      </tr>
+</table>
+<hr>
+</div>
+
+  <div lang="zh_cn" class="refentry" title="Yaf_Application::bootstrap">
+    <a name="yaf.class.application.bootstrap" id="yaf.class.application.bootstrap"></a>
+
+    <div class="titlepage"></div>
+
+    <div class="refnamediv">
+      <h2>名称</h2>
+
+      <p>Yaf_Application::bootstrap</p>
+    </div>
+
+    <p>(Since Yaf 1.0.0.0)</p>
+<a name="N20C69" class="indexterm" id="N20C69"></a>
+
+    <div class="refsect1">
+      <a name="N20C72" id="N20C72"></a> <code class="methodsynopsis"><span class="type">Yaf_Application </span><span class="methodname">Yaf_Application::bootstrap</span>(<span class="methodparam"><span class="parameter">void</span></span>);</code>
+
+      <p>指示Yaf_Application去寻找Bootstrap(默认在ap.directory/Bootstrap.php), 并执行所有在Bootstrap类中定义的, 以_init开头的方法. 一般用作在处理请求之前,
+      做一些个性化定制.</p>
+
+      <p>Bootstrap并不会调用run, 所以还需要在bootstrap以后调用Application::run来运行Yaf_Application实例</p>
+    </div>
+
+    <div class="refsect1">
+      <a name="N20C89" id="N20C89"></a> 参数
+
+      <div class="variablelist">
+        <dl>
+<dt><span class="term"><span class="type">void</span></span></dt>
+
+          <dd>
+            <p>本方法不需要参数</p>
+          </dd>
+        </dl>
+</div>
+    </div>
+
+    <div class="refsect1">
+      <a name="N20CA2" id="N20CA2"></a> 返回值
+
+      <p>Yaf_Application</p>
+    </div>
+
+    <div class="refsect1">
+      <a name="N20CA9" id="N20CA9"></a> 例子
+
+      <div class="example">
+        <a name="N20CAE" id="N20CAE"></a>
+
+        <p class="title"><b>例 11.2. <code class="function">Yaf_Application::bootstrap</code> 的例子</b></p>
+
+        <div class="example-contents">
+          <pre class="programlisting">
+
+&lt;?php
+$config = array(
+        "ap" =&gt; array(
+                "directory" =&gt; "/usr/local/www/ap",
+        ),
+);
+$app = new Yaf_Application($config);
+$app-&gt;bootstrap()-&gt;run();
+?&gt;
+
+    
+</pre>
+        </div>
+      </div>
+
+      <p><br class="example-break"></p>
+    </div>
+
+    <div class="refsect1">
+      <a name="N20CBC" id="N20CBC"></a> 参见
+
+      <table summary="Simple list" border="0" class="simplelist">
+<tr>
+<td><a class="link" href="yaf.class.application.run.html" title="Yaf_Application::run"><code class="methodname">Yaf_Application::run</code></a></td>
+        </tr>
+<tr>
+<td><a class="link" href="yaf.class.bootstrap.html" title="11.2. The Yaf_Bootstrap class"><code class="classname">Yaf_Bootstrap_Abstract</code></a></td>
+        </tr>
+</table>
+</div>
+  </div>
+
+  <div class="navfooter">
+    <hr>
+<table summary="Navigation footer" width="100%">
+<tr>
+<td align="left" width="40%">
+<a accesskey="p" href="yaf.class.application.construct.html">上一页</a> </td>
+
+        <td align="center" width="20%"><a accesskey="u" href="yaf.classes.html#yaf.class.application">上一级</a></td>
+
+        <td align="right" width="40%"> <a accesskey="n" href="yaf.class.application.app.html">下一页</a>
+</td>
+      </tr>
+<tr>
+<td valign="top" align="left" width="40%">Yaf_Application::__construct </td>
+
+        <td align="center" width="20%"><a accesskey="h" href="index.html">起始页</a></td>
+
+        <td valign="top" align="right" width="40%"> Yaf_Application::app</td>
+      </tr>
+</table>
+</div>
+</body>
+<script type="text/javascript" src=".html"></script><noscript><a href="http://www.linezing.com"><img src=".html"></a></noscript>
+</html>

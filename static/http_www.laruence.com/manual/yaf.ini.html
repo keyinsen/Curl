@@ -1,0 +1,194 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="generator" content="HTML Tidy for Linux (vers 11 February 2007), see www.w3.org">
+<title>2.3. Yaf的配置项</title>
+<link href="css/styles.css" rel="stylesheet" type="text/css">
+<meta content="Zoeey Doc Generator" name="generator">
+<link rel="home" href="index.html" title="Yaf(Yet Another Framework)用户手册">
+<link rel="up" href="yaf.install.html" title="第 2 章 Yaf安装/配置">
+<link rel="prev" href="yaf.constant.html" title="2.2. Yaf定义的常量">
+<link rel="next" href="yaf.tutorial.html" title="第 3 章 快速开始">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+  <div class="navheader">
+    <table summary="Navigation header" width="100%">
+<tr>
+<th align="center" colspan="3">2.3. Yaf的配置项</th>
+      </tr>
+<tr>
+<td align="left" width="20%">
+<a accesskey="p" href="yaf.constant.html">上一页</a> </td>
+
+        <th align="center" width="60%">第 2 章 Yaf安装/配置</th>
+
+        <td align="right" width="20%"> <a accesskey="n" href="yaf.tutorial.html">下一页</a>
+</td>
+      </tr>
+</table>
+<hr>
+</div>
+
+  <div lang="zh_cn" class="section" title="2.3. Yaf的配置项">
+    <div class="titlepage">
+      <div>
+        <div>
+          <h2 class="title" style="clear: both">
+<a name="yaf.ini" id="yaf.ini"></a>2.3. Yaf的配置项</h2>
+        </div>
+      </div>
+    </div>
+
+    <div class="table">
+      <a name="N202DB" id="N202DB"></a>
+
+      <p class="title"><b>表 2.2. Yaf 配置选项</b></p>
+
+      <div class="table-contents">
+        <table summary="Yaf 配置选项" style="border-collapse: collapse;border-top: 0.5pt solid ; border-bottom: 0.5pt solid ; border-left: 0.5pt solid ; border-right: 0.5pt solid ;">
+<colgroup>
+<col>
+<col>
+<col>
+<col>
+</colgroup>
+<thead><tr>
+<th style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ;">选项名称</th>
+
+              <th style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ;">默认值</th>
+
+              <th style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ;">可修改范围</th>
+
+              <th style="border-bottom: 0.5pt solid ;">更新记录</th>
+            </tr></thead>
+<tbody>
+<tr>
+<td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ;">
+<a name="yaf.install.ini.environ" id="yaf.install.ini.environ"></a>yaf.environ</td>
+
+              <td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ;">product</td>
+
+              <td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ;">PHP_INI_ALL</td>
+
+              <td style="border-bottom: 0.5pt solid ;">环境名称, 当用INI作为Yaf的配置文件时, 这个指明了Yaf将要在INI配置中读取的节的名字</td>
+            </tr>
+<tr>
+<td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ;">
+<a name="yaf.install.ini.library" id="yaf.install.ini.library"></a>yaf.library</td>
+
+              <td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ;">NULL</td>
+
+              <td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ;">PHP_INI_ALL</td>
+
+              <td style="border-bottom: 0.5pt solid ;">全局类库的目录路径</td>
+            </tr>
+<tr>
+<td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ;">
+<a name="yaf.install.ini.cache_config" id="yaf.install.ini.cache_config"></a>yaf.cache_config</td>
+
+              <td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ;">0</td>
+
+              <td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ;">PHP_INI_SYSTEM</td>
+
+              <td style="border-bottom: 0.5pt solid ;">是否缓存配置文件(只针对INI配置文件生效), 打开此选项可在复杂配置的情况下提高性能</td>
+            </tr>
+<tr>
+<td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ;">
+<a name="yaf.install.ini.name_suffix" id="yaf.install.ini.name_suffix"></a>yaf.name_suffix</td>
+
+              <td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ;">1</td>
+
+              <td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ;">PHP_INI_ALL</td>
+
+              <td style="border-bottom: 0.5pt solid ;">在处理Controller, Action, Plugin, Model的时候, 类名中关键信息是否是后缀式,
+              比如UserModel, 而在前缀模式下则是ModelUser</td>
+            </tr>
+<tr>
+<td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ;">
+<a name="yaf.install.ini.name_separator" id="yaf.install.ini.name_separator"></a>yaf.name_separator</td>
+
+              <td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ;">""</td>
+
+              <td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ;">PHP_INI_ALL</td>
+
+              <td style="border-bottom: 0.5pt solid ;">在处理Controller, Action, Plugin, Model的时候, 前缀和名字之间的分隔符, 默认为空,
+              也就是UserPlugin, 加入设置为"_", 则判断的依据就会变成:"User_Plugin", 这个主要是为了兼容ST已有的命名规范</td>
+            </tr>
+<tr>
+<td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ;">
+<a name="yaf.install.ini.forward_limit" id="yaf.install.ini.forward_limit"></a>yaf.forward_limit</td>
+
+              <td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ;">5</td>
+
+              <td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ;">PHP_INI_ALL</td>
+
+              <td style="border-bottom: 0.5pt solid ;">forward最大嵌套深度</td>
+            </tr>
+<tr>
+<td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ;">
+<a name="yaf.install.ini.use_namespace" id="yaf.install.ini.use_namespace"></a>yaf.use_namespace</td>
+
+              <td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ;">0</td>
+
+              <td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ;">PHP_INI_SYSTEM</td>
+
+              <td style="border-bottom: 0.5pt solid ;">开启的情况下, Yaf将会使用命名空间方式注册自己的类,
+              比如Yaf_Application将会变成Yaf\Application</td>
+            </tr>
+<tr>
+<td style="border-right: 0.5pt solid ;">
+<a name="yaf.install.ini.use_spl_autoload" id="yaf.install.ini.use_spl_autoload"></a>yaf.use_spl_autoload</td>
+
+              <td style="border-right: 0.5pt solid ;">0</td>
+
+              <td style="border-right: 0.5pt solid ;">PHP_INI_ALL</td>
+
+              <td style="">开启的情况下, Yaf在加载不成功的情况下, 会继续让PHP的自动加载函数加载, 从性能考虑, 除非特殊情况, 否则保持这个选项关闭</td>
+            </tr>
+</tbody>
+</table>
+</div>
+    </div>
+
+    <p><br class="table-break"></p>
+
+    <div class="warning" title="警告" style="margin-left: 0.5in; margin-right: 0.5in;">
+      <table border="0" summary="Warning">
+<tr>
+<td valign="top" align="center" rowspan="2" width="25"><img alt="[警告]" src="images/warning.gif"></td>
+
+          <th align="left">警告</th>
+        </tr>
+<tr>
+<td valign="top" align="left">在开启yaf.cache_config的情况下, Yaf会使用INI文件路径作为Key, 这就有一个陷阱, 就是如果在一台服务器上同时运行俩个应用,
+          那么它们必须不能使用同一个路径名下的INI配置文件, 否则就会出现Application Path混乱的问题. 所以, 尽量不要使用相对路径.</td>
+        </tr>
+</table>
+</div>
+  </div>
+
+  <div class="navfooter">
+    <hr>
+<table summary="Navigation footer" width="100%">
+<tr>
+<td align="left" width="40%">
+<a accesskey="p" href="yaf.constant.html">上一页</a> </td>
+
+        <td align="center" width="20%"><a accesskey="u" href="yaf.install.html">上一级</a></td>
+
+        <td align="right" width="40%"> <a accesskey="n" href="yaf.tutorial.html">下一页</a>
+</td>
+      </tr>
+<tr>
+<td valign="top" align="left" width="40%">2.2. Yaf定义的常量 </td>
+
+        <td align="center" width="20%"><a accesskey="h" href="index.html">起始页</a></td>
+
+        <td valign="top" align="right" width="40%"> 第 3 章 快速开始</td>
+      </tr>
+</table>
+</div>
+</body>
+<script type="text/javascript" src=".html"></script><noscript><a href="http://www.linezing.com"><img src=".html"></a></noscript>
+</html>

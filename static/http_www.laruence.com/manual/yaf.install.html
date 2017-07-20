@@ -1,0 +1,245 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="generator" content="HTML Tidy for Linux (vers 11 February 2007), see www.w3.org">
+<title>第 2 章 Yaf安装/配置</title>
+<link href="css/styles.css" rel="stylesheet" type="text/css">
+<meta content="Zoeey Doc Generator" name="generator">
+<link rel="home" href="index.html" title="Yaf(Yet Another Framework)用户手册">
+<link rel="up" href="index.html" title="Yaf(Yet Another Framework)用户手册">
+<link rel="prev" href="yaf.bench.html" title="1.4. Yaf的性能">
+<link rel="next" href="yaf.constant.html" title="2.2. Yaf定义的常量">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+  <div class="navheader">
+    <table summary="Navigation header" width="100%">
+<tr>
+<th align="center" colspan="3">第 2 章 Yaf安装/配置</th>
+      </tr>
+<tr>
+<td align="left" width="20%">
+<a accesskey="p" href="yaf.bench.html">上一页</a> </td>
+
+        <th align="center" width="60%"> </th>
+
+        <td align="right" width="20%"> <a accesskey="n" href="yaf.constant.html">下一页</a>
+</td>
+      </tr>
+</table>
+<hr>
+</div>
+
+  <div lang="zh_cn" class="chapter" title="第 2 章 Yaf安装/配置">
+    <div class="titlepage">
+      <div>
+        <div>
+          <h2 class="title">
+<a name="yaf.install" id="yaf.install"></a>第 2 章 Yaf安装/配置</h2>
+        </div>
+      </div>
+    </div>
+
+    <div lang="zh_cn" class="section" title="2.1. Yaf的安装">
+      <div class="titlepage">
+        <div>
+          <div>
+            <h2 class="title" style="clear: both">
+<a name="yaf.configure" id="yaf.configure"></a>2.1. Yaf的安装</h2>
+          </div>
+        </div>
+      </div>
+
+      <p>Yaf只支持PHP5.2及以上的版本. 并支持最新的PHP5.3.3</p>
+
+      <p>Yaf需要SPL的支持. SPL在PHP5中是默认启用的扩展模块</p>
+
+      <p>Yaf需要PCRE的支持. PCRE在PHP5中是默认启用的扩展模块</p>
+
+      <div class="section" title="在 Linux 系统下安装">
+        <div class="titlepage">
+          <div>
+            <div>
+              <h3 class="title">
+<a name="yaf.installation.linux" id="yaf.installation.linux"></a>在 Linux 系统下安装</h3>
+            </div>
+          </div>
+        </div>
+
+        <div class="section" title="PHP 5.2+">
+          <div class="titlepage">
+            <div>
+              <div>
+                <h4 class="title">
+<a name="N201DE" id="N201DE"></a>PHP 5.2+</h4>
+              </div>
+            </div>
+          </div>
+
+          <p>下载Yaf的最新版本, 解压缩以后, 进入Yaf的源码目录, 依次执行(其中<code class="envar">PHP_BIN</code>是PHP的bin目录):</p>
+
+          <div class="example">
+            <a name="N201ED" id="N201ED"></a>
+
+            <p class="title"><b>例 2.1. 编译Yaf</b></p>
+
+            <div class="example-contents">
+              <pre class="programlisting">
+      
+      $PHP_BIN/phpize
+      ./configure --with-php-config=$PHP_BIN/php-config
+      make
+      make install
+      
+     
+</pre>
+            </div>
+          </div>
+
+          <p><br class="example-break"></p>
+
+          <p>然后在php.ini中载入yaf.so, 重启PHP.</p>
+
+          <p>Yaf_Request_Abstract的getPost, getQuery等方法, 并没有对应的setter方法. 并且这些方法是直接从PHP内部的$_POST, $_GET等大变量的原身变量只读的查询值,
+          所以就有一个问题:通过在PHP脚本中对这些变量的修改, 并不能反映到getPost/getQuery等方法上.</p>
+
+          <div class="example">
+            <a name="N201FD" id="N201FD"></a>
+
+            <p class="title"><b>例 2.2. POST变量只读</b></p>
+
+            <div class="example-contents">
+              <pre class="programlisting">
+      
+      &lt;?php
+class Index_Controller extends Yaf_Controller_Abstract {
+    public function indexAction() {
+        $_POST['name'] = "new_name";
+        //此时对POST的修改, 并不能反映到getPost上
+        echo  $this-&gt;getRequest()-&gt;getPost("name"); //old_name
+    }
+}
+      
+     
+</pre>
+            </div>
+          </div>
+
+          <p><br class="example-break"></p>
+
+          <p>当然, 这样的设计是经过深思熟虑的, 也可以不依赖PHP的variable_orders的配置, 但是带来一个问题就是, QA和Rd无法通过修改这些变量来做测试数据.</p>
+
+          <p>所以, Yaf提供了一个debug模式, 在这个模式下,
+          getPost/getQuery/getServer/getCookie将从符号表中的对应变量查询值.从而可以让我们直接对PHP的超级变量做的修改能反映到对应的Yaf_Request_Abstract的方法上.</p>
+
+          <div class="important" title="重要" style="margin-left: 0.5in; margin-right: 0.5in;">
+            <table border="0" summary="Important">
+<tr>
+<td valign="top" align="center" rowspan="2" width="25"><img alt="[重要]" src="images/important.gif"></td>
+
+                <th align="left">重要</th>
+              </tr>
+<tr>
+<td valign="top" align="left">
+                  <p>请不要在正式的环境中, 以debug模式编译Yaf, 一个原因是这样做会有性能损耗, 第二个原因是这样做, 有悖于$_POST等大变量的只读特性.</p>
+
+                  <p>为了提醒大家这一点, 这种模式下在Yaf_Application的构造函数中会触发一个E_STRICT的提示:</p>
+                  <pre class="screen">
+     
+     Strict Standards: you are running ap in debug mode
+     
+    
+</pre>
+                </td>
+              </tr>
+</table>
+</div>
+
+          <div class="example">
+            <a name="N20219" id="N20219"></a>
+
+            <p class="title"><b>例 2.3. 以debug模式编译Yaf</b></p>
+
+            <div class="example-contents">
+              <pre class="programlisting">
+      
+      $PHP_BIN/phpize
+      ./configure --enable-ap-debug --with-php-config=$PHP_BIN/php-config
+      make
+      make install
+      
+     
+</pre>
+            </div>
+          </div>
+
+          <p><br class="example-break"></p>
+        </div>
+      </div>
+
+      <div class="section" title="在 Windows 系统下安装">
+        <div class="titlepage">
+          <div>
+            <div>
+              <h3 class="title">
+<a name="yaf.installation.windows" id="yaf.installation.windows"></a>在 Windows
+              系统下安装</h3>
+            </div>
+          </div>
+        </div>
+
+        <div class="section" title="PHP 5.2+">
+          <div class="titlepage">
+            <div>
+              <div>
+                <h4 class="title">
+<a name="N2022C" id="N2022C"></a>PHP 5.2+</h4>
+              </div>
+            </div>
+          </div>
+
+          <p><code class="literal">c:\php\ext</code>。</p>
+
+          <div class="note" title="注意" style="margin-left: 0.5in; margin-right: 0.5in;">
+            <table border="0" summary="Note">
+<tr>
+<td valign="top" align="center" rowspan="2" width="25"><img alt="[注意]" src="images/note.gif"></td>
+
+                <th align="left">注意</th>
+              </tr>
+<tr>
+<td valign="top" align="left">
+                  <p>PHP5.3开始已经不支持VC6的编译, 目前只能提供PHP5.3以上版本使用的php_yaf.dll, 如有需要, 请联系Laruence</p>
+                </td>
+              </tr>
+</table>
+</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="navfooter">
+    <hr>
+<table summary="Navigation footer" width="100%">
+<tr>
+<td align="left" width="40%">
+<a accesskey="p" href="yaf.bench.html">上一页</a> </td>
+
+        <td align="center" width="20%"> </td>
+
+        <td align="right" width="40%"> <a accesskey="n" href="yaf.constant.html">下一页</a>
+</td>
+      </tr>
+<tr>
+<td valign="top" align="left" width="40%">1.4. Yaf的性能 </td>
+
+        <td align="center" width="20%"><a accesskey="h" href="index.html">起始页</a></td>
+
+        <td valign="top" align="right" width="40%"> 2.2. Yaf定义的常量</td>
+      </tr>
+</table>
+</div>
+</body>
+<script type="text/javascript" src=".html"></script><noscript><a href="http://www.linezing.com"><img src=".html"></a></noscript>
+</html>

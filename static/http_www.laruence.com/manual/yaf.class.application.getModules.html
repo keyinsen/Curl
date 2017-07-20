@@ -1,0 +1,136 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="generator" content="HTML Tidy for Linux (vers 11 February 2007), see www.w3.org">
+<title>Yaf_Application::getModules</title>
+<link href="css/styles.css" rel="stylesheet" type="text/css">
+<meta content="Zoeey Doc Generator" name="generator">
+<link rel="home" href="index.html" title="Yaf(Yet Another Framework)用户手册">
+<link rel="up" href="yaf.classes.html#yaf.class.application" title="11.1. The Yaf_Application class">
+<link rel="prev" href="yaf.class.application.getConfig.html" title="Yaf_Application::getConfig">
+<link rel="next" href="yaf.class.bootstrap.html" title="11.2. The Yaf_Bootstrap class">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+  <div class="navheader">
+    <table summary="Navigation header" width="100%">
+<tr>
+<th align="center" colspan="3">Yaf_Application::getModules</th>
+      </tr>
+<tr>
+<td align="left" width="20%">
+<a accesskey="p" href="yaf.class.application.getConfig.html">上一页</a> </td>
+
+        <th align="center" width="60%">11.1. The Yaf_Application class</th>
+
+        <td align="right" width="20%"> <a accesskey="n" href="yaf.class.bootstrap.html">下一页</a>
+</td>
+      </tr>
+</table>
+<hr>
+</div>
+
+  <div lang="zh_cn" class="refentry" title="Yaf_Application::getModules">
+    <a name="yaf.class.application.getModules" id="yaf.class.application.getModules"></a>
+
+    <div class="titlepage"></div>
+
+    <div class="refnamediv">
+      <h2>名称</h2>
+
+      <p>Yaf_Application::getModules</p>
+    </div>
+
+    <p>(Since Yaf 1.0.0.5)</p>
+<a name="N20F7C" class="indexterm" id="N20F7C"></a>
+
+    <div class="refsect1">
+      <a name="N20F85" id="N20F85"></a> <code class="methodsynopsis"><span class="type">string </span><span class="methodname">Yaf_Application::getModules</span>(<span class="methodparam"><span class="type">void </span></span>);</code>
+
+      <p>获取在配置文件中申明的模块.</p>
+    </div>
+
+    <div class="refsect1">
+      <a name="N20F98" id="N20F98"></a> 参数
+
+      <div class="variablelist">
+        <dl>
+<dt><span class="term"><span class="type">void</span></span></dt>
+
+          <dd>
+            <p>本方法不需要参数</p>
+          </dd>
+        </dl>
+</div>
+    </div>
+
+    <div class="refsect1">
+      <a name="N20FB1" id="N20FB1"></a> 返回值
+
+      <p>string</p>
+    </div>
+
+    <div class="refsect1">
+      <a name="N20FB8" id="N20FB8"></a> 例子
+
+      <div class="example">
+        <a name="N20FBD" id="N20FBD"></a>
+
+        <p class="title"><b>例 11.9. <code class="function">Yaf_Application::getModules</code> 的例子</b></p>
+
+        <div class="example-contents">
+          <pre class="programlisting">
+     
+     &lt;?php
+     $config = array(
+        "ap" =&gt; array(
+        "directory" =&gt; "/usr/local/www/ap",
+        "modules"   =&gt; "Index",
+       ),
+     );
+     $app = new Yaf_Application($config);
+     print_r($app-&gt;getModules());
+     ?&gt;
+     
+    
+</pre>输出
+          <pre class="screen">
+     
+       Array
+       ( 
+        [0] =&gt; Index
+       )
+     
+    
+</pre>
+        </div>
+      </div>
+
+      <p><br class="example-break"></p>
+    </div>
+  </div>
+
+  <div class="navfooter">
+    <hr>
+<table summary="Navigation footer" width="100%">
+<tr>
+<td align="left" width="40%">
+<a accesskey="p" href="yaf.class.application.getConfig.html">上一页</a> </td>
+
+        <td align="center" width="20%"><a accesskey="u" href="yaf.classes.html#yaf.class.application">上一级</a></td>
+
+        <td align="right" width="40%"> <a accesskey="n" href="yaf.class.bootstrap.html">下一页</a>
+</td>
+      </tr>
+<tr>
+<td valign="top" align="left" width="40%">Yaf_Application::getConfig </td>
+
+        <td align="center" width="20%"><a accesskey="h" href="index.html">起始页</a></td>
+
+        <td valign="top" align="right" width="40%"> 11.2. The Yaf_Bootstrap class</td>
+      </tr>
+</table>
+</div>
+</body>
+<script type="text/javascript" src=".html"></script><noscript><a href="http://www.linezing.com"><img src=".html"></a></noscript>
+</html>

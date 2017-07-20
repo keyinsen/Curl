@@ -1,0 +1,155 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="generator" content="HTML Tidy for Linux (vers 11 February 2007), see www.w3.org">
+<title>7.2. Yaf支持的Hook</title>
+<link href="css/styles.css" rel="stylesheet" type="text/css">
+<meta content="Zoeey Doc Generator" name="generator">
+<link rel="home" href="index.html" title="Yaf(Yet Another Framework)用户手册">
+<link rel="up" href="yaf.plugin.html" title="第 7 章 使用插件">
+<link rel="prev" href="yaf.plugin.html" title="第 7 章 使用插件">
+<link rel="next" href="yaf.plugin.define.html" title="7.3. 定义插件">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+  <div class="navheader">
+    <table summary="Navigation header" width="100%">
+<tr>
+<th align="center" colspan="3">7.2. Yaf支持的Hook</th>
+      </tr>
+<tr>
+<td align="left" width="20%">
+<a accesskey="p" href="yaf.plugin.html">上一页</a> </td>
+
+        <th align="center" width="60%">第 7 章 使用插件</th>
+
+        <td align="right" width="20%"> <a accesskey="n" href="yaf.plugin.define.html">下一页</a>
+</td>
+      </tr>
+</table>
+<hr>
+</div>
+
+  <div class="section" title="7.2. Yaf支持的Hook">
+    <div class="titlepage">
+      <div>
+        <div>
+          <h2 class="title" style="clear: both">
+<a name="yaf.plugin.times" id="yaf.plugin.times"></a>7.2.
+          Yaf支持的Hook</h2>
+        </div>
+      </div>
+    </div>
+
+    <p>Yaf定义了6个Hook, 它们分别是:</p>
+
+    <div class="table">
+      <a name="N206B0" id="N206B0"></a>
+
+      <p class="title"><b>表 7.1. Yaf的Hook</b></p>
+
+      <div class="table-contents">
+        <table summary="Yaf的Hook" style="border-collapse: collapse;border-top: 0.5pt solid ; border-bottom: 0.5pt solid ; border-left: 0.5pt solid ; border-right: 0.5pt solid ;">
+<colgroup>
+<col>
+<col>
+<col>
+<col>
+</colgroup>
+<thead><tr>
+<th style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ;">触发顺序</th>
+
+              <th style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ;">名称</th>
+
+              <th style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ;">触发时机</th>
+
+              <th style="border-bottom: 0.5pt solid ;">说明</th>
+            </tr></thead>
+<tbody>
+<tr>
+<td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ;">1</td>
+
+              <td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ;">routerStartup</td>
+
+              <td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ;">在路由之前触发</td>
+
+              <td style="border-bottom: 0.5pt solid ;">这个是7个事件中, 最早的一个. 但是一些全局自定的工作, 还是应该放在Bootstrap中去完成</td>
+            </tr>
+<tr>
+<td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ;">2</td>
+
+              <td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ;">routerShutdown</td>
+
+              <td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ;">路由结束之后触发</td>
+
+              <td style="border-bottom: 0.5pt solid ;">此时路由一定正确完成, 否则这个事件不会触发</td>
+            </tr>
+<tr>
+<td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ;">3</td>
+
+              <td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ;">dispatchLoopStartup</td>
+
+              <td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ;">分发循环开始之前被触发</td>
+
+              <td style="border-bottom: 0.5pt solid ;"> </td>
+            </tr>
+<tr>
+<td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ;">4</td>
+
+              <td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ;">preDispatch</td>
+
+              <td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ;">分发之前触发</td>
+
+              <td style="border-bottom: 0.5pt solid ;">如果在一个请求处理过程中, 发生了<a class="link" href="yaf.class.controller.forward.html" title="Yaf_Controller_Abstract::forward">forward</a>,
+              则这个事件会被触发多次</td>
+            </tr>
+<tr>
+<td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ;">5</td>
+
+              <td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ;">postDispatch</td>
+
+              <td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ;">分发结束之后触发</td>
+
+              <td style="border-bottom: 0.5pt solid ;">此时动作已经执行结束, 视图也已经渲染完成. 和preDispatch类似, 此事件也可能触发多次</td>
+            </tr>
+<tr>
+<td style="border-right: 0.5pt solid ;">6</td>
+
+              <td style="border-right: 0.5pt solid ;">dispatchLoopShutdown</td>
+
+              <td style="border-right: 0.5pt solid ;">分发循环结束之后触发</td>
+
+              <td style="">此时表示所有的业务逻辑都已经运行完成, 但是响应还没有发送</td>
+            </tr>
+</tbody>
+</table>
+</div>
+    </div>
+
+    <p><br class="table-break"></p>
+  </div>
+
+  <div class="navfooter">
+    <hr>
+<table summary="Navigation footer" width="100%">
+<tr>
+<td align="left" width="40%">
+<a accesskey="p" href="yaf.plugin.html">上一页</a> </td>
+
+        <td align="center" width="20%"><a accesskey="u" href="yaf.plugin.html">上一级</a></td>
+
+        <td align="right" width="40%"> <a accesskey="n" href="yaf.plugin.define.html">下一页</a>
+</td>
+      </tr>
+<tr>
+<td valign="top" align="left" width="40%">第 7 章 使用插件 </td>
+
+        <td align="center" width="20%"><a accesskey="h" href="index.html">起始页</a></td>
+
+        <td valign="top" align="right" width="40%"> 7.3. 定义插件</td>
+      </tr>
+</table>
+</div>
+</body>
+<script type="text/javascript" src=".html"></script><noscript><a href="http://www.linezing.com"><img src=".html"></a></noscript>
+</html>

@@ -1,0 +1,164 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="generator" content="HTML Tidy for Linux (vers 11 February 2007), see www.w3.org">
+<title>Yaf_Application::execute</title>
+<link href="css/styles.css" rel="stylesheet" type="text/css">
+<meta content="Zoeey Doc Generator" name="generator">
+<link rel="home" href="index.html" title="Yaf(Yet Another Framework)用户手册">
+<link rel="up" href="yaf.classes.html#yaf.class.application" title="11.1. The Yaf_Application class">
+<link rel="prev" href="yaf.class.application.run.html" title="Yaf_Application::run">
+<link rel="next" href="yaf.class.application.getDispatcher.html" title="Yaf_Application::getDispatcher">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+  <div class="navheader">
+    <table summary="Navigation header" width="100%">
+<tr>
+<th align="center" colspan="3">Yaf_Application::execute</th>
+      </tr>
+<tr>
+<td align="left" width="20%">
+<a accesskey="p" href="yaf.class.application.run.html">上一页</a> </td>
+
+        <th align="center" width="60%">11.1. The Yaf_Application class</th>
+
+        <td align="right" width="20%"> <a accesskey="n" href="yaf.class.application.getDispatcher.html">下一页</a>
+</td>
+      </tr>
+</table>
+<hr>
+</div>
+
+  <div lang="zh_cn" class="refentry" title="Yaf_Application::execute">
+    <a name="yaf.class.application.execute" id="yaf.class.application.execute"></a>
+
+    <div class="titlepage"></div>
+
+    <div class="refnamediv">
+      <h2>名称</h2>
+
+      <p>Yaf_Application::execute</p>
+    </div>
+
+    <p>(Since Yaf 1.0.0.17)</p>
+<a name="N20E07" class="indexterm" id="N20E07"></a>
+
+    <div class="refsect1">
+      <a name="N20E10" id="N20E10"></a> <code class="methodsynopsis"><span class="type">mixed </span><span class="methodname">Yaf_Application::execute</span>( <span class="methodparam"><span class="type">callback </span>
+      <span class="parameter">$function</span></span> ,<br>
+                                     
+      <span class="methodparam"><span class="type">mixed </span> <span class="parameter">$parameter</span>
+      <span class="initializer">= NULL</span></span> ,<br>
+                                     
+      <span class="methodparam"><span class="type">$parameter </span> <span class="parameter">$...</span>
+      <span class="initializer">= NULL</span></span> );</code>
+
+      <p>在Yaf_Application的环境下, 运行一个用户自定义函数过程. 主要用在使用Yaf做简单的命令行脚本的时候, 应用Yaf的外围环境, 比如:自动加载, 配置, 视图引擎等.</p>
+
+      <div class="note" title="注意" style="margin-left: 0.5in; margin-right: 0.5in;">
+        <table border="0" summary="Note">
+<tr>
+<td valign="top" align="center" rowspan="2" width="25"><img alt="[注意]" src="images/note.gif"></td>
+
+            <th align="left">注意</th>
+          </tr>
+<tr>
+<td valign="top" align="left">如果需要使用Yaf的路由分发, 也就是说, 如果是需要在CLI下全功能运行Yaf, 请参看<a class="link" href="yaf.incli.html" title="第 9 章 在命令行使用Yaf">在命令行下使用Yaf</a>
+</td>
+          </tr>
+</table>
+</div>
+    </div>
+
+    <div class="refsect1">
+      <a name="N20E47" id="N20E47"></a> 参数
+
+      <div class="variablelist">
+        <dl>
+<dt><span class="term"><em class="parameter"><code>$function</code></em></span></dt>
+
+          <dd>
+            <p>要运行的函数或者方法, 方法可以通过array($obj, "method_name")来定义.</p>
+          </dd>
+
+          <dt><span class="term"><em class="parameter"><code>$parameter</code></em></span></dt>
+
+          <dd>
+            <p>零个或者多个要传递给函数的参数.</p>
+          </dd>
+        </dl>
+</div>
+    </div>
+
+    <div class="refsect1">
+      <a name="N20E6F" id="N20E6F"></a> 返回值
+
+      <p>被调用函数或者方法的返回值</p>
+    </div>
+
+    <div class="refsect1">
+      <a name="N20E76" id="N20E76"></a> 例子
+
+      <div class="example">
+        <a name="N20E7B" id="N20E7B"></a>
+
+        <p class="title"><b>例 11.6. <code class="function">Yaf_Application::execute</code> 的例子</b></p>
+
+        <div class="example-contents">
+          <pre class="programlisting">
+
+&lt;?php
+$config = array(
+        "ap" =&gt; array(
+                "directory" =&gt; "/usr/local/www/ap",
+        ),
+);
+$app = new Yaf_Application($config);
+$app-&gt;execute("main");
+
+function main() {
+}
+?&gt;
+
+    
+</pre>
+        </div>
+      </div>
+
+      <p><br class="example-break"></p>
+    </div>
+
+    <div class="refsect1">
+      <a name="N20E89" id="N20E89"></a> 参见
+
+      <table summary="Simple list" border="0" class="simplelist"><tr>
+<td><a class="link" href="yaf.incli.html" title="第 9 章 在命令行使用Yaf">在命令行下使用Yaf</a></td>
+        </tr></table>
+</div>
+  </div>
+
+  <div class="navfooter">
+    <hr>
+<table summary="Navigation footer" width="100%">
+<tr>
+<td align="left" width="40%">
+<a accesskey="p" href="yaf.class.application.run.html">上一页</a> </td>
+
+        <td align="center" width="20%"><a accesskey="u" href="yaf.classes.html#yaf.class.application">上一级</a></td>
+
+        <td align="right" width="40%"> <a accesskey="n" href="yaf.class.application.getDispatcher.html">下一页</a>
+</td>
+      </tr>
+<tr>
+<td valign="top" align="left" width="40%">Yaf_Application::run </td>
+
+        <td align="center" width="20%"><a accesskey="h" href="index.html">起始页</a></td>
+
+        <td valign="top" align="right" width="40%"> Yaf_Application::getDispatcher</td>
+      </tr>
+</table>
+</div>
+</body>
+<script type="text/javascript" src=".html"></script><noscript><a href="http://www.linezing.com"><img src=".html"></a></noscript>
+</html>

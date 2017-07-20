@@ -1,0 +1,126 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="generator" content="HTML Tidy for Linux (vers 11 February 2007), see www.w3.org">
+<title>Yaf_Application::run</title>
+<link href="css/styles.css" rel="stylesheet" type="text/css">
+<meta content="Zoeey Doc Generator" name="generator">
+<link rel="home" href="index.html" title="Yaf(Yet Another Framework)用户手册">
+<link rel="up" href="yaf.classes.html#yaf.class.application" title="11.1. The Yaf_Application class">
+<link rel="prev" href="yaf.class.application.environ.html" title="Yaf_Application::environ">
+<link rel="next" href="yaf.class.application.execute.html" title="Yaf_Application::execute">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+  <div class="navheader">
+    <table summary="Navigation header" width="100%">
+<tr>
+<th align="center" colspan="3">Yaf_Application::run</th>
+      </tr>
+<tr>
+<td align="left" width="20%">
+<a accesskey="p" href="yaf.class.application.environ.html">上一页</a> </td>
+
+        <th align="center" width="60%">11.1. The Yaf_Application class</th>
+
+        <td align="right" width="20%"> <a accesskey="n" href="yaf.class.application.execute.html">下一页</a>
+</td>
+      </tr>
+</table>
+<hr>
+</div>
+
+  <div lang="zh_cn" class="refentry" title="Yaf_Application::run">
+    <a name="yaf.class.application.run" id="yaf.class.application.run"></a>
+
+    <div class="titlepage"></div>
+
+    <div class="refnamediv">
+      <h2>名称</h2>
+
+      <p>Yaf_Application::run</p>
+    </div>
+
+    <p>(Since Yaf 1.0.0.0)</p>
+<a name="N20DA7" class="indexterm" id="N20DA7"></a>
+
+    <div class="refsect1">
+      <a name="N20DB0" id="N20DB0"></a> <code class="methodsynopsis"><span class="type">boolean </span><span class="methodname">Yaf_Application::run</span>(<span class="methodparam"><span class="parameter">void</span></span>);</code>
+
+      <p>运行一个Yaf_Application, 开始接受并处理请求. 这个方法只能调用一次, 多次调用并不会有特殊效果.</p>
+    </div>
+
+    <div class="refsect1">
+      <a name="N20DC3" id="N20DC3"></a> 参数
+
+      <div class="variablelist">
+        <dl>
+<dt><span class="term"><span class="type">void</span></span></dt>
+
+          <dd>
+            <p>本方法不需要参数</p>
+          </dd>
+        </dl>
+</div>
+    </div>
+
+    <div class="refsect1">
+      <a name="N20DDC" id="N20DDC"></a> 返回值
+
+      <p>boolean</p>
+    </div>
+
+    <div class="refsect1">
+      <a name="N20DE3" id="N20DE3"></a> 例子
+
+      <div class="example">
+        <a name="N20DE8" id="N20DE8"></a>
+
+        <p class="title"><b>例 11.5. <code class="function">Yaf_Application::run</code> 的例子</b></p>
+
+        <div class="example-contents">
+          <pre class="programlisting">
+
+&lt;?php
+$config = array(
+        "application" =&gt; array(
+                "directory" =&gt; "/usr/local/www/yaf",
+        ),
+);
+$app = new Yaf_Application($config);
+$app-&gt;run();
+?&gt;
+
+    
+</pre>
+        </div>
+      </div>
+
+      <p><br class="example-break"></p>
+    </div>
+  </div>
+
+  <div class="navfooter">
+    <hr>
+<table summary="Navigation footer" width="100%">
+<tr>
+<td align="left" width="40%">
+<a accesskey="p" href="yaf.class.application.environ.html">上一页</a> </td>
+
+        <td align="center" width="20%"><a accesskey="u" href="yaf.classes.html#yaf.class.application">上一级</a></td>
+
+        <td align="right" width="40%"> <a accesskey="n" href="yaf.class.application.execute.html">下一页</a>
+</td>
+      </tr>
+<tr>
+<td valign="top" align="left" width="40%">Yaf_Application::environ </td>
+
+        <td align="center" width="20%"><a accesskey="h" href="index.html">起始页</a></td>
+
+        <td valign="top" align="right" width="40%"> Yaf_Application::execute</td>
+      </tr>
+</table>
+</div>
+</body>
+<script type="text/javascript" src=".html"></script><noscript><a href="http://www.linezing.com"><img src=".html"></a></noscript>
+</html>

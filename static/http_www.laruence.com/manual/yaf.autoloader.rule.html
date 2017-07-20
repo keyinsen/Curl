@@ -1,0 +1,127 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="generator" content="HTML Tidy for Linux (vers 11 February 2007), see www.w3.org">
+<title>5.2. 类的加载规则</title>
+<link href="css/styles.css" rel="stylesheet" type="text/css">
+<meta content="Zoeey Doc Generator" name="generator">
+<link rel="home" href="index.html" title="Yaf(Yet Another Framework)用户手册">
+<link rel="up" href="yaf.autoloader.html" title="第 5 章 自动加载器">
+<link rel="prev" href="yaf.autoloader.html" title="第 5 章 自动加载器">
+<link rel="next" href="yaf.bootstrap.html" title="第 6 章 使用Bootstrap">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+  <div class="navheader">
+    <table summary="Navigation header" width="100%">
+<tr>
+<th align="center" colspan="3">5.2. 类的加载规则</th>
+      </tr>
+<tr>
+<td align="left" width="20%">
+<a accesskey="p" href="yaf.autoloader.html">上一页</a> </td>
+
+        <th align="center" width="60%">第 5 章 自动加载器</th>
+
+        <td align="right" width="20%"> <a accesskey="n" href="yaf.bootstrap.html">下一页</a>
+</td>
+      </tr>
+</table>
+<hr>
+</div>
+
+  <div class="sect1" title="5.2. 类的加载规则">
+    <div class="titlepage">
+      <div>
+        <div>
+          <h2 class="title" style="clear: both">
+<a name="yaf.autoloader.rule" id="yaf.autoloader.rule"></a>5.2.
+          类的加载规则</h2>
+        </div>
+      </div>
+    </div>
+
+    <p>而类的加载规则, 都是一样的: Yaf规定类名中必须包含路径信息, 也就是以下划线"_"分割的目录信息. Yaf将依照类名中的目录信息, 完成自动加载. 如下的例子, 在没有申明本地类的情况下:</p>
+
+    <div class="example">
+      <a name="N20600" id="N20600"></a>
+
+      <p class="title"><b>例 5.1. 一个映射的例子<code class="filename">Zend_Dummy_Foo</code></b></p>
+
+      <div class="example-contents">
+        <pre class="programlisting">
+                    
+     //Yaf将在如下路径寻找类Foo_Dummy_Bar
+     {类库路径(php.ini中指定的ap.library)}/Foo/Dummy/Bar.php
+                      
+    
+</pre>
+      </div>
+    </div>
+
+    <p><br class="example-break">
+    而, 如果通过如下方式调用了registerLocalNamespace:</p>
+
+    <div class="example">
+      <a name="N2060C" id="N2060C"></a>
+
+      <p class="title"><b>例 5.2. 注册本地类</b></p>
+
+      <div class="example-contents">
+        <pre class="programlisting">
+                    
+     //申明, 凡是以Foo和Local开头的类, 都是本地类
+     $loader = Yaf_Loader::getIgnstance();
+     $loader-&gt;registerLocalNamespace(array("Foo", "Local"));
+     
+    
+</pre>
+      </div>
+    </div>
+
+    <p><br class="example-break">
+    那么对于刚才的例子, 将会在如下路径寻找Foo_Dummy_Bar</p>
+
+    <div class="example">
+      <a name="N20616" id="N20616"></a>
+
+      <p class="title"><b>例 5.3. 一个映射的例子<code class="filename">Zend_Dummy_Foo</code></b></p>
+
+      <div class="example-contents">
+        <pre class="programlisting">
+                    
+     //Yaf将在如下路径寻找类Foo_Dummy_Bar
+     {类库路径(conf/application.ini中指定的ap.library)}/Foo/Dummy/Bar.php
+                      
+    
+</pre>
+      </div>
+    </div>
+
+    <p><br class="example-break"></p>
+  </div>
+
+  <div class="navfooter">
+    <hr>
+<table summary="Navigation footer" width="100%">
+<tr>
+<td align="left" width="40%">
+<a accesskey="p" href="yaf.autoloader.html">上一页</a> </td>
+
+        <td align="center" width="20%"><a accesskey="u" href="yaf.autoloader.html">上一级</a></td>
+
+        <td align="right" width="40%"> <a accesskey="n" href="yaf.bootstrap.html">下一页</a>
+</td>
+      </tr>
+<tr>
+<td valign="top" align="left" width="40%">第 5 章 自动加载器 </td>
+
+        <td align="center" width="20%"><a accesskey="h" href="index.html">起始页</a></td>
+
+        <td valign="top" align="right" width="40%"> 第 6 章 使用Bootstrap</td>
+      </tr>
+</table>
+</div>
+</body>
+<script type="text/javascript" src=".html"></script><noscript><a href="http://www.linezing.com"><img src=".html"></a></noscript>
+</html>

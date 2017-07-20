@@ -1,0 +1,614 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="generator" content="HTML Tidy for Linux (vers 11 February 2007), see www.w3.org">
+<title>Yaf(Yet Another Framework)用户手册</title>
+<link href="css/styles.css" rel="stylesheet" type="text/css">
+<meta content="Zoeey Doc Generator" name="generator">
+<link rel="home" href="index.html" title="Yaf(Yet Another Framework)用户手册">
+<link rel="next" href="preface.html" title="前言">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+  <div class="navheader">
+    <table summary="Navigation header" width="100%">
+<tr>
+<th align="center" colspan="3">
+<acronym class="acronym">Yaf</acronym>(Yet Another Framework)用户手册</th>
+      </tr>
+<tr>
+<td align="left" width="20%">
+		</td>
+
+        <th align="center" width="60%"> </th>
+
+        <td align="right" width="20%"> <a accesskey="n" href="preface.html">下一页</a>
+</td>
+      </tr>
+</table>
+<hr>
+</div>
+
+  <div lang="zh_cn" class="book" title="Yaf(Yet Another Framework)用户手册">
+    <div class="titlepage">
+      <div>
+        <div>
+          <h1 class="title">
+<a name="N2000B" id="N2000B"></a><acronym class="acronym">Yaf</acronym>(Yet Another
+          Framework)用户手册</h1>
+        </div>
+
+        <div>
+          <div class="authorgroup">
+            <div class="author">
+              <h3 class="author">惠新宸</h3>
+<code class="email">&lt;<a class="email">laruence at php.net</a>&gt;</code>
+            </div>
+
+            <div class="othercredit">
+              <h3 class="othercredit"></h3>
+
+              <div class="affiliation">
+                <span class="orgname"><a class="ulink" href="http://yaf.laruence.com/" target="_top">Yaf官方网站</a>
+                <a class="ulink" href="http://www.php.net/manual/en/book.yaf.php" target="_top">最新文档</a> <a class="ulink" href="http://www.php.net/manual/zh/book.yaf.php" target="_top">最新中文文档</a> <a class="ulink" href="http://pecl.php.net/bugs/search.php?cmd=display&amp;status=Open&amp;package_name%5B%5D=yaf" target="_top">报告Bug</a> 
+                <!--        <a class="ulink" href="http://yaf.laruence.com/manual/yaf_manual.chm" target="_top">离线文档下载</a>
+-->
+                 <a class="ulink" href="http://pecl.php.net/package/Yaf/" target="_top">Pecl</a> <a class="ulink" href="https://github.com/laruence/php-yaf" target="_top">Github</a><br></span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="mediaobject" align="center">
+            <table cellpadding="0" cellspacing="0" summary="manufactured viewport for HTML img" border="0" width="300"><tr>
+<td align="center"><img src="images/ap.jpg" align="middle" width="300"></td>
+              </tr></table>
+</div>
+        </div>
+
+        <div>
+          <div class="legalnotice" title="法律通告">
+            <a name="copyright" id="copyright"></a>
+          </div>
+        </div>
+
+        <div>
+           
+        </div>
+
+        <div>
+           
+        </div>
+
+        <div>
+          <p class="pubdate">最后更新: $Id: userguide.xml 4322 2012-09-08 01:02:33Z laruence $</p>
+        </div>
+      </div>
+      <hr>
+</div>
+
+    <div class="toc">
+      <p><b>目录</b></p>
+
+      <dl>
+<dt><span class="preface"><a href="preface.html">前言</a></span></dt>
+
+        <dt><span class="chapter"><a href="yaf.infos.html">1. 关于Yaf</a></span></dt>
+
+        <dd>
+          <dl>
+<dt><span class="section"><a href="yaf.infos.html#yaf.differences">1.1. Yaf的特点</a></span></dt>
+
+            <dt><span class="section"><a href="yaf.advantages.html">1.2. Yaf的优点</a></span></dt>
+
+            <dt><span class="section"><a href="yaf.sequence.html">1.3. 流程图</a></span></dt>
+
+            <dt><span class="section"><a href="yaf.bench.html">1.4. Yaf的性能</a></span></dt>
+
+            <dd>
+              <dl>
+<dt><span class="section"><a href="yaf.bench.html#yaf.bench.bref">对比</a></span></dt>
+
+                <dt><span class="section"><a href="yaf.bench.html#N20171">测试结果</a></span></dt>
+
+                <dd>
+                  <dl>
+<dt><span class="section"><a href="yaf.bench.html#N20176">1个并发</a></span></dt>
+
+                    <dt><span class="section"><a href="yaf.bench.html#N20190">100个并发</a></span></dt>
+
+                    <dt><span class="section"><a href="yaf.bench.html#N201AA">说明</a></span></dt>
+                  </dl>
+</dd>
+              </dl>
+</dd>
+          </dl>
+</dd>
+
+        <dt><span class="chapter"><a href="yaf.install.html">2. Yaf安装/配置</a></span></dt>
+
+        <dd>
+          <dl>
+<dt><span class="section"><a href="yaf.install.html#yaf.configure">2.1. Yaf的安装</a></span></dt>
+
+            <dd>
+              <dl>
+<dt><span class="section"><a href="yaf.install.html#yaf.installation.linux">在 Linux
+                系统下安装</a></span></dt>
+
+                <dd>
+                  <dl>
+<dt><span class="section"><a href="yaf.install.html#N201DE">PHP 5.2+</a></span></dt>
+                  </dl>
+</dd>
+
+                <dt><span class="section"><a href="yaf.install.html#yaf.installation.windows">在 Windows
+                系统下安装</a></span></dt>
+
+                <dd>
+                  <dl>
+<dt><span class="section"><a href="yaf.install.html#N2022C">PHP 5.2+</a></span></dt>
+                  </dl>
+</dd>
+              </dl>
+</dd>
+
+            <dt><span class="section"><a href="yaf.constant.html">2.2. Yaf定义的常量</a></span></dt>
+
+            <dt><span class="section"><a href="yaf.ini.html">2.3. Yaf的配置项</a></span></dt>
+          </dl>
+</dd>
+
+        <dt><span class="chapter"><a href="yaf.tutorial.html">3. 快速开始</a></span></dt>
+
+        <dd>
+          <dl>
+<dt><span class="sect1"><a href="yaf.tutorial.html#tutorial.requirements">3.1. 需要些什么？</a></span></dt>
+
+            <dt><span class="sect1"><a href="tutorial.firstpage.html">3.2. Hello World</a></span></dt>
+
+            <dd>
+              <dl>
+<dt><span class="sect2"><a href="tutorial.firstpage.html#tutorial.directory">目录结构</a></span></dt>
+
+                <dt><span class="sect2"><a href="tutorial.firstpage.html#tutorial.bootstrap">入口文件</a></span></dt>
+
+                <dt><span class="sect2"><a href="tutorial.firstpage.html#tutorial.rewrite">重写规则</a></span></dt>
+
+                <dt><span class="sect2"><a href="tutorial.firstpage.html#tutorial.config">配置文件</a></span></dt>
+
+                <dt><span class="sect2"><a href="tutorial.firstpage.html#tutorial.controller">控制器</a></span></dt>
+
+                <dt><span class="sect2"><a href="tutorial.firstpage.html#tutorial.view">视图文件</a></span></dt>
+
+                <dt><span class="sect2"><a href="tutorial.firstpage.html#tutorial.run">运行</a></span></dt>
+              </dl>
+</dd>
+
+            <dt><span class="sect1"><a href="tutorial.last.html">3.3. 使用代码生成工具</a></span></dt>
+          </dl>
+</dd>
+
+        <dt><span class="chapter"><a href="yaf.config.html">4. 配置文件</a></span></dt>
+
+        <dd>
+          <dl>
+<dt><span class="sect1"><a href="yaf.config.html#yaf.config.bref">4.1. 必要的配置项</a></span></dt>
+
+            <dt><span class="sect1"><a href="yaf.config.optional.html">4.2. 可选的配置项</a></span></dt>
+          </dl>
+</dd>
+
+        <dt><span class="chapter"><a href="yaf.autoloader.html">5. 自动加载器</a></span></dt>
+
+        <dd>
+          <dl>
+<dt><span class="sect1"><a href="yaf.autoloader.html#yaf.autoloader.library">5.1.
+            全局类和自身类(本地类)</a></span></dt>
+
+            <dt><span class="sect1"><a href="yaf.autoloader.rule.html">5.2. 类的加载规则</a></span></dt>
+          </dl>
+</dd>
+
+        <dt><span class="chapter"><a href="yaf.bootstrap.html">6. 使用Bootstrap</a></span></dt>
+
+        <dd>
+          <dl>
+<dt><span class="section"><a href="yaf.bootstrap.html#yaf.bootstrap.intro">6.1. 简介</a></span></dt>
+
+            <dt><span class="section"><a href="ch06s02.html">6.2. 使用Bootstrap</a></span></dt>
+          </dl>
+</dd>
+
+        <dt><span class="chapter"><a href="yaf.plugin.html">7. 使用插件</a></span></dt>
+
+        <dd>
+          <dl>
+<dt><span class="section"><a href="yaf.plugin.html#yaf.plugin.intro">7.1. 简介</a></span></dt>
+
+            <dt><span class="section"><a href="yaf.plugin.times.html">7.2. Yaf支持的Hook</a></span></dt>
+
+            <dt><span class="section"><a href="yaf.plugin.define.html">7.3. 定义插件</a></span></dt>
+
+            <dt><span class="section"><a href="yaf.plugin.register.html">7.4. 注册插件</a></span></dt>
+
+            <dt><span class="section"><a href="yaf.plugin.layout.html">7.5. 插件目录</a></span></dt>
+          </dl>
+</dd>
+
+        <dt><span class="chapter"><a href="yaf.routes.html">8. 路由和路由协议</a></span></dt>
+
+        <dd>
+          <dl>
+<dt><span class="sect1"><a href="yaf.routes.html#yaf.routes.intro">8.1. 概述</a></span></dt>
+
+            <dt><span class="sect1"><a href="yaf.routes.design.html">8.2. 设计</a></span></dt>
+
+            <dt><span class="sect1"><a href="yaf.routes.default.html">8.3. 默认情况</a></span></dt>
+
+            <dt><span class="sect1"><a href="yaf.routes.usage.html">8.4. 使用路由</a></span></dt>
+
+            <dt><span class="sect1"><a href="yaf.routes.static.html">8.5. 路由协议详解</a></span></dt>
+
+            <dd>
+              <dl>
+<dt><span class="sect2"><a href="yaf.routes.static.html#N20845">默认路由协议</a></span></dt>
+
+                <dt><span class="sect2"><a href="yaf.routes.static.html#yaf.routes.simple">Yaf_Route_Simple</a></span></dt>
+
+                <dt><span class="sect2"><a href="yaf.routes.static.html#yaf.routes.supervar">Yaf_Route_Supervar</a></span></dt>
+
+                <dt><span class="sect2"><a href="yaf.routes.static.html#yaf.routes.map">Yaf_Route_Map</a></span></dt>
+
+                <dt><span class="sect2"><a href="yaf.routes.static.html#yaf.routes.rewrite">Yaf_Route_Rewrite</a></span></dt>
+
+                <dt><span class="sect2"><a href="yaf.routes.static.html#yaf.routes.regex">Yaf_Route_Regex</a></span></dt>
+              </dl>
+</dd>
+
+            <dt><span class="sect1"><a href="yaf.routes.custom.html">8.6. 自定义路由协议</a></span></dt>
+          </dl>
+</dd>
+
+        <dt><span class="chapter"><a href="yaf.incli.html">9. 在命令行使用Yaf</a></span></dt>
+
+        <dd>
+          <dl>
+<dt><span class="section"><a href="yaf.incli.html#yaf.incli.intro">9.1. 简介</a></span></dt>
+
+            <dt><span class="section"><a href="yaf.incli.times.html">9.2. 使用样例</a></span></dt>
+
+            <dt><span class="section"><a href="yaf.incli.layout.html">9.3. 分发请求</a></span></dt>
+          </dl>
+</dd>
+
+        <dt><span class="chapter"><a href="yaf.catcherror.html">10. 异常和错误</a></span></dt>
+
+        <dd>
+          <dl>
+<dt><span class="sect1"><a href="yaf.catcherror.html#yaf.catcherror.intro">10.1. 概述</a></span></dt>
+
+            <dt><span class="sect1"><a href="yaf.catcherror.exception.html">10.2. 异常模式</a></span></dt>
+
+            <dt><span class="sect1"><a href="yaf.catcherror.error.html">10.3. 错误模式</a></span></dt>
+          </dl>
+</dd>
+
+        <dt><span class="chapter"><a href="yaf.classes.html">11. 内建的类</a></span></dt>
+
+        <dd>
+          <dl>
+<dt><span class="section"><a href="yaf.classes.html#yaf.class.application">11.1.
+            Yaf_Application</a></span></dt>
+
+            <dd>
+              <dl>
+<dt><span class="refentrytitle"><a href="yaf.class.application.construct.html">Yaf_Application::__construct</a></span></dt>
+
+                <dt><span class="refentrytitle"><a href="yaf.class.application.bootstrap.html">Yaf_Application::bootstrap</a></span></dt>
+
+                <dt><span class="refentrytitle"><a href="yaf.class.application.app.html">Yaf_Application::app</a></span></dt>
+
+                <dt><span class="refentrytitle"><a href="yaf.class.application.environ.html">Yaf_Application::environ</a></span></dt>
+
+                <dt><span class="refentrytitle"><a href="yaf.class.application.run.html">Yaf_Application::run</a></span></dt>
+
+                <dt><span class="refentrytitle"><a href="yaf.class.application.execute.html">Yaf_Application::execute</a></span></dt>
+
+                <dt><span class="refentrytitle"><a href="yaf.class.application.getDispatcher.html">Yaf_Application::getDispatcher</a></span></dt>
+
+                <dt><span class="refentrytitle"><a href="yaf.class.application.getConfig.html">Yaf_Application::getConfig</a></span></dt>
+
+                <dt><span class="refentrytitle"><a href="yaf.class.application.getModules.html">Yaf_Application::getModules</a></span></dt>
+              </dl>
+</dd>
+
+            <dt><span class="section"><a href="yaf.class.bootstrap.html">11.2. Yaf_Bootstrap_Abstract</a></span></dt>
+
+            <dt><span class="section"><a href="yaf.class.loader.html">11.3. Yaf_Loader</a></span></dt>
+
+            <dd>
+              <dl>
+<dt><span class="refentrytitle"><a href="yaf.class.loader.getInstance.html">Yaf_Loader::getInstance</a></span></dt>
+
+                <dt><span class="refentrytitle"><a href="yaf.class.loader.import.html">Yaf_Loader::import</a></span></dt>
+
+                <dt><span class="refentrytitle"><a href="yaf.class.loader.autoload.html">Yaf_Loader::autoload</a></span></dt>
+
+                <dt><span class="refentrytitle"><a href="yaf.class.loader.registerLocalNamespace.html">Yaf_Loader::registerLocalNamespace</a></span></dt>
+
+                <dt><span class="refentrytitle"><a href="yaf.class.loader.isLocalName.html">Yaf_Loader::isLocalName</a></span></dt>
+
+                <dt><span class="refentrytitle"><a href="yaf.class.loader.getLocalNamespace.html">Yaf_Loader::getLocalNamespace</a></span></dt>
+
+                <dt><span class="refentrytitle"><a href="yaf.class.loader.clearLocalNamespace.html">Yaf_Loader::clearLocalNamespace</a></span></dt>
+              </dl>
+</dd>
+
+            <dt><span class="section"><a href="yaf.class.dispatcher.html">11.4. Yaf_Dispatcher</a></span></dt>
+
+            <dd>
+              <dl>
+<dt><span class="refentrytitle"><a href="yaf.class.dispatcher.getInstance.html">Yaf_Dispatcher::getInstance</a></span></dt>
+
+                <dt><span class="refentrytitle"><a href="yaf.class.dispatcher.disableView.html">Yaf_Dispatcher::disableView</a></span></dt>
+
+                <dt><span class="refentrytitle"><a href="yaf.class.dispatcher.enableView.html">Yaf_Dispatcher::enableView</a></span></dt>
+
+                <dt><span class="refentrytitle"><a href="yaf.class.dispatcher.autoRender.html">Yaf_Dispatcher::autoRender</a></span></dt>
+
+                <dt><span class="refentrytitle"><a href="yaf.class.dispatcher.returnResponse.html">Yaf_Dispatcher::returnResponse</a></span></dt>
+
+                <dt><span class="refentrytitle"><a href="yaf.class.dispatcher.flushInstantly.html">Yaf_Dispatcher::flushInstantly</a></span></dt>
+
+                <dt><span class="refentrytitle"><a href="yaf.class.dispatcher.setErrorHandler.html">Yaf_Dispatcher::setErrorHandler</a></span></dt>
+
+                <dt><span class="refentrytitle"><a href="yaf.class.dispatcher.getApplication.html">Yaf_Dispatcher::getApplication</a></span></dt>
+
+                <dt><span class="refentrytitle"><a href="yaf.class.dispatcher.getRouter.html">Yaf_Dispatcher::getRouter</a></span></dt>
+
+                <dt><span class="refentrytitle"><a href="yaf.class.dispatcher.getRequest.html">Yaf_Dispatcher::getRequest</a></span></dt>
+
+                <dt><span class="refentrytitle"><a href="yaf.class.dispatcher.registerPlugin.html">Yaf_Dispatcher::registerPlugin</a></span></dt>
+
+                <dt><span class="refentrytitle"><a href="yaf.class.dispatcher.setAppDirectory.html">Yaf_Dispatcher::setAppDirectory</a></span></dt>
+
+                <dt><span class="refentrytitle"><a href="yaf.class.dispatcher.setRequest.html">Yaf_Dispatcher::setRequest</a></span></dt>
+
+                <dt><span class="refentrytitle"><a href="yaf.class.dispatcher.initView.html">Yaf_Dispatcher::initView</a></span></dt>
+
+                <dt><span class="refentrytitle"><a href="yaf.class.dispatcher.setView.html">Yaf_Dispatcher::setView</a></span></dt>
+
+                <dt><span class="refentrytitle"><a href="yaf.class.dispatcher.setDefaultController.html">Yaf_Dispatcher::setDefaultController</a></span></dt>
+
+                <dt><span class="refentrytitle"><a href="yaf.class.dispatcher.setDefaultModule.html">Yaf_Dispatcher::setDefaultModule</a></span></dt>
+
+                <dt><span class="refentrytitle"><a href="yaf.class.dispatcher.setDefaultAction.html">Yaf_Dispatcher::setDefaultAction</a></span></dt>
+
+                <dt><span class="refentrytitle"><a href="yaf.class.dispatcher.throwException.html">Yaf_Dispatcher::throwException</a></span></dt>
+
+                <dt><span class="refentrytitle"><a href="yaf.class.dispatcher.catchException.html">Yaf_Dispatcher::catchException</a></span></dt>
+
+                <dt><span class="refentrytitle"><a href="yaf.class.dispatcher.dispatch.html">Yaf_Dispatcher::dispatch</a></span></dt>
+              </dl>
+</dd>
+
+            <dt><span class="section"><a href="yaf.class.plugin.html">11.5. Yaf_Plugin_Abstract</a></span></dt>
+
+            <dt><span class="section"><a href="yaf.class.registry.html">11.6. Yaf_Registry</a></span></dt>
+
+            <dd>
+              <dl>
+<dt><span class="refentrytitle"><a href="yaf.class.registry.set.html">Yaf_Registry::set</a></span></dt>
+
+                <dt><span class="refentrytitle"><a href="yaf.class.registry.get.html">Yaf_Registry::get</a></span></dt>
+
+                <dt><span class="refentrytitle"><a href="yaf.class.registry.has.html">Yaf_Registry::has</a></span></dt>
+
+                <dt><span class="refentrytitle"><a href="yaf.class.registry.del.html">Yaf_Registry::del</a></span></dt>
+              </dl>
+</dd>
+
+            <dt><span class="section"><a href="yaf.class.session.html">11.7. Yaf_Session</a></span></dt>
+
+            <dt><span class="section"><a href="yaf.class.config.html">11.8. Yaf_Config_Abstract</a></span></dt>
+
+            <dd>
+              <dl>
+<dt><span class="section"><a href="yaf.class.config.html#yaf.class.config.ini">Yaf_Config_Ini</a></span></dt>
+
+                <dt><span class="section"><a href="yaf.class.config.html#yaf.class.config.simple">Yaf_Config_Simple</a></span></dt>
+              </dl>
+</dd>
+
+            <dt><span class="section"><a href="yaf.class.controller.html">11.9. Yaf_Controller_Abstract</a></span></dt>
+
+            <dd>
+              <dl>
+<dt><span class="refentrytitle"><a href="yaf.class.controller.getModuleName.html">Yaf_Controller_Abstract::getModuleName</a></span></dt>
+
+                <dt><span class="refentrytitle"><a href="yaf.class.controller.getRequest.html">Yaf_Controller_Abstract::getRequest</a></span></dt>
+
+                <dt><span class="refentrytitle"><a href="yaf.class.controller.getResponse.html">Yaf_Controller_Abstract::getResponse</a></span></dt>
+
+                <dt><span class="refentrytitle"><a href="yaf.class.controller.getView.html">Yaf_Controller_Abstract::getView</a></span></dt>
+
+                <dt><span class="refentrytitle"><a href="yaf.class.controller.initView.html">Yaf_Controller_Abstract::initView</a></span></dt>
+
+                <dt><span class="refentrytitle"><a href="yaf.class.controller.setViewPath.html">Yaf_Controller_Abstract::setViewPath</a></span></dt>
+
+                <dt><span class="refentrytitle"><a href="yaf.class.controller.getViewPath.html">Yaf_Controller_Abstract::getViewPath</a></span></dt>
+
+                <dt><span class="refentrytitle"><a href="yaf.class.controller.render.html">Yaf_Controller_Abstract::render</a></span></dt>
+
+                <dt><span class="refentrytitle"><a href="yaf.class.controller.display.html">Yaf_Controller_Abstract::display</a></span></dt>
+
+                <dt><span class="refentrytitle"><a href="yaf.class.controller.forward.html">Yaf_Controller_Abstract::forward</a></span></dt>
+
+                <dt><span class="refentrytitle"><a href="yaf.class.controller.redirect.html">Yaf_Controller_Abstract::redirect</a></span></dt>
+              </dl>
+</dd>
+
+            <dt><span class="section"><a href="yaf.class.action.html">11.10. Yaf_Action_Abstract</a></span></dt>
+
+            <dt><span class="section"><a href="yaf.class.view.html">11.11. Yaf_View_Interface</a></span></dt>
+
+            <dd>
+              <dl>
+<dt><span class="section"><a href="yaf.class.view.html#yaf.class.view.simple">Yaf_View_Simple</a></span></dt>
+
+                <dd>
+                  <dl>
+<dt><span class="refentrytitle"><a href="yaf.class.view.simple.assign.html">Yaf_View_Simple::assign</a></span></dt>
+
+                    <dt><span class="refentrytitle"><a href="yaf.class.view.simple.render.html">Yaf_View_Simple::render</a></span></dt>
+
+                    <dt><span class="refentrytitle"><a href="yaf.class.view.simple.display.html">Yaf_View_Simple::display</a></span></dt>
+
+                    <dt><span class="refentrytitle"><a href="yaf.class.view.simple.setScriptPath.html">Yaf_View_Simple::setScriptPath</a></span></dt>
+
+                    <dt><span class="refentrytitle"><a href="yaf.class.view.simple.getScriptPath.html">Yaf_View_Simple::getScriptPath</a></span></dt>
+
+                    <dt><span class="refentrytitle"><a href="yaf.class.view.simple.__set.html">Yaf_View_Simple::__set</a></span></dt>
+
+                    <dt><span class="refentrytitle"><a href="yaf.class.view.simple.__get.html">Yaf_View_Simple::__get</a></span></dt>
+
+                    <dt><span class="refentrytitle"><a href="yaf.class.view.simple.get.html">Yaf_View_Simple::get</a></span></dt>
+                  </dl>
+</dd>
+              </dl>
+</dd>
+
+            <dt><span class="section"><a href="yaf.class.request.html">11.12. Yaf_Request_Abstract</a></span></dt>
+
+            <dd>
+              <dl>
+<dt><span class="section"><a href="yaf.class.request.html#yaf.class.request.http">Yaf_Request_Http</a></span></dt>
+
+                <dt><span class="section"><a href="yaf.class.request.html#yaf.class.request.simple">Yaf_Request_Simple</a></span></dt>
+
+                <dt><span class="refentrytitle"><a href="yaf.class.request.getException.html">Yaf_Request_Abstract::getException</a></span></dt>
+
+                <dt><span class="refentrytitle"><a href="yaf.class.request.getModuleName.html">Yaf_Request_Abstract::getModuleName</a></span></dt>
+
+                <dt><span class="refentrytitle"><a href="yaf.class.request.getControllerName.html">Yaf_Request_Abstract::getControllerName</a></span></dt>
+
+                <dt><span class="refentrytitle"><a href="yaf.class.request.getActionName.html">Yaf_Request_Abstract::getActionName</a></span></dt>
+
+                <dt><span class="refentrytitle"><a href="yaf.class.request.getParams.html">Yaf_Request_Abstract::getParams</a></span></dt>
+
+                <dt><span class="refentrytitle"><a href="yaf.class.request.getParam.html">Yaf_Request_Abstract::getParam</a></span></dt>
+
+                <dt><span class="refentrytitle"><a href="yaf.class.request.setParam.html">Yaf_Request_Abstract::setParam</a></span></dt>
+
+                <dt><span class="refentrytitle"><a href="yaf.class.request.getMethod.html">Yaf_Request_Abstract::getMethod</a></span></dt>
+
+                <dt><span class="refentrytitle"><a href="yaf.class.request.isCli.html">Yaf_Request_Abstract::isCli</a></span></dt>
+
+                <dt><span class="refentrytitle"><a href="yaf.class.request.isGet.html">Yaf_Request_Abstract::isGet</a></span></dt>
+              </dl>
+</dd>
+
+            <dt><span class="section"><a href="yaf.class.response.html">11.13. Yaf_Response_Abstract</a></span></dt>
+
+            <dd>
+              <dl>
+<dt><span class="section"><a href="yaf.class.response.html#yaf.class.response.http">Yaf_Response_Http</a></span></dt>
+
+                <dt><span class="section"><a href="yaf.class.response.html#yaf.class.response.cli">Yaf_Response_Cli</a></span></dt>
+
+                <dt><span class="refentrytitle"><a href="yaf.class.response.setBody.html">Yaf_Response_Abstract::setBody</a></span></dt>
+
+                <dt><span class="refentrytitle"><a href="yaf.class.response.appendBody.html">Yaf_Response_Abstract::appendBody</a></span></dt>
+
+                <dt><span class="refentrytitle"><a href="yaf.class.response.prependBody.html">Yaf_Response_Abstract::prependBody</a></span></dt>
+
+                <dt><span class="refentrytitle"><a href="yaf.class.response.getBody.html">Yaf_Response_Abstract::getBody</a></span></dt>
+
+                <dt><span class="refentrytitle"><a href="yaf.class.response.clearBody.html">Yaf_Response_Abstract::clearBody</a></span></dt>
+
+                <dt><span class="refentrytitle"><a href="yaf.class.response.response.html">Yaf_Response_Abstract::response</a></span></dt>
+
+                <dt><span class="refentrytitle"><a href="yaf.class.response.setRedirect.html">Yaf_Response_Abstract::setRedirect</a></span></dt>
+
+                <dt><span class="refentrytitle"><a href="yaf.class.__toString.__toString.html">Yaf_Response_Abstract::__toString</a></span></dt>
+              </dl>
+</dd>
+
+            <dt><span class="section"><a href="yaf.class.router.html">11.14. Yaf_Router</a></span></dt>
+
+            <dd>
+              <dl>
+<dt><span class="refentrytitle"><a href="yaf.class.router.addRoute.html">Yaf_Router::addRoute</a></span></dt>
+
+                <dt><span class="refentrytitle"><a href="yaf.class.router.addConfig.html">Yaf_Config::addConfig</a></span></dt>
+
+                <dt><span class="refentrytitle"><a href="yaf.class.router.getRoutes.html">Yaf_Router::getRoutes</a></span></dt>
+
+                <dt><span class="refentrytitle"><a href="yaf.class.router.getRoute.html">Yaf_Router::getRoute</a></span></dt>
+
+                <dt><span class="refentrytitle"><a href="yaf.class.router.getCurrentRoute.html">Yaf_Router::getCurrentRoute</a></span></dt>
+
+                <dt><span class="refentrytitle"><a href="yaf.class.router.isModuleName.html">Yaf_Router::isModuleName</a></span></dt>
+
+                <dt><span class="refentrytitle"><a href="yaf.class.router.route.html">Yaf_Router::route</a></span></dt>
+              </dl>
+</dd>
+
+            <dt><span class="section"><a href="yaf.class.route.html">11.15. Yaf_Route_Interface</a></span></dt>
+
+            <dt><span class="section"><a href="yaf.class.exception.html">11.16. Yaf_Exception</a></span></dt>
+
+            <dd>
+              <dl>
+<dt><span class="section"><a href="yaf.class.exception.html#yaf.class.exception.startuperror">Yaf_Exception_StartupError</a></span></dt>
+
+                <dt><span class="section"><a href="yaf.class.exception.html#yaf.class.exception.routerfailed">Yaf_Exception_RouterFailed</a></span></dt>
+
+                <dt><span class="section"><a href="yaf.class.exception.html#yaf.class.exception.dispatchfailed">Yaf_Exception_DispatchFailed</a></span></dt>
+
+                <dt><span class="section"><a href="yaf.class.exception.html#yaf.class.exception.loadfailed">Yaf_Exception_LoadFailed</a></span></dt>
+
+                <dt><span class="section"><a href="yaf.class.exception.html#yaf.class.exception.loadfailed.module">Yaf_Exception_LoadFailed_Module</a></span></dt>
+
+                <dt><span class="section"><a href="yaf.class.exception.html#yaf.class.exception.loadfailed.controller">Yaf_Exception_LoadFailed_Controller</a></span></dt>
+
+                <dt><span class="section"><a href="yaf.class.exception.html#yaf.class.exception.loadfailed.action">Yaf_Exception_LoadFailed_Action</a></span></dt>
+
+                <dt><span class="section"><a href="yaf.class.exception.html#yaf.class.exception.loadfailed.view">Yaf_Exception_LoadFailed_View</a></span></dt>
+
+                <dt><span class="section"><a href="yaf.class.exception.html#yaf.class.exception.typeerror">Yaf_Exception_TypeError</a></span></dt>
+              </dl>
+</dd>
+          </dl>
+</dd>
+      </dl>
+</div>
+  </div>
+
+  <div class="navfooter">
+    <hr>
+<table summary="Navigation footer" width="100%">
+<tr>
+<td align="left" width="40%"> </td>
+
+        <td align="center" width="20%"> </td>
+
+        <td align="right" width="40%"> <a accesskey="n" href="preface.html">下一页</a>
+</td>
+      </tr>
+<tr>
+<td valign="top" align="left" width="40%"> </td>
+
+        <td align="center" width="20%"> </td>
+
+        <td valign="top" align="right" width="40%"> 前言</td>
+      </tr>
+</table>
+</div>
+<script type="text/javascript" src=".html">
+</script><noscript><a href="http://www.linezing.com"><img src=".html"></a></noscript>
+</body>
+<script type="text/javascript" src=".html"></script><noscript><a href="http://www.linezing.com"><img src=".html"></a></noscript>
+</html>

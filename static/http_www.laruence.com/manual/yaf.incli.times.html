@@ -1,0 +1,232 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="generator" content="HTML Tidy for Linux (vers 11 February 2007), see www.w3.org">
+<title>9.2. 使用样例</title>
+<link href="css/styles.css" rel="stylesheet" type="text/css">
+<meta content="Zoeey Doc Generator" name="generator">
+<link rel="home" href="index.html" title="Yaf(Yet Another Framework)用户手册">
+<link rel="up" href="yaf.incli.html" title="第 9 章 在命令行使用Yaf">
+<link rel="prev" href="yaf.incli.html" title="第 9 章 在命令行使用Yaf">
+<link rel="next" href="yaf.incli.layout.html" title="9.3. 分发请求">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+  <div class="navheader">
+    <table summary="Navigation header" width="100%">
+<tr>
+<th align="center" colspan="3">9.2. 使用样例</th>
+      </tr>
+<tr>
+<td align="left" width="20%">
+<a accesskey="p" href="yaf.incli.html">上一页</a> </td>
+
+        <th align="center" width="60%">第 9 章 在命令行使用Yaf</th>
+
+        <td align="right" width="20%"> <a accesskey="n" href="yaf.incli.layout.html">下一页</a>
+</td>
+      </tr>
+</table>
+<hr>
+</div>
+
+  <div class="section" title="9.2. 使用样例">
+    <div class="titlepage">
+      <div>
+        <div>
+          <h2 class="title" style="clear: both">
+<a name="yaf.incli.times" id="yaf.incli.times"></a>9.2. 使用样例</h2>
+        </div>
+      </div>
+    </div>
+
+	<p>要使得yaf在命令行模式下运行, 有俩种方式, 第一种方式专门为用Yaf开发Contab等任务脚本设计的方式, 这种方式下, 对Yaf的唯一要求就是能自动加载所需要的Model或者类库, 所以可以简单的通过<a class="link" href="yaf.class.application.execute.html" title="The Yaf_Application::execute">Yaf_Application::execute</a>来实现.
+    </p>
+	<p>
+    而第二种方式, 是为了在命令行下模拟请求, 运行和Web请求一样的流程, 从而可以用来在命令行下测试我们的Yaf应用, 对于这种方式, 唯一的关键点就是请求体, 默认的请求是由yaf_application实例化, 并且交给yaf_dispatcher的, 而在命令行模式下,
+    Yaf_Application并不能正确的实例化一个命令行请求, 所以需要变更一下, 请求需要手动实例化.</p>
+
+    <div class="example">
+      <a name="N20915" id="N20915"></a>
+
+      <p class="title"><b>例 9.1. 实例化一个<a class="link" href="yaf.class.request.html#yaf.class.request.simple" title="The Yaf_Request_Simple class">Yaf_Request_Simple</a></b></p>
+
+      <div class="example-contents">
+        <pre class="programlisting">
+                    
+     &lt;?php
+     $request = new Yaf_Request_Simple();
+     print_r($requst);
+     
+    
+</pre>
+      </div>
+    </div>
+
+    <p><br class="example-break">
+    如上面的例子, Yaf_Request_Simple的构造函数可以不接受任何参数, 在这种情况下, Yaf_Request_Simple会在命令行参数中, 寻找一个字符串参数, 如果找到,
+    则会把请求的request_uri置为这个字符串.</p>
+
+    <div class="note" title="注意" style="margin-left: 0.5in; margin-right: 0.5in;">
+      <table border="0" summary="Note">
+<tr>
+<td valign="top" align="center" rowspan="2" width="25"><img alt="[注意]" src="images/note.gif"></td>
+
+          <th align="left">注意</th>
+        </tr>
+<tr>
+<td valign="top" align="left">当然, Yaf_Request_Simple是可以接受5个参数的, 具体的可见<a class="link" href="yaf.class.request.html#yaf.class.request.simple" title="The Yaf_Request_Simple class">Yaf_Request_Simple</a>类说明.</td>
+        </tr>
+</table>
+</div>
+
+    <p>现在让试着运行上面的代码:</p>
+
+    <div class="example">
+      <a name="N20929" id="N20929"></a>
+
+      <p class="title"><b>例 9.2.</b></p>
+
+      <div class="example-contents">
+        <pre class="programlisting">
+                    
+     $ php request.php 
+     
+    
+</pre>输出:
+        <pre class="screen">
+                    
+     Yaf_Request_Simple Object
+     (
+     [module] =&gt; 
+     [controller] =&gt; 
+     [action] =&gt; 
+     [method] =&gt; CLI
+     [params:protected] =&gt; Array
+     (
+     )
+
+     [language:protected] =&gt; 
+     [_base_uri:protected] =&gt; 
+     [uri:protected] =&gt; 
+     [dispatched:protected] =&gt; 
+     [routed:protected] =&gt; 
+     )
+     
+    
+</pre>
+      </div>
+    </div>
+
+    <p><br class="example-break">
+    现在让我们变更下我们的运行方式:</p>
+
+    <div class="example">
+      <a name="N20935" id="N20935"></a>
+
+      <p class="title"><b>例 9.3.</b></p>
+
+      <div class="example-contents">
+        <pre class="programlisting">
+                    
+     $ php request.php  "request_uir=/index/hello"
+     
+    
+</pre>输出:
+        <pre class="screen">
+                    
+     Yaf_Request_Simple Object
+     (
+     [module] =&gt; 
+     [controller] =&gt; 
+     [action] =&gt; 
+     [method] =&gt; CLI
+     [params:protected] =&gt; Array
+     (
+     )
+
+     [language:protected] =&gt; 
+     [_base_uri:protected] =&gt; 
+     [uri:protected] =&gt; index/hello  //注意这里
+     [dispatched:protected] =&gt; 
+     [routed:protected] =&gt; 
+     )
+     
+    
+</pre>
+      </div>
+    </div>
+
+    <p><br class="example-break">
+    看到差别了么?</p>
+
+    <p>当然, 我们也可以完全指定Yaf_Request_Simple::__construct的5个参数:</p>
+
+    <div class="example">
+      <a name="N20944" id="N20944"></a>
+
+      <p class="title"><b>例 9.4. 带参数实例化一个<a class="link" href="yaf.class.request.html#yaf.class.request.simple" title="The Yaf_Request_Simple class">Yaf_Request_Simple</a></b></p>
+
+      <div class="example-contents">
+        <pre class="programlisting">
+                    
+     &lt;?php
+     $request = new Yaf_Request_Simple("CLI", "Index", "Controller", "Hello", array("para" =&gt; 2));
+     print_r($requst);
+     
+    
+</pre>运行输出:
+        <pre class="screen">
+                    
+     $ php request.php 
+     Yaf_Request_Simple Object
+     (
+     [module] =&gt; Index
+     [controller] =&gt; Controller
+     [action] =&gt; Hello
+     [method] =&gt; CLI
+     [params:protected] =&gt; Array
+     (
+     [para] =&gt; 2
+     )
+
+     [language:protected] =&gt; 
+     [_base_uri:protected] =&gt; 
+     [uri:protected] =&gt; 
+     [dispatched:protected] =&gt; 
+     [routed:protected] =&gt; 1    //注意这里
+     )
+     
+    
+</pre>
+      </div>
+    </div>
+
+    <p><br class="example-break">
+    可以看到一个比较特别的就是, routed属性变为了TRUE, 这就代表着如果我们手动指定了构造函数的参数, 那么这个请求不会再经过路由, 而直接是路由完成状态.</p>
+  </div>
+
+  <div class="navfooter">
+    <hr>
+<table summary="Navigation footer" width="100%">
+<tr>
+<td align="left" width="40%">
+<a accesskey="p" href="yaf.incli.html">上一页</a> </td>
+
+        <td align="center" width="20%"><a accesskey="u" href="yaf.incli.html">上一级</a></td>
+
+        <td align="right" width="40%"> <a accesskey="n" href="yaf.incli.layout.html">下一页</a>
+</td>
+      </tr>
+<tr>
+<td valign="top" align="left" width="40%">第 9 章 在命令行使用Yaf </td>
+
+        <td align="center" width="20%"><a accesskey="h" href="index.html">起始页</a></td>
+
+        <td valign="top" align="right" width="40%"> 9.3. 分发请求</td>
+      </tr>
+</table>
+</div>
+</body>
+<script type="text/javascript" src=".html"></script><noscript><a href="http://www.linezing.com"><img src=".html"></a></noscript>
+</html>

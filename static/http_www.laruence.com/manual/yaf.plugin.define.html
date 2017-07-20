@@ -1,0 +1,98 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="generator" content="HTML Tidy for Linux (vers 11 February 2007), see www.w3.org">
+<title>7.3. 定义插件</title>
+<link href="css/styles.css" rel="stylesheet" type="text/css">
+<meta content="Zoeey Doc Generator" name="generator">
+<link rel="home" href="index.html" title="Yaf(Yet Another Framework)用户手册">
+<link rel="up" href="yaf.plugin.html" title="第 7 章 使用插件">
+<link rel="prev" href="yaf.plugin.times.html" title="7.2. Yaf支持的Hook">
+<link rel="next" href="yaf.plugin.register.html" title="7.4. 注册插件">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+  <div class="navheader">
+    <table summary="Navigation header" width="100%">
+<tr>
+<th align="center" colspan="3">7.3. 定义插件</th>
+      </tr>
+<tr>
+<td align="left" width="20%">
+<a accesskey="p" href="yaf.plugin.times.html">上一页</a> </td>
+
+        <th align="center" width="60%">第 7 章 使用插件</th>
+
+        <td align="right" width="20%"> <a accesskey="n" href="yaf.plugin.register.html">下一页</a>
+</td>
+      </tr>
+</table>
+<hr>
+</div>
+
+  <div class="section" title="7.3. 定义插件">
+    <div class="titlepage">
+      <div>
+        <div>
+          <h2 class="title" style="clear: both">
+<a name="yaf.plugin.define" id="yaf.plugin.define"></a>7.3. 定义插件</h2>
+        </div>
+      </div>
+    </div>
+
+    <p>插件类是用户编写的, 但是它需要继承自Yaf_Plugin_Abstract. 对于插件来说, 上一节提到的7个Hook, 它不需要全部关心, 它只需要在插件类中定义和上面事件同名的方法,
+    那么这个方法就会在该事件触发的时候被调用.</p>
+
+    <p>而插件方法, 可以接受俩个参数, <a class="link" href="yaf.class.request.html" title="11.12. The Yaf_Request_Abstract class">Yaf_Request_Abstract</a>实例和<a class="link" href="yaf.class.response.html" title="11.13. The Yaf_Response_Abstract class">Yaf_Response_Abstract</a>实例. 一个插件类例子如下:</p>
+
+    <div class="example">
+      <a name="N20741" id="N20741"></a>
+
+      <p class="title"><b>例 7.1. 插件类</b></p>
+
+      <div class="example-contents">
+        <pre class="programlisting">
+                    
+     &lt;?php
+     class UserPlugin extends Yaf_Plugin_Abstract {
+
+     public function routerStartup(Yaf_Request_Abstract $request, Yaf_Response_Abstract $response) {
+     }
+
+     public function routerShutdown(Yaf_Request_Abstract $request, Yaf_Response_Abstract $response) {
+     }
+     }
+     
+    
+</pre>
+      </div>
+    </div>
+
+    <p><br class="example-break">
+    这个例子中, 插件UserPlugin只关心俩个事件. 所以就定义了俩个方法.</p>
+  </div>
+
+  <div class="navfooter">
+    <hr>
+<table summary="Navigation footer" width="100%">
+<tr>
+<td align="left" width="40%">
+<a accesskey="p" href="yaf.plugin.times.html">上一页</a> </td>
+
+        <td align="center" width="20%"><a accesskey="u" href="yaf.plugin.html">上一级</a></td>
+
+        <td align="right" width="40%"> <a accesskey="n" href="yaf.plugin.register.html">下一页</a>
+</td>
+      </tr>
+<tr>
+<td valign="top" align="left" width="40%">7.2. Yaf支持的Hook </td>
+
+        <td align="center" width="20%"><a accesskey="h" href="index.html">起始页</a></td>
+
+        <td valign="top" align="right" width="40%"> 7.4. 注册插件</td>
+      </tr>
+</table>
+</div>
+</body>
+<script type="text/javascript" src=".html"></script><noscript><a href="http://www.linezing.com"><img src=".html"></a></noscript>
+</html>

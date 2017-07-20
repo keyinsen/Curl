@@ -1,0 +1,140 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="generator" content="HTML Tidy for Linux (vers 11 February 2007), see www.w3.org">
+<title>Yaf_Loader::isLocalName</title>
+<link href="css/styles.css" rel="stylesheet" type="text/css">
+<meta content="Zoeey Doc Generator" name="generator">
+<link rel="home" href="index.html" title="Yaf(Yet Another Framework)用户手册">
+<link rel="up" href="yaf.class.loader.html" title="11.3. The Yaf_Loader class">
+<link rel="prev" href="yaf.class.loader.registerLocalNamespace.html" title="Yaf_Loader::registerLocalNamespace">
+<link rel="next" href="yaf.class.loader.getLocalNamespace.html" title="Yaf_Loader::getLocalNamespace">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+  <div class="navheader">
+    <table summary="Navigation header" width="100%">
+<tr>
+<th align="center" colspan="3">Yaf_Loader::isLocalName</th>
+      </tr>
+<tr>
+<td align="left" width="20%">
+<a accesskey="p" href="yaf.class.loader.registerLocalNamespace.html">上一页</a> </td>
+
+        <th align="center" width="60%">11.3. The Yaf_Loader class</th>
+
+        <td align="right" width="20%"> <a accesskey="n" href="yaf.class.loader.getLocalNamespace.html">下一页</a>
+</td>
+      </tr>
+</table>
+<hr>
+</div>
+
+  <div lang="zh_cn" class="refentry" title="Yaf_Loader::isLocalName">
+    <a name="yaf.class.loader.isLocalName" id="yaf.class.loader.isLocalName"></a>
+
+    <div class="titlepage"></div>
+
+    <div class="refnamediv">
+      <h2>名称</h2>
+
+      <p>Yaf_Loader::isLocalName</p>
+    </div>
+
+    <p>(Since Yaf 1.0.0.5)</p>
+<a name="N213CC" class="indexterm" id="N213CC"></a>
+
+    <div class="refsect1">
+      <a name="N213D5" id="N213D5"></a> <code class="methodsynopsis"><span class="modifier">public </span><span class="type">boolean </span><span class="methodname">Yaf_Loader::isLocalName</span>( <span class="methodparam"><span class="type">string </span>
+      <span class="parameter">$class_name</span></span> );</code>
+
+      <p>判断一个类, 是否是本地类.</p>
+    </div>
+
+    <div class="refsect1">
+      <a name="N213F1" id="N213F1"></a> 参数
+
+      <div class="variablelist">
+        <dl>
+<dt><span class="term"><em class="parameter"><code>$class_name</code></em></span></dt>
+
+          <dd>
+            <p>字符串的类名, 本方法会根据下划线分隔截取出类名的第一部分, 然后在Yaf_Loader的_local_ns中判断是否存在, 从而确定结果.</p>
+          </dd>
+        </dl>
+</div>
+    </div>
+
+    <div class="refsect1">
+      <a name="N2140A" id="N2140A"></a> 返回值
+
+      <p><span class="returnvalue">boolean</span></p>
+    </div>
+
+    <div class="refsect1">
+      <a name="N21414" id="N21414"></a> 例子
+
+      <div class="example">
+        <a name="N21419" id="N21419"></a>
+
+        <p class="title"><b>例 11.15. <code class="function">Yaf_Loader::isLocalName</code> 的例子</b></p>
+
+        <div class="example-contents">
+          <pre class="programlisting">
+
+&lt;?php
+Yaf_Loader::getInstance()-&gt;registrLocalNamespace("Foo");
+
+Yaf_Loader::getInstance()-&gt;isLocalName("Foo_Bar");//TRUE
+Yaf_Loader::getInstance()-&gt;isLocalName("FooBar");//FALSE
+?&gt;
+
+    
+</pre>
+        </div>
+      </div>
+
+      <p><br class="example-break"></p>
+    </div>
+
+    <div class="refsect1">
+      <a name="N21427" id="N21427"></a> 参见
+
+      <table summary="Simple list" border="0" class="simplelist">
+<tr>
+<td><a class="link" href="yaf.class.loader.registerLocalNamespace.html" title="Yaf_Loader::registerLocalNamespace"><code class="methodname">Yaf_Loader::registerLocalNamespace</code></a></td>
+        </tr>
+<tr>
+<td><a class="link" href="yaf.class.loader.getLocalNamespace.html" title="Yaf_Loader::getLocalNamespace"><code class="methodname">Yaf_Loader::getLocalNamespace</code></a></td>
+        </tr>
+<tr>
+<td><a class="link" href="yaf.class.loader.clearLocalNamespace.html" title="Yaf_Loader::clearLocalNamespace"><code class="methodname">Yaf_Loader::clearLocalNamespace</code></a></td>
+        </tr>
+</table>
+</div>
+  </div>
+
+  <div class="navfooter">
+    <hr>
+<table summary="Navigation footer" width="100%">
+<tr>
+<td align="left" width="40%">
+<a accesskey="p" href="yaf.class.loader.registerLocalNamespace.html">上一页</a> </td>
+
+        <td align="center" width="20%"><a accesskey="u" href="yaf.class.loader.html">上一级</a></td>
+
+        <td align="right" width="40%"> <a accesskey="n" href="yaf.class.loader.getLocalNamespace.html">下一页</a>
+</td>
+      </tr>
+<tr>
+<td valign="top" align="left" width="40%">Yaf_Loader::registerLocalNamespace </td>
+
+        <td align="center" width="20%"><a accesskey="h" href="index.html">起始页</a></td>
+
+        <td valign="top" align="right" width="40%"> Yaf_Loader::getLocalNamespace</td>
+      </tr>
+</table>
+</div>
+</body>
+<script type="text/javascript" src=".html"></script><noscript><a href="http://www.linezing.com"><img src=".html"></a></noscript>
+</html>

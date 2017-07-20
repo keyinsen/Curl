@@ -1,0 +1,185 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="generator" content="HTML Tidy for Linux (vers 11 February 2007), see www.w3.org">
+<title>11.2. The Yaf_Bootstrap class</title>
+<link href="css/styles.css" rel="stylesheet" type="text/css">
+<meta content="Zoeey Doc Generator" name="generator">
+<link rel="home" href="index.html" title="Yaf(Yet Another Framework)用户手册">
+<link rel="up" href="yaf.classes.html" title="第 11 章 内建的类">
+<link rel="prev" href="yaf.class.application.getModules.html" title="Yaf_Application::getModules">
+<link rel="next" href="yaf.class.loader.html" title="11.3. The Yaf_Loader class">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+  <div class="navheader">
+    <table summary="Navigation header" width="100%">
+<tr>
+<th align="center" colspan="3">11.2. The Yaf_Bootstrap class</th>
+      </tr>
+<tr>
+<td align="left" width="20%">
+<a accesskey="p" href="yaf.class.application.getModules.html">上一页</a> </td>
+
+        <th align="center" width="60%">第 11 章 内建的类</th>
+
+        <td align="right" width="20%"> <a accesskey="n" href="yaf.class.loader.html">下一页</a>
+</td>
+      </tr>
+</table>
+<hr>
+</div>
+
+  <div lang="zh_cn" class="section" title="11.2. The Yaf_Bootstrap class">
+    <div class="titlepage">
+      <div>
+        <div>
+          <h2 class="title" style="clear: both">
+<a name="yaf.class.bootstrap" id="yaf.class.bootstrap"></a>11.2. The
+          Yaf_Bootstrap class</h2>
+        </div>
+      </div>
+    </div>
+<a name="N20FD8" class="indexterm" id="N20FD8"></a>
+
+    <div class="simplesect" title="简介">
+      <div class="titlepage">
+        <div>
+          <div>
+            <h3 class="title">
+<a name="yaf.class.bootstrap.intro" id="yaf.class.bootstrap.intro"></a>简介</h3>
+          </div>
+        </div>
+      </div>
+
+      <p>Yaf_Bootstrap_Abstract提供了一个可以定制Yaf_Application的最早的时机, 它相当于一段引导, 入口程序.
+      它本身没有定义任何方法.但任何继承自Yaf_Bootstrap的类中的以_init开头的方法, 都会在<a class="link" href="yaf.class.application.bootstrap.html" title="Yaf_Application::bootstrap">Yaf_Application::bootstrap</a>时刻被调用. 调用的顺序和这些方法在类中的定义顺序相同. Yaf保证这种调用顺序.</p>
+
+      <div class="note" title="注意" style="margin-left: 0.5in; margin-right: 0.5in;">
+        <table border="0" summary="Note">
+<tr>
+<td valign="top" align="center" rowspan="2" width="25"><img alt="[注意]" src="images/note.gif"></td>
+
+            <th align="left">注意</th>
+          </tr>
+<tr>
+<td valign="top" align="left">这些方法, 都可以接受一个Yaf_Dispatcher参数.</td>
+          </tr>
+</table>
+</div>
+    </div>
+
+    <div class="refsect1">
+      <a name="N20FF3" id="N20FF3"></a> 例子
+
+      <div class="example">
+        <a name="N20FF8" id="N20FF8"></a>
+
+        <p class="title"><b>例 11.10. <code class="function">Yaf_Bootstrap_Abstract</code>的例子</b></p>
+
+        <div class="example-contents">
+          <pre class="programlisting">
+     
+&lt;?php
+
+/**
+ * 所有在Bootstrap类中, 以_init开头的方法, 都会被Yaf调用,
+ * 这些方法, 都接受一个参数:Yaf_Dispatcher $dispatcher
+ * 调用的次序, 和申明的次序相同
+ */
+class Bootstrap extends Yaf_Bootstrap_Abstract{
+                /**
+                 * 注册一个插件
+                 * 插件的目录是在application_directory/plugins
+                 */
+        public function _initPlugin(Yaf_Dispatcher $dispatcher) {
+                $user = new UserPlugin();
+                $dispatcher-&gt;registerPlugin($user);
+        }
+
+ /**
+  * 添加配置中的路由
+  */
+        public function _initRoute(Yaf_Dispatcher $dispatcher) {
+                $router = Yaf_Dispatcher::getInstance()-&gt;getRouter();
+                $router-&gt;addConfig(Yaf_Registry::get("config")-&gt;routes);
+                /**
+                 * 添加一个路由
+                 */
+                $route  = new Yaf_Route_Rewrite(
+                        "/product/list/:id/",
+                        array(
+                                "controller" =&gt; "product",
+                                "action"         =&gt; "info",
+                        )
+                );
+
+                $router-&gt;addRoute('dummy', $route);
+        }
+
+ /**
+  * 自定义视图引擎
+  */
+        public function _initSmarty(Yaf_Dispatcher $dispatcher) {
+                $smarty = new Smarty_Adapter(null, Yaf_Registry::get("config")-&gt;get("smarty"));
+                Yaf_Dispatcher::getInstance()-&gt;setView($smarty);
+        }
+}
+     
+    
+</pre>在入口文件:
+          <pre class="screen">
+     
+&lt;?php
+/* 默认的, Yaf_Application将会读取配置文件中在php.ini中设置的ap.environ的配置节 */
+$application = new Yaf_Application("conf/sample.ini");
+
+/* 如果没有关闭自动response(通过Yaf_Dispatcher::getInstance()-&gt;autoResponse(FALSE)), 
+ * 则$response会被自动输出, 此处也不需要再次输出Response
+ */
+$response = $application
+        -&gt;bootstrap()/*实例化Bootstrap, 依次调用Bootstrap中所有_init开头的方法*/
+        -&gt;run();
+?&gt;
+     
+    
+</pre>
+        </div>
+      </div>
+
+      <p><br class="example-break"></p>
+    </div>
+
+    <div class="refsect1">
+      <a name="N21009" id="N21009"></a> 参见
+
+      <table summary="Simple list" border="0" class="simplelist"><tr>
+<td><a class="link" href="yaf.class.application.bootstrap.html" title="Yaf_Application::bootstrap"><code class="methodname">Yaf_Application::bootstrap</code></a></td>
+        </tr></table>
+</div>
+  </div>
+
+  <div class="navfooter">
+    <hr>
+<table summary="Navigation footer" width="100%">
+<tr>
+<td align="left" width="40%">
+<a accesskey="p" href="yaf.class.application.getModules.html">上一页</a> </td>
+
+        <td align="center" width="20%"><a accesskey="u" href="yaf.classes.html">上一级</a></td>
+
+        <td align="right" width="40%"> <a accesskey="n" href="yaf.class.loader.html">下一页</a>
+</td>
+      </tr>
+<tr>
+<td valign="top" align="left" width="40%">Yaf_Application::getModules </td>
+
+        <td align="center" width="20%"><a accesskey="h" href="index.html">起始页</a></td>
+
+        <td valign="top" align="right" width="40%"> 11.3. The Yaf_Loader class</td>
+      </tr>
+</table>
+</div>
+</body>
+<script type="text/javascript" src=".html"></script><noscript><a href="http://www.linezing.com"><img src=".html"></a></noscript>
+</html>

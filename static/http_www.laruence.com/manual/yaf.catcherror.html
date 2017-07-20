@@ -1,0 +1,87 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="generator" content="HTML Tidy for Linux (vers 11 February 2007), see www.w3.org">
+<title>第 10 章 异常和错误</title>
+<link href="css/styles.css" rel="stylesheet" type="text/css">
+<meta content="Zoeey Doc Generator" name="generator">
+<link rel="home" href="index.html" title="Yaf(Yet Another Framework)用户手册">
+<link rel="up" href="index.html" title="Yaf(Yet Another Framework)用户手册">
+<link rel="prev" href="yaf.incli.layout.html" title="9.3. 分发请求">
+<link rel="next" href="yaf.catcherror.exception.html" title="10.2. 异常模式">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+  <div class="navheader">
+    <table summary="Navigation header" width="100%">
+<tr>
+<th align="center" colspan="3">第 10 章 异常和错误</th>
+      </tr>
+<tr>
+<td align="left" width="20%">
+<a accesskey="p" href="yaf.incli.layout.html">上一页</a> </td>
+
+        <th align="center" width="60%"> </th>
+
+        <td align="right" width="20%"> <a accesskey="n" href="yaf.catcherror.exception.html">下一页</a>
+</td>
+      </tr>
+</table>
+<hr>
+</div>
+
+  <div lang="zh_cn" class="chapter" title="第 10 章 异常和错误">
+    <div class="titlepage">
+      <div>
+        <div>
+          <h2 class="title">
+<a name="yaf.catcherror" id="yaf.catcherror"></a>第 10 章 异常和错误</h2>
+        </div>
+      </div>
+    </div>
+<a name="N2098D" class="indexterm" id="N2098D"></a>
+
+    <div class="sect1" title="10.1. 概述">
+      <div class="titlepage">
+        <div>
+          <div>
+            <h2 class="title" style="clear: both">
+<a name="yaf.catcherror.intro" id="yaf.catcherror.intro"></a>10.1.
+            概述</h2>
+          </div>
+        </div>
+      </div>
+
+      <p>Yaf实现了一套错误和异常捕获机制, 主要是对常见的错误处理和异常捕获方法做了一个简单抽象, 方便应用组织自己的错误统一处理逻辑.</p>
+
+      <p>Yaf自身出错时候, 根据配置可以分别采用抛异常或者触发错误的方式来通知错误. 在<a class="link" href="yaf.config.optional.html" title="4.2. 可选的配置项">appliation.dispatcher.throwException</a>(配置文件, 或者通过Yaf_Dispatcher::throwException(true))打开的情况下,
+      Yaf会抛异常, 否则则会触发错误.</p>
+
+      <p>那么对应的, 就有俩套错误处理方式可供应用选用.</p>
+    </div>
+  </div>
+
+  <div class="navfooter">
+    <hr>
+<table summary="Navigation footer" width="100%">
+<tr>
+<td align="left" width="40%">
+<a accesskey="p" href="yaf.incli.layout.html">上一页</a> </td>
+
+        <td align="center" width="20%"> </td>
+
+        <td align="right" width="40%"> <a accesskey="n" href="yaf.catcherror.exception.html">下一页</a>
+</td>
+      </tr>
+<tr>
+<td valign="top" align="left" width="40%">9.3. 分发请求 </td>
+
+        <td align="center" width="20%"><a accesskey="h" href="index.html">起始页</a></td>
+
+        <td valign="top" align="right" width="40%"> 10.2. 异常模式</td>
+      </tr>
+</table>
+</div>
+</body>
+<script type="text/javascript" src=".html"></script><noscript><a href="http://www.linezing.com"><img src=".html"></a></noscript>
+</html>

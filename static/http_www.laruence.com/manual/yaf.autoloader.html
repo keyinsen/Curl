@@ -1,0 +1,174 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="generator" content="HTML Tidy for Linux (vers 11 February 2007), see www.w3.org">
+<title>第 5 章 自动加载器</title>
+<link href="css/styles.css" rel="stylesheet" type="text/css">
+<meta content="Zoeey Doc Generator" name="generator">
+<link rel="home" href="index.html" title="Yaf(Yet Another Framework)用户手册">
+<link rel="up" href="index.html" title="Yaf(Yet Another Framework)用户手册">
+<link rel="prev" href="yaf.config.optional.html" title="4.2. 可选的配置项">
+<link rel="next" href="yaf.autoloader.rule.html" title="5.2. 类的加载规则">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+  <div class="navheader">
+    <table summary="Navigation header" width="100%">
+<tr>
+<th align="center" colspan="3">第 5 章 自动加载器</th>
+      </tr>
+<tr>
+<td align="left" width="20%">
+<a accesskey="p" href="yaf.config.optional.html">上一页</a> </td>
+
+        <th align="center" width="60%"> </th>
+
+        <td align="right" width="20%"> <a accesskey="n" href="yaf.autoloader.rule.html">下一页</a>
+</td>
+      </tr>
+</table>
+<hr>
+</div>
+
+  <div lang="zh_cn" class="chapter" title="第 5 章 自动加载器">
+    <div class="titlepage">
+      <div>
+        <div>
+          <h2 class="title">
+<a name="yaf.autoloader" id="yaf.autoloader"></a>第 5 章 自动加载器</h2>
+        </div>
+      </div>
+    </div>
+<a name="N20595" class="indexterm" id="N20595"></a>
+
+    <p>Yaf在自启动的时候, 会通过SPL注册一个自己的Autoloader, 出于性能的考虑, 对于框架相关的MVC类, Yaf Autoloader只以目录映射的方式尝试一次.</p>
+
+    <div class="note" title="注意" style="margin-left: 0.5in; margin-right: 0.5in;">
+      <table border="0" summary="Note">
+<tr>
+<td valign="top" align="center" rowspan="2" width="25"><img alt="[注意]" src="images/note.gif"></td>
+
+          <th align="left">注意</th>
+        </tr>
+<tr>
+<td valign="top" align="left">
+              <p>但是要注意的一点是, 从2.1.18开始, Yaf支持在PHP脚本中触发对Controller的自动加载, 但是因为Controller的定位需要根据Module路由结果来判断, 这就造成了
+              在Bootstrap或者RouteStarrup之前, 无法确定.  所以, 对于Controller的加载, Yaf将只会尝试去加载默认Module的Controller, 也就是只在"{项目路径}/controllers"
+              目录下寻找</p>
+          </td>
+        </tr>
+</table>
+</div>
+
+    <p>具体的目录映射规则如下:</p>
+
+    <div class="table">
+      <a name="N205A0" id="N205A0"></a>
+
+      <p class="title"><b>表 5.1. Yaf目录映射规则</b></p>
+
+      <div class="table-contents">
+        <table summary="Yaf目录映射规则" style="border-collapse: collapse;border-top: 0.5pt solid ; border-bottom: 0.5pt solid ; border-left: 0.5pt solid ; border-right: 0.5pt solid ;">
+<colgroup>
+<col>
+<col>
+<col>
+</colgroup>
+<thead><tr>
+<th style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ;">类型</th>
+
+              <th style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ;">后缀(或者前缀, 可以通过php.ini中<a class="link" href="yaf.ini.html#yaf.install.ini.name_suffix">ap.name_suffix</a>来切换)</th>
+
+              <th style="border-bottom: 0.5pt solid ;">映射路径</th>
+            </tr></thead>
+<tbody>
+<tr>
+<td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ;">控制器</td>
+
+              <td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ;">Controller</td>
+
+              <td style="border-bottom: 0.5pt solid ;">默认模块下为{项目路径}/controllers/,
+              否则为{项目路径}/modules/{模块名}/controllers/</td>
+            </tr>
+<tr>
+<td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ;">数据模型</td>
+
+              <td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ;">Model</td>
+
+              <td style="border-bottom: 0.5pt solid ;">{项目路径}/models/</td>
+            </tr>
+<tr>
+<td style="border-right: 0.5pt solid ;">插件</td>
+
+              <td style="border-right: 0.5pt solid ;">Plugin</td>
+
+              <td style="">{项目路径}/plugins/</td>
+            </tr>
+</tbody>
+</table>
+</div>
+    </div>
+
+    <p><br class="table-break"></p>
+
+    <p>而对于非框架MVC相关的类, Yaf支持全局类和自身类的两种加载方式, 并且Yaf支持大小写敏感和不敏感两种方式来处理文件路径.</p>
+
+    <div class="sect1" title="5.1. 全局类和自身类(本地类)">
+      <div class="titlepage">
+        <div>
+          <div>
+            <h2 class="title" style="clear: both">
+<a name="yaf.autoloader.library" id="yaf.autoloader.library"></a>5.1.
+            全局类和自身类(本地类)</h2>
+          </div>
+        </div>
+      </div>
+
+      <p>Yaf为了方便在一台服务器上部署的不同产品之间共享公司级别的共享库, 支持全局类和本地类两种加载方式.</p>
+
+      <p>全局类是指, 所有产品之间共享的类, 这些类库的路径是通过ap.library在php.ini(当然,如果PHP在编译的时候,
+      支持了with-config-file-scan-dir,那么也可以写在单独的ap.ini中)</p>
+
+      <p>而本地类是指, 产品自身的类库, 这些类库的路径是通过在产品的配置文件中, 通过ap.library配置的.</p>在Yaf中, 通过调用Yaf_Loader的registerLocalNamespace方法,
+      来申明那些类前缀是本地类, 即可.
+    </div>
+
+    <div class="note" title="注意" style="margin-left: 0.5in; margin-right: 0.5in;">
+      <table border="0" summary="Note">
+<tr>
+<td valign="top" align="center" rowspan="2" width="25"><img alt="[注意]" src="images/note.gif"></td>
+
+          <th align="left">注意</th>
+        </tr>
+<tr>
+<td valign="top" align="left">在<a class="link" href="yaf.ini.html#yaf.install.ini.use_spl_autoload">use_spl_autoload</a>关闭的情况下, Yaf Autoloader在一次找不到的情况下, 会立即返回,
+          而剥夺其后的自动加载器的执行机会.</td>
+        </tr>
+</table>
+</div>
+  </div>
+
+  <div class="navfooter">
+    <hr>
+<table summary="Navigation footer" width="100%">
+<tr>
+<td align="left" width="40%">
+<a accesskey="p" href="yaf.config.optional.html">上一页</a> </td>
+
+        <td align="center" width="20%"> </td>
+
+        <td align="right" width="40%"> <a accesskey="n" href="yaf.autoloader.rule.html">下一页</a>
+</td>
+      </tr>
+<tr>
+<td valign="top" align="left" width="40%">4.2. 可选的配置项 </td>
+
+        <td align="center" width="20%"><a accesskey="h" href="index.html">起始页</a></td>
+
+        <td valign="top" align="right" width="40%"> 5.2. 类的加载规则</td>
+      </tr>
+</table>
+</div>
+</body>
+<script type="text/javascript" src=".html"></script><noscript><a href="http://www.linezing.com"><img src=".html"></a></noscript>
+</html>

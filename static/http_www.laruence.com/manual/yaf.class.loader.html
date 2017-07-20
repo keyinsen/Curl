@@ -1,0 +1,218 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="generator" content="HTML Tidy for Linux (vers 11 February 2007), see www.w3.org">
+<title>11.3. The Yaf_Loader class</title>
+<link href="css/styles.css" rel="stylesheet" type="text/css">
+<meta content="Zoeey Doc Generator" name="generator">
+<link rel="home" href="index.html" title="Yaf(Yet Another Framework)用户手册">
+<link rel="up" href="yaf.classes.html" title="第 11 章 内建的类">
+<link rel="prev" href="yaf.class.bootstrap.html" title="11.2. The Yaf_Bootstrap class">
+<link rel="next" href="yaf.class.loader.getInstance.html" title="Yaf_Loader::getInstance">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+  <div class="navheader">
+    <table summary="Navigation header" width="100%">
+<tr>
+<th align="center" colspan="3">11.3. The Yaf_Loader class</th>
+      </tr>
+<tr>
+<td align="left" width="20%">
+<a accesskey="p" href="yaf.class.bootstrap.html">上一页</a> </td>
+
+        <th align="center" width="60%">第 11 章 内建的类</th>
+
+        <td align="right" width="20%"> <a accesskey="n" href="yaf.class.loader.getInstance.html">下一页</a>
+</td>
+      </tr>
+</table>
+<hr>
+</div>
+
+  <div lang="zh_cn" class="section" title="11.3. The Yaf_Loader class">
+    <div class="titlepage">
+      <div>
+        <div>
+          <h2 class="title" style="clear: both">
+<a name="yaf.class.loader" id="yaf.class.loader"></a>11.3. The
+          Yaf_Loader class</h2>
+        </div>
+      </div>
+    </div>
+<a name="N21022" class="indexterm" id="N21022"></a>
+
+    <div class="simplesect" title="简介">
+      <div class="titlepage">
+        <div>
+          <div>
+            <h3 class="title">
+<a name="yaf.class.loader.intro" id="yaf.class.loader.intro"></a>简介</h3>
+          </div>
+        </div>
+      </div>
+
+      <p>Yaf_Loader类为Yaf提供了自动加载功能, 它根据类名中包含的路径信息实现类的定位和自动加载.</p>
+
+      <p>Yaf_Loader也提供了对传统的require_once的替代方案, 相比传统的require_once, 因为舍弃对require的支持, 所以性能能有一丁点小优势.</p>
+
+      <p>在PHP5.3之后, 打开<a class="link" href="yaf.ini.html#yaf.install.ini.use_namespace">yaf.use_namespace</a>的情况下, 也可以使用
+      Yaf\Loader.</p>
+    </div>
+
+    <div class="simplesect">
+      <div class="titlepage"></div>
+      <pre class="classsynopsis">
+ <span class="ooclass">
+    <span class="modifier">final </span>
+
+    <span class="classname">Yaf_Loader</span>
+   </span> {<br><code class="fieldsynopsis">  
+    <span class="modifier">protected </span>
+    <span class="modifier">static </span>
+
+    <span class="type">
+     <a class="link" href="yaf.class.loader.html" title="11.3. The Yaf_Loader class">Yaf_Loader</a>
+     </span>
+
+    <a class="link" href="yaf.class.loader.html#yaf.class.loader.props._instance">
+     <code class="varname">_instance</code>
+    </a>
+   ;</code><br><code class="fieldsynopsis">  
+    <span class="modifier">protected </span>
+
+    <span class="type">
+     string
+     </span>
+
+    <a class="link" href="yaf.class.loader.html#yaf.class.loader.props._library_directory">
+     <code class="varname">_library_directory</code>
+    </a>
+   ;</code><br><code class="fieldsynopsis">  
+    <span class="modifier">protected </span>
+
+    <span class="type">
+     string
+     </span>
+
+    <a class="link" href="yaf.class.loader.html#yaf.class.loader.props._global_library_directory">
+     <code class="varname">_global_library_directory</code>
+    </a>
+   ;</code><br><code class="fieldsynopsis">  
+    <span class="modifier">protected </span>
+
+    <span class="type">
+     string
+     </span>
+
+    <a class="link" href="yaf.class.loader.html#yaf.class.loader.props._local_ns">
+     <code class="varname">_local_ns</code>
+    </a>
+   ;</code><br><code class="methodsynopsis">  <span class="modifier">public </span><span class="modifier">static </span><span class="type">Yaf_Loader </span><span class="methodname">
+     <a class="link" href="yaf.class.loader.getInstance.html" title="Yaf_Loader::getInstance">getInstance</a>
+    </span>(<span class="methodparam">
+     <span class="type">string </span>
+     <span class="parameter">$local_library_directory</span>
+     <span class="initializer">= NULL</span>
+    </span>,<br><span class="methodparam">
+     <span class="type">string </span>
+     <span class="parameter">$global_library_directory</span>
+     <span class="initializer">= NULL</span>
+    </span>);</code><br><code class="methodsynopsis">  <span class="modifier">public </span><span class="type">Yaf_Loader </span><span class="methodname">
+     <a class="link" href="yaf.class.loader.registerLocalNamespace.html" title="Yaf_Loader::registerLocalNamespace">registerLocalNamespace</a>
+    </span>(<span class="methodparam">
+     <span class="type">mixed </span>
+     <span class="parameter">$namespace</span>
+    </span>);</code><br><code class="methodsynopsis">  <span class="modifier">public </span><span class="type">boolean </span><span class="methodname">
+     <a class="link" href="yaf.class.loader.getLocalNamespace.html" title="Yaf_Loader::getLocalNamespace">getLocalNamespace</a>
+    </span>(<span class="methodparam">
+     <span class="type">void </span>
+    </span>);</code><br><code class="methodsynopsis">  <span class="modifier">public </span><span class="type">boolean </span><span class="methodname">
+     <a class="link" href="yaf.class.loader.clearLocalNamespace.html" title="Yaf_Loader::clearLocalNamespace">clearLocalNamespace</a>
+    </span>(<span class="methodparam">
+     <span class="type">void </span>
+    </span>);</code><br><code class="methodsynopsis">  <span class="modifier">public </span><span class="type">boolean </span><span class="methodname">
+     <a class="link" href="yaf.class.loader.isLocalName.html" title="Yaf_Loader::isLocalName">isLocalName</a>
+    </span>(<span class="methodparam">
+     <span class="type">string </span>
+     <span class="parameter">$class_name</span>
+    </span>);</code><br><code class="methodsynopsis">  <span class="modifier">public </span><span class="modifier">static </span><span class="type">boolean </span><span class="methodname">
+     <a class="link" href="yaf.class.loader.import.html" title="Yaf_Loader::import">import</a>
+    </span>(<span class="methodparam">
+     <span class="type">string </span>
+     <span class="parameter">$file_name</span>
+    </span>);</code><br><code class="methodsynopsis">  <span class="modifier">public </span><span class="type">boolean </span><span class="methodname">
+     <a class="link" href="yaf.class.loader.autoload.html" title="Yaf_Loader::autoload">autoload</a>
+    </span>(<span class="methodparam">
+     <span class="type">string </span>
+     <span class="parameter">$class_name</span>
+    </span>);</code><br>}
+</pre>
+    </div>
+
+    <div class="simplesect">
+      <div class="titlepage"></div>属性说明
+
+      <div class="variablelist">
+        <dl>
+<dt>
+<a name="yaf.class.loader.props._instance" id="yaf.class.loader.props._instance"></a> <span class="term"><code class="varname">_instance</code></span>
+</dt>
+
+          <dd>
+            <p>Yaf_Loader实现了单利模式, 一般的它由Yaf_Application负责初始化. 此属性保存当前实例</p>
+          </dd>
+
+          <dt>
+<a name="yaf.class.loader.props._library_directory" id="yaf.class.loader.props._library_directory"></a>
+          <span class="term"><code class="varname">_library_directory</code></span>
+</dt>
+
+          <dd>
+            <p>本地(自身)类加载路径, 一般的, 属性的值来自配置文件中的ap.library</p>
+          </dd>
+
+          <dt>
+<a name="yaf.class.loader.props._global_library_directory" id="yaf.class.loader.props._global_library_directory"></a> <span class="term"><code class="varname">_global_library_directory</code></span>
+</dt>
+
+          <dd>
+            <p>全局类加载路径, 一般的, 属性的值来自php.ini中的ap.library</p>
+          </dd>
+
+          <dt>
+<a name="yaf.class.loader.props._local_ns" id="yaf.class.loader.props._local_ns"></a> <span class="term"><code class="varname">_local_ns</code></span>
+</dt>
+
+          <dd>
+            <p>本地类的类名前缀, 此属性通过Yaf_Loader::registerLocalNamespace来添加新的值</p>
+          </dd>
+        </dl>
+</div>
+    </div>
+  </div>
+
+  <div class="navfooter">
+    <hr>
+<table summary="Navigation footer" width="100%">
+<tr>
+<td align="left" width="40%">
+<a accesskey="p" href="yaf.class.bootstrap.html">上一页</a> </td>
+
+        <td align="center" width="20%"><a accesskey="u" href="yaf.classes.html">上一级</a></td>
+
+        <td align="right" width="40%"> <a accesskey="n" href="yaf.class.loader.getInstance.html">下一页</a>
+</td>
+      </tr>
+<tr>
+<td valign="top" align="left" width="40%">11.2. The Yaf_Bootstrap class </td>
+
+        <td align="center" width="20%"><a accesskey="h" href="index.html">起始页</a></td>
+
+        <td valign="top" align="right" width="40%"> Yaf_Loader::getInstance</td>
+      </tr>
+</table>
+</div>
+</body>
+<script type="text/javascript" src=".html"></script><noscript><a href="http://www.linezing.com"><img src=".html"></a></noscript>
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="generator" content="HTML Tidy for Linux (vers 11 February 2007), see www.w3.org">
+<title>Yaf_Dispatcher::getApplication</title>
+<link href="css/styles.css" rel="stylesheet" type="text/css">
+<meta content="Zoeey Doc Generator" name="generator">
+<link rel="home" href="index.html" title="Yaf(Yet Another Framework)用户手册">
+<link rel="up" href="yaf.class.dispatcher.html" title="11.4. The Yaf_Dispatcher class">
+<link rel="prev" href="yaf.class.dispatcher.setErrorHandler.html" title="Yaf_Dispatcher::setErrorHandler">
+<link rel="next" href="yaf.class.dispatcher.getRouter.html" title="Yaf_Dispatcher::getRouter">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+  <div class="navheader">
+    <table summary="Navigation header" width="100%">
+<tr>
+<th align="center" colspan="3">Yaf_Dispatcher::getApplication</th>
+      </tr>
+<tr>
+<td align="left" width="20%">
+<a accesskey="p" href="yaf.class.dispatcher.setErrorHandler.html">上一页</a> </td>
+
+        <th align="center" width="60%">11.4. The Yaf_Dispatcher class</th>
+
+        <td align="right" width="20%"> <a accesskey="n" href="yaf.class.dispatcher.getRouter.html">下一页</a>
+</td>
+      </tr>
+</table>
+<hr>
+</div>
+
+  <div lang="zh_cn" class="refentry" title="Yaf_Dispatcher::getApplication">
+    <a name="yaf.class.dispatcher.getApplication" id="yaf.class.dispatcher.getApplication"></a>
+
+    <div class="titlepage"></div>
+
+    <div class="refnamediv">
+      <h2>名称</h2>
+
+      <p>Yaf_Dispatcher::getApplication</p>
+    </div>
+
+    <p>(Since Yaf 1.0.0.8)</p>
+<a name="N21CAE" class="indexterm" id="N21CAE"></a>
+
+    <div class="refsect1">
+      <a name="N21CB7" id="N21CB7"></a> <code class="methodsynopsis"><span class="modifier">public </span><span class="type">Yaf_Application </span><span class="methodname">Yaf_Dispatcher::getApplication</span>( <span class="methodparam"><span class="type">void </span></span> );</code>
+
+      <p>获取当前的Yaf_Application实例</p>
+    </div>
+
+    <div class="refsect1">
+      <a name="N21CD0" id="N21CD0"></a> 参数
+
+      <div class="variablelist">
+        <dl>
+<dt><span class="term"><span class="type">void</span></span></dt>
+
+          <dd>
+            <p>该方法不需要参数</p>
+          </dd>
+        </dl>
+</div>
+    </div>
+
+    <div class="refsect1">
+      <a name="N21CE9" id="N21CE9"></a> 返回值
+
+      <p>Yaf_Application实例</p>
+    </div>
+
+    <div class="refsect1">
+      <a name="N21CF0" id="N21CF0"></a> 例子
+
+      <div class="example">
+        <a name="N21CF5" id="N21CF5"></a>
+
+        <p class="title"><b>例 11.25. <code class="function">Yaf_Dispatcher::getApplication</code> 的例子</b></p>
+
+        <div class="example-contents">
+          <pre class="programlisting">
+     
+     &lt;?php
+     $application = Yaf_Dispatcher::getInstance()-&gt;getApplication();
+     //不过, 还是推荐大家使用
+     $application = Application::app();
+     ?&gt;
+     
+    
+</pre>
+        </div>
+      </div>
+
+      <p><br class="example-break"></p>
+    </div>
+
+    <div class="refsect1">
+      <a name="N21D03" id="N21D03"></a> 参见
+
+      <table summary="Simple list" border="0" class="simplelist"><tr>
+<td><a class="link" href="yaf.class.application.app.html" title="Yaf_Application::app"><code class="methodname">Yaf_Application::app</code></a></td>
+        </tr></table>
+</div>
+  </div>
+
+  <div class="navfooter">
+    <hr>
+<table summary="Navigation footer" width="100%">
+<tr>
+<td align="left" width="40%">
+<a accesskey="p" href="yaf.class.dispatcher.setErrorHandler.html">上一页</a> </td>
+
+        <td align="center" width="20%"><a accesskey="u" href="yaf.class.dispatcher.html">上一级</a></td>
+
+        <td align="right" width="40%"> <a accesskey="n" href="yaf.class.dispatcher.getRouter.html">下一页</a>
+</td>
+      </tr>
+<tr>
+<td valign="top" align="left" width="40%">Yaf_Dispatcher::setErrorHandler </td>
+
+        <td align="center" width="20%"><a accesskey="h" href="index.html">起始页</a></td>
+
+        <td valign="top" align="right" width="40%"> Yaf_Dispatcher::getRouter</td>
+      </tr>
+</table>
+</div>
+</body>
+<script type="text/javascript" src=".html"></script><noscript><a href="http://www.linezing.com"><img src=".html"></a></noscript>
+</html>

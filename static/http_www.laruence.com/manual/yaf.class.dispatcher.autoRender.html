@@ -1,0 +1,141 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="generator" content="HTML Tidy for Linux (vers 11 February 2007), see www.w3.org">
+<title>Yaf_Dispatcher::autoRender</title>
+<link href="css/styles.css" rel="stylesheet" type="text/css">
+<meta content="Zoeey Doc Generator" name="generator">
+<link rel="home" href="index.html" title="Yaf(Yet Another Framework)用户手册">
+<link rel="up" href="yaf.class.dispatcher.html" title="11.4. The Yaf_Dispatcher class">
+<link rel="prev" href="yaf.class.dispatcher.enableView.html" title="Yaf_Dispatcher::enableView">
+<link rel="next" href="yaf.class.dispatcher.returnResponse.html" title="Yaf_Dispatcher::returnResponse">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+  <div class="navheader">
+    <table summary="Navigation header" width="100%">
+<tr>
+<th align="center" colspan="3">Yaf_Dispatcher::autoRender</th>
+      </tr>
+<tr>
+<td align="left" width="20%">
+<a accesskey="p" href="yaf.class.dispatcher.enableView.html">上一页</a> </td>
+
+        <th align="center" width="60%">11.4. The Yaf_Dispatcher class</th>
+
+        <td align="right" width="20%"> <a accesskey="n" href="yaf.class.dispatcher.returnResponse.html">下一页</a>
+</td>
+      </tr>
+</table>
+<hr>
+</div>
+
+  <div lang="zh_cn" class="refentry" title="Yaf_Dispatcher::autoRender">
+    <a name="yaf.class.dispatcher.autoRender" id="yaf.class.dispatcher.autoRender"></a>
+
+    <div class="titlepage"></div>
+
+    <div class="refnamediv">
+      <h2>名称</h2>
+
+      <p>Yaf_Dispatcher::autoRender</p>
+    </div>
+
+    <p>(Since Yaf 1.0.0.11)</p>
+<a name="N21A81" class="indexterm" id="N21A81"></a>
+
+    <div class="refsect1">
+      <a name="N21A8A" id="N21A8A"></a> <code class="methodsynopsis"><span class="modifier">public </span><span class="type">boolean </span><span class="methodname">Yaf_Dispatcher::autoRender</span>( <span class="methodparam"><span class="type">boolean </span>
+      <span class="parameter">$switch</span></span> );</code>
+
+      <p>开启/关闭自动渲染功能. 在开启的情况下(Yaf默认开启), Action执行完成以后, Yaf会自动调用View引擎去渲染该Action对应的视图模板.</p>
+    </div>
+
+    <div class="refsect1">
+      <a name="N21AA4" id="N21AA4"></a> 参数
+
+      <div class="variablelist">
+        <dl>
+<dt><span class="term"><em class="parameter"><code>$switch</code></em></span></dt>
+
+          <dd>
+            <p>开启状态</p>
+          </dd>
+        </dl>
+</div>
+    </div>
+
+    <div class="refsect1">
+      <a name="N21ABD" id="N21ABD"></a> 返回值
+
+      <p>成功返回Yaf_Dispatcher, 失败返回FALSE</p>
+    </div>
+
+    <div class="refsect1">
+      <a name="N21AC4" id="N21AC4"></a> 例子
+
+      <div class="example">
+        <a name="N21AC9" id="N21AC9"></a>
+
+        <p class="title"><b>例 11.21. <code class="function">Yaf_Dispatcher::autoRender</code>的例子</b></p>
+
+        <div class="example-contents">
+          <pre class="programlisting">
+     
+     &lt;?php
+class IndexController extends Yaf_Controller_Abstract {
+     public function init() {
+        if ($this-&gt;getRequest()-&gt;isXmlHttpRequest()) {
+            //如果是Ajax请求, 关闭自动渲染, 由我们手工返回Json响应
+            Yaf_Dispatcher::getInstance()-&gt;autoRender(FALSE);
+        }
+     }
+}
+     ?&gt;
+     
+    
+</pre>
+        </div>
+      </div>
+
+      <p><br class="example-break"></p>
+    </div>
+
+    <div class="refsect1">
+      <a name="N21AD7" id="N21AD7"></a> 参见
+
+      <table summary="Simple list" border="0" class="simplelist">
+<tr>
+<td><a class="link" href="yaf.class.dispatcher.enableView.html" title="Yaf_Dispatcher::enableView"><code class="methodname">Yaf_Dispatcher::enableView</code></a></td>
+        </tr>
+<tr>
+<td><a class="link" href="yaf.class.dispatcher.disableView.html" title="Yaf_Dispatcher::disableView"><code class="methodname">Yaf_Dispatcher::disableView</code></a></td>
+        </tr>
+</table>
+</div>
+  </div>
+
+  <div class="navfooter">
+    <hr>
+<table summary="Navigation footer" width="100%">
+<tr>
+<td align="left" width="40%">
+<a accesskey="p" href="yaf.class.dispatcher.enableView.html">上一页</a> </td>
+
+        <td align="center" width="20%"><a accesskey="u" href="yaf.class.dispatcher.html">上一级</a></td>
+
+        <td align="right" width="40%"> <a accesskey="n" href="yaf.class.dispatcher.returnResponse.html">下一页</a>
+</td>
+      </tr>
+<tr>
+<td valign="top" align="left" width="40%">Yaf_Dispatcher::enableView </td>
+
+        <td align="center" width="20%"><a accesskey="h" href="index.html">起始页</a></td>
+
+        <td valign="top" align="right" width="40%"> Yaf_Dispatcher::returnResponse</td>
+      </tr>
+</table>
+</div>
+</body>
+<script type="text/javascript" src=".html"></script><noscript><a href="http://www.linezing.com"><img src=".html"></a></noscript>
+</html>

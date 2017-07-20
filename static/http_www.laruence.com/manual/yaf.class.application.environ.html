@@ -1,0 +1,132 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="generator" content="HTML Tidy for Linux (vers 11 February 2007), see www.w3.org">
+<title>Yaf_Application::environ</title>
+<link href="css/styles.css" rel="stylesheet" type="text/css">
+<meta content="Zoeey Doc Generator" name="generator">
+<link rel="home" href="index.html" title="Yaf(Yet Another Framework)用户手册">
+<link rel="up" href="yaf.classes.html#yaf.class.application" title="11.1. The Yaf_Application class">
+<link rel="prev" href="yaf.class.application.app.html" title="Yaf_Application::app">
+<link rel="next" href="yaf.class.application.run.html" title="Yaf_Application::run">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+  <div class="navheader">
+    <table summary="Navigation header" width="100%">
+<tr>
+<th align="center" colspan="3">Yaf_Application::environ</th>
+      </tr>
+<tr>
+<td align="left" width="20%">
+<a accesskey="p" href="yaf.class.application.app.html">上一页</a> </td>
+
+        <th align="center" width="60%">11.1. The Yaf_Application class</th>
+
+        <td align="right" width="20%"> <a accesskey="n" href="yaf.class.application.run.html">下一页</a>
+</td>
+      </tr>
+</table>
+<hr>
+</div>
+
+  <div lang="zh_cn" class="refentry" title="Yaf_Application::environ">
+    <a name="yaf.class.application.environ" id="yaf.class.application.environ"></a>
+
+    <div class="titlepage"></div>
+
+    <div class="refnamediv">
+      <h2>名称</h2>
+
+      <p>Yaf_Application::environ</p>
+    </div>
+
+    <p>(Since Yaf 1.0.0.5)</p>
+<a name="N20D43" class="indexterm" id="N20D43"></a>
+
+    <div class="refsect1">
+      <a name="N20D4C" id="N20D4C"></a> <code class="methodsynopsis"><span class="type">string </span><span class="methodname">Yaf_Application::environ</span>(<span class="methodparam"><span class="parameter">void</span></span>);</code>
+
+      <p>获取当前Yaf_Application的环境名</p>
+    </div>
+
+    <div class="refsect1">
+      <a name="N20D60" id="N20D60"></a> 参数
+
+      <div class="variablelist">
+        <dl>
+<dt><span class="term"><span class="type">void</span></span></dt>
+
+          <dd>
+            <p>本方法不需要参数</p>
+          </dd>
+        </dl>
+</div>
+    </div>
+
+    <div class="refsect1">
+      <a name="N20D79" id="N20D79"></a> 返回值
+
+      <p>当前的环境名, 也就是ini_get("yaf.environ")</p>
+    </div>
+
+    <div class="refsect1">
+      <a name="N20D80" id="N20D80"></a> 例子
+
+      <div class="example">
+        <a name="N20D85" id="N20D85"></a>
+
+        <p class="title"><b>例 11.4. <code class="function">Yaf_Application::environ</code> 的例子</b></p>
+
+        <div class="example-contents">
+          <pre class="programlisting">
+
+&lt;?php
+$config = array(
+        "application" =&gt; array(
+                "directory" =&gt; "/usr/local/www/yaf",
+        ),
+);
+$app = new Yaf_Application($config);
+print($app-&gt;environ());
+?&gt;
+
+    
+</pre>
+          <pre class="screen">
+     
+     product
+     
+    
+</pre>
+        </div>
+      </div>
+
+      <p><br class="example-break"></p>
+    </div>
+  </div>
+
+  <div class="navfooter">
+    <hr>
+<table summary="Navigation footer" width="100%">
+<tr>
+<td align="left" width="40%">
+<a accesskey="p" href="yaf.class.application.app.html">上一页</a> </td>
+
+        <td align="center" width="20%"><a accesskey="u" href="yaf.classes.html#yaf.class.application">上一级</a></td>
+
+        <td align="right" width="40%"> <a accesskey="n" href="yaf.class.application.run.html">下一页</a>
+</td>
+      </tr>
+<tr>
+<td valign="top" align="left" width="40%">Yaf_Application::app </td>
+
+        <td align="center" width="20%"><a accesskey="h" href="index.html">起始页</a></td>
+
+        <td valign="top" align="right" width="40%"> Yaf_Application::run</td>
+      </tr>
+</table>
+</div>
+</body>
+<script type="text/javascript" src=".html"></script><noscript><a href="http://www.linezing.com"><img src=".html"></a></noscript>
+</html>

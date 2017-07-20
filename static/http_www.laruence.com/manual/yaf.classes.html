@@ -1,0 +1,290 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="generator" content="HTML Tidy for Linux (vers 11 February 2007), see www.w3.org">
+<title>第 11 章 内建的类</title>
+<link href="css/styles.css" rel="stylesheet" type="text/css">
+<meta content="Zoeey Doc Generator" name="generator">
+<link rel="home" href="index.html" title="Yaf(Yet Another Framework)用户手册">
+<link rel="up" href="index.html" title="Yaf(Yet Another Framework)用户手册">
+<link rel="prev" href="yaf.catcherror.error.html" title="10.3. 错误模式">
+<link rel="next" href="yaf.class.application.construct.html" title="Yaf_Application::__construct">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+  <div class="navheader">
+    <table summary="Navigation header" width="100%">
+<tr>
+<th align="center" colspan="3">第 11 章 内建的类</th>
+      </tr>
+<tr>
+<td align="left" width="20%">
+<a accesskey="p" href="yaf.catcherror.error.html">上一页</a> </td>
+
+        <th align="center" width="60%"> </th>
+
+        <td align="right" width="20%"> <a accesskey="n" href="yaf.class.application.construct.html">下一页</a>
+</td>
+      </tr>
+</table>
+<hr>
+</div>
+
+  <div lang="zh_cn" class="chapter" title="第 11 章 内建的类">
+    <div class="titlepage">
+      <div>
+        <div>
+          <h2 class="title">
+<a name="yaf.classes" id="yaf.classes"></a>第 11 章 内建的类</h2>
+        </div>
+      </div>
+    </div>
+
+    <div lang="zh_cn" class="section" title="11.1. The Yaf_Application class">
+      <div class="titlepage">
+        <div>
+          <div>
+            <h2 class="title" style="clear: both">
+<a name="yaf.class.application" id="yaf.class.application"></a>11.1.
+            The Yaf_Application class</h2>
+          </div>
+        </div>
+      </div>
+<a name="N209EE" class="indexterm" id="N209EE"></a>
+
+      <div class="simplesect" title="简介">
+        <div class="titlepage">
+          <div>
+            <div>
+              <h3 class="title">
+<a name="yaf.class.application.intro" id="yaf.class.application.intro"></a>简介</h3>
+            </div>
+          </div>
+        </div>
+
+        <p>Yaf_Application代表一个产品/项目, 是Yaf运行的主导者, 真正执行的主题. 它负责接收请求, 协调路由, 分发, 执行, 输出.</p>
+
+        <p>在PHP5.3之后, 打开<a class="link" href="yaf.ini.html#yaf.install.ini.use_namespace">yaf.use_namespace</a>的情况下,
+        也可以使用 Yaf\Application.</p>
+      </div>
+
+      <div class="simplesect">
+        <div class="titlepage"></div>
+        <pre class="classsynopsis">
+ <span class="ooclass">
+    <span class="modifier">final </span>
+
+    <span class="classname">Yaf_Application</span>
+   </span> {<br><code class="fieldsynopsis">  
+    <span class="modifier">protected </span>
+
+    <span class="type">
+     <a class="link" href="yaf.class.config.html" title="11.8. The Yaf_Config_Abstract class">Yaf_Config</a>
+     </span>
+
+    <span class="varname">
+    <a class="link" href="yaf.classes.html#yaf.class.application.props._config">
+     _config
+    </a>
+    </span>
+   ;</code><br><code class="fieldsynopsis">  
+    <span class="modifier">protected </span>
+
+    <span class="type">
+     <a class="link" href="yaf.class.dispatcher.html" title="11.4. The Yaf_Dispatcher class">Yaf_Dispatcher</a>
+     </span>
+
+    <span class="varname">
+    <a class="link" href="yaf.classes.html#yaf.class.application.props._dispatcher">
+     _dispatcher
+    </a>
+    </span>
+   ;</code><br><code class="fieldsynopsis">  
+    <span class="modifier">protected </span>
+    <span class="modifier">static </span>
+
+    <span class="type">Yaf_Application </span>
+
+    <span class="varname">
+    <a class="link" href="yaf.classes.html#yaf.class.application.props._app">
+     _app
+    </a>
+    </span>
+   ;</code><br><code class="fieldsynopsis">  
+    <span class="modifier">protected </span>
+
+    <span class="type">boolean </span>
+
+    <span class="varname">
+    <a class="link" href="yaf.classes.html#yaf.class.application.props._run">
+     _run
+    </a>
+    </span>
+    <span class="initializer">= FALSE</span>
+   ;</code><br><code class="fieldsynopsis">  
+    <span class="modifier">protected </span>
+
+    <span class="type">string </span>
+
+    <span class="varname">
+    <a class="link" href="yaf.classes.html#yaf.class.application.props._environ">
+     _environ
+    </a>
+    </span>
+   ;</code><br><code class="fieldsynopsis">  
+    <span class="modifier">protected </span>
+
+    <span class="type">string </span>
+
+    <span class="varname">
+    <a class="link" href="yaf.classes.html#yaf.class.application.props._modules">
+     _modules
+    </a>
+    </span>
+   ;</code><br><code class="methodsynopsis">  <span class="modifier">public </span><span class="type">void </span><span class="methodname">
+     <a class="link" href="yaf.class.application.construct.html" title="Yaf_Application::__construct">__construct</a>
+    </span>(<span class="methodparam">
+     <span class="type">mixed </span>
+     <span class="parameter">$config</span>
+    </span>,<br><span class="methodparam">
+     <span class="type">string </span>
+     <span class="parameter">$section</span>
+     <span class="initializer">= <a class="link" href="yaf.ini.html#yaf.install.ini.environ">ap.environ</a></span>
+    </span>);</code><br><code class="methodsynopsis">  <span class="modifier">public </span><span class="type">Yaf_Application </span><span class="methodname">
+     <a class="link" href="yaf.class.application.bootstrap.html" title="Yaf_Application::bootstrap">bootstrap</a>
+    </span>(<span class="methodparam">
+     <span class="type">void </span>
+    </span>);</code><br><code class="methodsynopsis">  <span class="modifier">public </span><span class="type">Yaf_Response_Abstract </span><span class="methodname">
+     <a class="link" href="yaf.class.application.run.html" title="Yaf_Application::run">run</a>
+    </span>(<span class="methodparam">
+     <span class="type">void </span>
+    </span>);</code><br><code class="methodsynopsis">  <span class="modifier">public </span><span class="type">Yaf_Dispatcher </span><span class="methodname">
+     <a class="link" href="yaf.class.application.getDispatcher.html" title="Yaf_Application::getDispatcher">getDispatcher</a>
+    </span>(<span class="methodparam">
+     <span class="type">void </span>
+    </span>);</code><br><code class="methodsynopsis">  <span class="modifier">public </span><span class="type">Yaf_Config_Abstract </span><span class="methodname">
+     <a class="link" href="yaf.class.application.getConfig.html" title="Yaf_Application::getConfig">getConfig</a>
+    </span>(<span class="methodparam">
+     <span class="type">void </span>
+    </span>);</code><br><code class="methodsynopsis">  <span class="modifier">public </span><span class="type">string </span><span class="methodname">
+     <a class="link" href="yaf.class.application.environ.html" title="Yaf_Application::environ">environ</a>
+    </span>(<span class="methodparam">
+     <span class="type">void </span>
+    </span>);</code><br><code class="methodsynopsis">  <span class="modifier">public </span><span class="type">string </span><span class="methodname">
+     <a class="link" href="yaf.class.application.getModules.html" title="Yaf_Application::getModules">geModules</a>
+    </span>(<span class="methodparam">
+     <span class="type">void </span>
+    </span>);</code><br><code class="methodsynopsis">  <span class="modifier">public static </span><span class="type">Yaf_Application </span><span class="methodname">
+     <a class="link" href="yaf.class.application.app.html" title="Yaf_Application::app">app</a>
+    </span>(<span class="methodparam">
+     <span class="type">void </span>
+    </span>);</code><br><code class="methodsynopsis">  <span class="modifier">public </span><span class="type">mixed </span><span class="methodname">
+     <a class="link" href="yaf.class.application.execute.html" title="Yaf_Application::execute">execute</a>
+    </span>(<span class="methodparam">
+     <span class="type">callback </span>
+     <span class="parameter">$funcion</span>
+    </span>,<br><span class="methodparam">
+     <span class="type">mixed </span>
+     <span class="parameter">$parameter</span>
+     <span class="initializer">= NULL</span>
+    </span>,<br><span class="methodparam">
+     <span class="type">mixed </span>
+     <span class="parameter">$...</span>
+     <span class="initializer">= NULL</span>
+    </span>);</code><br>}
+</pre>
+      </div>
+
+      <div class="simplesect" title="属性说明">
+        <div class="titlepage">
+          <div>
+            <div>
+              <h3 class="title">
+<a name="yaf.class.application.props" id="yaf.class.application.props"></a>属性说明</h3>
+            </div>
+          </div>
+        </div>
+
+        <div class="variablelist">
+          <dl>
+<dt>
+<a name="yaf.class.application.props._app" id="yaf.class.application.props._app"></a> <span class="term"><code class="varname">_app</code></span>
+</dt>
+
+            <dd>
+              <p>Yaf_Application通过特殊的方式实现了单利模式, 此属性保存当前实例</p>
+            </dd>
+
+            <dt>
+<a name="yaf.class.application.props._config" id="yaf.class.application.props._config"></a>
+            <span class="term"><code class="varname">_config</code></span>
+</dt>
+
+            <dd>
+              <p>全局配置实例</p>
+            </dd>
+
+            <dt>
+<a name="yaf.class.application.props._dispatcher" id="yaf.class.application.props._dispatcher"></a>
+            <span class="term"><code class="varname">_dispatcher</code></span>
+</dt>
+
+            <dd>
+              <p>Yaf_Dispatcher实例</p>
+            </dd>
+
+            <dt>
+<a name="yaf.class.application.props._modules" id="yaf.class.application.props._modules"></a>
+            <span class="term"><code class="varname">_modules</code></span>
+</dt>
+
+            <dd>
+              <p>存在的模块名, 从配置文件中ap.modules读取</p>
+            </dd>
+
+            <dt>
+<a name="yaf.class.application.props._environ" id="yaf.class.application.props._environ"></a>
+            <span class="term"><code class="varname">_environ</code></span>
+</dt>
+
+            <dd>
+              <p>当前的环境名, 也就是Yaf_Application在读取配置的时候, 获取的配置节名字</p>
+            </dd>
+
+            <dt>
+<a name="yaf.class.application.props._run" id="yaf.class.application.props._run"></a> <span class="term"><code class="varname">_run</code></span>
+</dt>
+
+            <dd>
+              <p>布尔值, 指明当前的Yaf_Application是否已经运行</p>
+            </dd>
+          </dl>
+</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="navfooter">
+    <hr>
+<table summary="Navigation footer" width="100%">
+<tr>
+<td align="left" width="40%">
+<a accesskey="p" href="yaf.catcherror.error.html">上一页</a> </td>
+
+        <td align="center" width="20%"> </td>
+
+        <td align="right" width="40%"> <a accesskey="n" href="yaf.class.application.construct.html">下一页</a>
+</td>
+      </tr>
+<tr>
+<td valign="top" align="left" width="40%">10.3. 错误模式 </td>
+
+        <td align="center" width="20%"><a accesskey="h" href="index.html">起始页</a></td>
+
+        <td valign="top" align="right" width="40%"> Yaf_Application::__construct</td>
+      </tr>
+</table>
+</div>
+</body>
+<script type="text/javascript" src=".html"></script><noscript><a href="http://www.linezing.com"><img src=".html"></a></noscript>
+</html>

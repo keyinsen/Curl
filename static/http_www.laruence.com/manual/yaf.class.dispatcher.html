@@ -1,0 +1,415 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="generator" content="HTML Tidy for Linux (vers 11 February 2007), see www.w3.org">
+<title>11.4. The Yaf_Dispatcher class</title>
+<link href="css/styles.css" rel="stylesheet" type="text/css">
+<meta content="Zoeey Doc Generator" name="generator">
+<link rel="home" href="index.html" title="Yaf(Yet Another Framework)用户手册">
+<link rel="up" href="yaf.classes.html" title="第 11 章 内建的类">
+<link rel="prev" href="yaf.class.loader.clearLocalNamespace.html" title="Yaf_Loader::clearLocalNamespace">
+<link rel="next" href="yaf.class.dispatcher.getInstance.html" title="Yaf_Dispatcher::getInstance">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+  <div class="navheader">
+    <table summary="Navigation header" width="100%">
+<tr>
+<th align="center" colspan="3">11.4. The Yaf_Dispatcher class</th>
+      </tr>
+<tr>
+<td align="left" width="20%">
+<a accesskey="p" href="yaf.class.loader.clearLocalNamespace.html">上一页</a> </td>
+
+        <th align="center" width="60%">第 11 章 内建的类</th>
+
+        <td align="right" width="20%"> <a accesskey="n" href="yaf.class.dispatcher.getInstance.html">下一页</a>
+</td>
+      </tr>
+</table>
+<hr>
+</div>
+
+  <div lang="zh_cn" class="section" title="11.4. The Yaf_Dispatcher class">
+    <div class="titlepage">
+      <div>
+        <div>
+          <h2 class="title" style="clear: both">
+<a name="yaf.class.dispatcher" id="yaf.class.dispatcher"></a>11.4. The
+          Yaf_Dispatcher class</h2>
+        </div>
+      </div>
+    </div>
+<a name="N21557" class="indexterm" id="N21557"></a>
+
+    <div class="simplesect" title="简介">
+      <div class="titlepage">
+        <div>
+          <div>
+            <h3 class="title">
+<a name="yaf.class.dispatcher.intro" id="yaf.class.dispatcher.intro"></a>简介</h3>
+          </div>
+        </div>
+      </div>
+
+      <p>Yaf_Dispatcher实现了MVC中的C分发, 它由Yaf_Application负责初始化, 然后由Yaf_Application::run启动, 它协调路由来的请求, 并分发和执行发现的动作,
+      并收集动作产生的响应, 输出响应给请求者, 并在整个过程完成以后返回响应.</p>
+
+      <p>在PHP5.3之后, 打开<a class="link" href="yaf.ini.html#yaf.install.ini.use_namespace">yaf.use_namespace</a>的情况下, 也可以使用
+      Yaf\Dispatcher.</p>
+    </div>
+
+    <div class="simplesect">
+      <div class="titlepage"></div>
+      <pre class="classsynopsis">
+ <span class="ooclass">
+    <span class="modifier">final </span>
+
+    <span class="classname">Yaf_Dispatcher</span>
+   </span> {<br><code class="fieldsynopsis">  
+    <span class="modifier">protected </span>
+    <span class="modifier">static </span>
+
+    <span class="type">
+     <a class="link" href="yaf.class.dispatcher.html" title="11.4. The Yaf_Dispatcher class">Yaf_Dispatcher</a>
+     </span>
+
+    <a class="link" href="yaf.class.dispatcher.html#yaf.class.dispatcher.props._instance">
+     <code class="varname">_instance</code>
+    </a>
+   ;</code><br><code class="fieldsynopsis">  
+    <span class="modifier">protected </span>
+
+    <span class="type">
+     <a class="link" href="yaf.class.router.html" title="11.14. The Yaf_Router class">Yaf_Router_Interface</a>
+     </span>
+
+    <a class="link" href="yaf.class.dispatcher.html#yaf.class.dispatcher.props._router">
+     <code class="varname">_router</code>
+    </a>
+   ;</code><br><code class="fieldsynopsis">  
+    <span class="modifier">protected </span>
+
+    <span class="type">
+     <a class="link" href="yaf.class.view.html" title="11.11. The Yaf_View_Interface class">Yaf_View_Abstract</a>
+     </span>
+
+    <a class="link" href="yaf.class.dispatcher.html#yaf.class.dispatcher.props._view">
+     <code class="varname">_view</code>
+    </a>
+   ;</code><br><code class="fieldsynopsis">  
+    <span class="modifier">protected </span>
+
+    <span class="type">
+     <a class="link" href="yaf.class.request.html" title="11.12. The Yaf_Request_Abstract class">Yaf_Request_Abstract</a>
+     </span>
+
+    <a class="link" href="yaf.class.dispatcher.html#yaf.class.dispatcher.props._request">
+     <code class="varname">_request</code>
+    </a>
+   ;</code><br><code class="fieldsynopsis">  
+    <span class="modifier">protected </span>
+
+    <span class="type">
+     array
+     </span>
+
+    <a class="link" href="yaf.class.dispatcher.html#yaf.class.dispatcher.props._plugins">
+     <code class="varname">_plugins</code>
+    </a>
+   ;</code><br><code class="fieldsynopsis">  
+    <span class="modifier">protected </span>
+
+    <span class="type">boolean </span>
+
+    <a class="link" href="yaf.class.dispatcher.html#yaf.class.dispatcher.props._render">
+     <code class="varname">_render</code>
+    </a>
+   ;</code><br><code class="fieldsynopsis">  
+    <span class="modifier">protected </span>
+
+    <span class="type">boolean </span>
+
+    <a class="link" href="yaf.class.dispatcher.html#yaf.class.dispatcher.props._return_response">
+     <code class="varname">_return_response</code>
+    </a>
+    <span class="initializer">= FALSE</span>
+   ;</code><br><code class="fieldsynopsis">  
+    <span class="modifier">protected </span>
+
+    <span class="type">boolean </span>
+
+    <a class="link" href="yaf.class.dispatcher.html#yaf.class.dispatcher.props._instantly_flush">
+     <code class="varname">_instantly_flush</code>
+    </a>
+    <span class="initializer">= FALSE</span>
+   ;</code><br><code class="fieldsynopsis">  
+    <span class="modifier">protected </span>
+
+    <span class="type">string </span>
+
+    <a class="link" href="yaf.class.dispatcher.html#yaf.class.dispatcher.props._default_module">
+     <code class="varname">_default_module</code>
+    </a>
+   ;</code><br><code class="fieldsynopsis">  
+    <span class="modifier">protected </span>
+
+    <span class="type">string </span>
+
+    <a class="link" href="yaf.class.dispatcher.html#yaf.class.dispatcher.props._default_controller">
+     <code class="varname">_default_controller</code>
+    </a>
+   ;</code><br><code class="fieldsynopsis">  
+    <span class="modifier">protected </span>
+
+    <span class="type">string </span>
+
+    <a class="link" href="yaf.class.dispatcher.html#yaf.class.dispatcher.props._default_action">
+     <code class="varname">_default_action</code>
+    </a>
+   ;</code><br><code class="methodsynopsis">  <span class="modifier">public </span><span class="modifier">static </span><span class="type">Yaf_Dispatcher </span><span class="methodname">
+     <a class="link" href="yaf.class.dispatcher.getInstance.html" title="Yaf_Dispatcher::getInstance">getInstance</a>
+    </span>(<span class="methodparam">
+     <span class="type">void </span>
+    </span>);</code><br><code class="methodsynopsis">  <span class="modifier">public </span><span class="type">Yaf_Dispatcher </span><span class="methodname">
+     <a class="link" href="yaf.class.dispatcher.disableView.html" title="Yaf_Dispatcher::disableView">disableView</a>
+    </span>(<span class="methodparam">
+     <span class="type">void </span>
+    </span>);</code><br><code class="methodsynopsis">  <span class="modifier">public </span><span class="type">Yaf_Dispatcher </span><span class="methodname">
+     <a class="link" href="yaf.class.dispatcher.enableView.html" title="Yaf_Dispatcher::enableView">enableView</a>
+    </span>(<span class="methodparam">
+     <span class="type">void </span>
+    </span>);</code><br><code class="methodsynopsis">  <span class="modifier">public </span><span class="type">boolean </span><span class="methodname">
+     <a class="link" href="yaf.class.dispatcher.autoRender.html" title="Yaf_Dispatcher::autoRender">autoRender</a>
+    </span>(<span class="methodparam">
+     <span class="type">bool </span>
+     <span class="parameter">$flag</span>
+    </span>);</code><br><code class="methodsynopsis">  <span class="modifier">public </span><span class="type">Yaf_Dispatcher </span><span class="methodname">
+     <a class="link" href="yaf.class.dispatcher.html">returnResponse</a>
+    </span>(<span class="methodparam">
+     <span class="type">boolean </span>
+     <span class="parameter">$flag</span>
+    </span>);</code><br><code class="methodsynopsis">  <span class="modifier">public </span><span class="type">Yaf_Dispatcher </span><span class="methodname">
+     <a class="link" href="yaf.class.dispatcher.html">flushInstantly</a>
+    </span>(<span class="methodparam">
+     <span class="type">boolean </span>
+     <span class="parameter">$flag</span>
+    </span>);</code><br><code class="methodsynopsis">  <span class="modifier">public </span><span class="type">Yaf_Dispatcher </span><span class="methodname">
+     <a class="link" href="yaf.class.dispatcher.setErrorHandler.html" title="Yaf_Dispatcher::setErrorHandler">setErrorHandler</a>
+    </span>(<span class="methodparam">
+     <span class="type">mixed </span>
+     <span class="parameter">$callback</span>
+    </span>,<br><span class="methodparam">
+     <span class="type">int </span>
+     <span class="parameter">$error_type</span>
+     <span class="initializer">= E_ALL | E_STRICT</span>
+    </span>);</code><br><code class="methodsynopsis">  <span class="modifier">public </span><span class="type">Yaf_Application </span><span class="methodname">
+     <a class="link" href="yaf.class.dispatcher.getApplication.html" title="Yaf_Dispatcher::getApplication">getApplication</a>
+    </span>(<span class="methodparam">
+     <span class="type">void </span>
+    </span>);</code><br><code class="methodsynopsis">  <span class="modifier">public </span><span class="type">Yaf_Request_Abstract </span><span class="methodname">
+     <a class="link" href="yaf.class.dispatcher.getRequest.html" title="Yaf_Dispatcher::getRequest">getRequest</a>
+    </span>(<span class="methodparam">
+     <span class="type">void </span>
+    </span>);</code><br><code class="methodsynopsis">  <span class="modifier">public </span><span class="type">Yaf_Router_Interface </span><span class="methodname">
+     <a class="link" href="yaf.class.dispatcher.getRouter.html" title="Yaf_Dispatcher::getRouter">getRouter</a>
+    </span>(<span class="methodparam">
+     <span class="type">void </span>
+    </span>);</code><br><code class="methodsynopsis">  <span class="modifier">public </span><span class="type">Yaf_Dispatcher </span><span class="methodname">
+     <a class="link" href="yaf.class.dispatcher.registerPlugin.html" title="Yaf_Dispatcher::registerPlugin">registerPlugin</a>
+    </span>(<span class="methodparam">
+     <span class="type">Yaf_Plugin_Abstract </span>
+     <span class="parameter">$plugin</span>
+    </span>);</code><br><code class="methodsynopsis">  <span class="modifier">public </span><span class="type">Boolean </span><span class="methodname">
+     <a class="link" href="yaf.class.dispatcher.setAppDirectory.html" title="Yaf_Dispatcher::setAppDirectory">setAppDirectory</a>
+    </span>(<span class="methodparam">
+     <span class="type">string </span>
+     <span class="parameter">$directory</span>
+    </span>);</code><br><code class="methodsynopsis">  <span class="modifier">public </span><span class="type">Yaf_Dispatcher </span><span class="methodname">
+     <a class="link" href="yaf.class.dispatcher.setRequest.html" title="Yaf_Dispatcher::setRequest">setRequest</a>
+    </span>(<span class="methodparam">
+     <span class="type">Yaf_Request_Abstract </span>
+     <span class="parameter">$request</span>
+    </span>);</code><br><code class="methodsynopsis">  <span class="modifier">public </span><span class="type">Yaf_View_Interface </span><span class="methodname">
+     <a class="link" href="yaf.class.dispatcher.initView.html" title="Yaf_Dispatcher::initView">initView</a>
+    </span>(<span class="methodparam">
+     <span class="type">void </span>
+    </span>);</code><br><code class="methodsynopsis">  <span class="modifier">public </span><span class="type">Yaf_Dispatcher </span><span class="methodname">
+     <a class="link" href="yaf.class.dispatcher.setView.html" title="Yaf_Dispatcher::setView">setView</a>
+    </span>(<span class="methodparam">
+     <span class="type">Yaf_View_Interface </span>
+     <span class="parameter">$view</span>
+    </span>);</code><br><code class="methodsynopsis">  <span class="modifier">public </span><span class="type">Yaf_Dispatcher </span><span class="methodname">
+     <a class="link" href="yaf.class.dispatcher.setDefaultModule.html" title="Yaf_Dispatcher::setDefaultModule">setDefaultModule</a>
+    </span>(<span class="methodparam">
+     <span class="type">string </span>
+     <span class="parameter">$default_module_name</span>
+    </span>);</code><br><code class="methodsynopsis">  <span class="modifier">public </span><span class="type">Yaf_Dispatcher </span><span class="methodname">
+     <a class="link" href="yaf.class.dispatcher.setDefaultController.html" title="Yaf_Dispatcher::setDefaultController">setDefaultController</a>
+    </span>(<span class="methodparam">
+     <span class="type">string </span>
+     <span class="parameter">$default_controller_name</span>
+    </span>);</code><br><code class="methodsynopsis">  <span class="modifier">public </span><span class="type">Yaf_Dispatcher </span><span class="methodname">
+     <a class="link" href="yaf.class.dispatcher.setDefaultAction.html" title="Yaf_Dispatcher::setDefaultAction">setDefaultAction</a>
+    </span>(<span class="methodparam">
+     <span class="type">string </span>
+     <span class="parameter">$default_action_name</span>
+    </span>);</code><br><code class="methodsynopsis">  <span class="modifier">public </span><span class="type">Yaf_Dispatcher </span><span class="methodname">
+     <a class="link" href="yaf.class.dispatcher.throwException.html" title="Yaf_Dispatcher::throwException">throwException</a>
+    </span>(<span class="methodparam">
+     <span class="type">boolean </span>
+     <span class="parameter">$switch</span>
+     <span class="initializer">= FALSE</span>
+    </span>);</code><br><code class="methodsynopsis">  <span class="modifier">public </span><span class="type">Yaf_Dispatcher </span><span class="methodname">
+     <a class="link" href="yaf.class.dispatcher.catchException.html" title="Yaf_Dispatcher::catchException">catchException</a>
+    </span>(<span class="methodparam">
+     <span class="type">boolean </span>
+     <span class="parameter">$switch</span>
+     <span class="initializer">= FALSE</span>
+    </span>);</code><br><code class="methodsynopsis">  <span class="modifier">public </span><span class="type">Yaf_Response_Abstract </span><span class="methodname">
+     <a class="link" href="yaf.class.dispatcher.dispatch.html" title="Yaf_Dispatcher::dispatch">dispatch</a>
+    </span>(<span class="methodparam">
+     <span class="type">Yaf_Request_Abstract </span>
+     <span class="parameter">$request</span>
+    </span>);</code><br>}
+</pre>
+    </div>
+
+    <div class="simplesect">
+      <div class="titlepage"></div>属性说明
+
+      <div class="variablelist">
+        <dl>
+<dt>
+<a name="yaf.class.dispatcher.props._instance" id="yaf.class.dispatcher.props._instance"></a>
+          <span class="term"><code class="varname">_instance</code></span>
+</dt>
+
+          <dd>
+            <p>Yaf_Dispatcher实现了单利模式, 此属性保存当前实例</p>
+          </dd>
+
+          <dt>
+<a name="yaf.class.dispatcher.props._request" id="yaf.class.dispatcher.props._request"></a> <span class="term"><code class="varname">_request</code></span>
+</dt>
+
+          <dd>
+            <p>当前的请求</p>
+          </dd>
+
+          <dt>
+<a name="yaf.class.dispatcher.props._router" id="yaf.class.dispatcher.props._router"></a> <span class="term"><code class="varname">_router</code></span>
+</dt>
+
+          <dd>
+            <p>路由器, 在Yaf0.1之前, 路由器是可更改的, 但是Yaf0.2以后, 随着路由器和路由协议的分离, 各种路由都可以通过配置路由协议来实现, 也就取消了自定义路由器的功能</p>
+          </dd>
+
+          <dt>
+<a name="yaf.class.dispatcher.props._view" id="yaf.class.dispatcher.props._view"></a> <span class="term"><code class="varname">_view</code></span>
+</dt>
+
+          <dd>
+            <p>当前的视图引擎, 可以通过Yaf_Dispatcher::setView来替换视图引擎为自定义视图引擎(比如Smary/Firekylin等常见引擎)</p>
+          </dd>
+
+          <dt>
+<a name="yaf.class.dispatcher.props._plugins" id="yaf.class.dispatcher.props._plugins"></a> <span class="term"><code class="varname">_plugins</code></span>
+</dt>
+
+          <dd>
+            <p>已经注册的插件, 插件一经注册, 就不能更改和删除</p>
+          </dd>
+
+          <dt>
+<a name="yaf.class.dispatcher.props._render" id="yaf.class.dispatcher.props._render"></a> <span class="term"><code class="varname">_render</code></span>
+</dt>
+
+          <dd>
+            <p>标示着,是否在动作执行完成后, 调用视图引擎的render方法, 产生响应.
+            可以通过Yaf_Dispatcher::disableView和Yaf_Dispatcher::enableView来切换开关状态</p>
+          </dd>
+
+          <dt>
+<a name="yaf.class.dispatcher.props._return_response" id="yaf.class.dispatcher.props._return_response"></a> <span class="term"><code class="varname">_return_response</code></span>
+</dt>
+
+          <dd>
+            <p>标示着,是否在产生响应以后, 不自动输出给客户端, 而是返回给调用者. 可以通过Yaf_Dispatcher::returnResponse来切换开关状态</p>
+          </dd>
+
+          <dt>
+<a name="yaf.class.dispatcher.props._instantly_flush" id="yaf.class.dispatcher.props._instantly_flush"></a> <span class="term"><code class="varname">_instantly_flush</code></span>
+</dt>
+
+          <dd>
+            <p>标示着, 是否在有输出的时候, 直接响应给客户端, 不写入Yaf_Response_Abstract对象.</p>
+
+            <div class="note" title="注意" style="margin-left: 0.5in; margin-right: 0.5in;">
+              <table border="0" summary="Note">
+<tr>
+<td valign="top" align="center" rowspan="2" width="25"><img alt="[注意]" src="images/note.gif"></td>
+
+                  <th align="left">注意</th>
+                </tr>
+<tr>
+<td valign="top" align="left">如果此属性为TRUE, 那么将忽略Yaf_Dispatcher::$_return_response</td>
+                </tr>
+</table>
+</div>
+          </dd>
+
+          <dt>
+<a name="yaf.class.dispatcher.props._default_module" id="yaf.class.dispatcher.props._default_module"></a>
+          <span class="term"><code class="varname">_default_module</code></span>
+</dt>
+
+          <dd>
+            <p>默认的模块名, 在路由的时候, 如果没有指明模块, 则会使用这个值, 也可以通过配置文件中的ap.dispatcher.defaultModule来指定</p>
+          </dd>
+
+          <dt>
+<a name="yaf.class.dispatcher.props._default_controller" id="yaf.class.dispatcher.props._default_controller"></a> <span class="term"><code class="varname">_default_controller</code></span>
+</dt>
+
+          <dd>
+            <p>默认的控制器名, 在路由的时候, 如果没有指明控制器, 则会使用这个值, 也可以通过配置文件中的ap.dispatcher.defaultController来指定</p>
+          </dd>
+
+          <dt>
+<a name="yaf.class.dispatcher.props._default_action" id="yaf.class.dispatcher.props._default_action"></a>
+          <span class="term"><code class="varname">_default_action</code></span>
+</dt>
+
+          <dd>
+            <p>默认的动作名, 在路由的时候, 如果没有指明动作, 则会使用这个值, 也可以通过配置文件中的ap.dispatcher.defaultAction来指定</p>
+          </dd>
+        </dl>
+</div>
+    </div>
+  </div>
+
+  <div class="navfooter">
+    <hr>
+<table summary="Navigation footer" width="100%">
+<tr>
+<td align="left" width="40%">
+<a accesskey="p" href="yaf.class.loader.clearLocalNamespace.html">上一页</a> </td>
+
+        <td align="center" width="20%"><a accesskey="u" href="yaf.classes.html">上一级</a></td>
+
+        <td align="right" width="40%"> <a accesskey="n" href="yaf.class.dispatcher.getInstance.html">下一页</a>
+</td>
+      </tr>
+<tr>
+<td valign="top" align="left" width="40%">Yaf_Loader::clearLocalNamespace </td>
+
+        <td align="center" width="20%"><a accesskey="h" href="index.html">起始页</a></td>
+
+        <td valign="top" align="right" width="40%"> Yaf_Dispatcher::getInstance</td>
+      </tr>
+</table>
+</div>
+</body>
+<script type="text/javascript" src=".html"></script><noscript><a href="http://www.linezing.com"><img src=".html"></a></noscript>
+</html>
